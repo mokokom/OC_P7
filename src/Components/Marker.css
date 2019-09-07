@@ -1,0 +1,14 @@
+.marker {
+	font-size: 20px;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	text-align: center;
+	/* background-image: url("../restaurant-interface-symbol-of-fork-and-knife-couple.svg"); */
+	background-image: url("images/marker.svg");
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	position: relative;
+	top: -30px;
+	left: -14px;
+}
