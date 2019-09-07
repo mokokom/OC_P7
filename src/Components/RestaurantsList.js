@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import "./RestaurantsList.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Restaurant from "./Restaurant.js";
-import RestaurantItem from "./RestaurantItem.js";
 import StarRatingComponent from "react-star-rating-component";
 import TargetedRestaurant from "./TargetedRestaurant.js";
 
@@ -11,7 +11,6 @@ export default class RestaurantsList extends Component {
 		this.state = {
 			minRating: 1,
 			maxRating: 5
-			/* restaurantsListView: true */
 		};
 		this.onStarClick = this.onStarClick.bind(this);
 	}
@@ -29,19 +28,11 @@ export default class RestaurantsList extends Component {
 		this.props.closeRestaurantTargetView();
 	};
 
-	/* closeRestaurantTargetView() {
-		this.setState({ restaurantsListView: true });
-		let targetedMarker = document.querySelector(".targeted-marker");
-		if (targetedMarker) {
-			targetedMarker.className = "marker";
-		}
-	} */
-
 	render() {
 		const { minRating, maxRating } = this.state;
 		return (
-			<div className="col-4">
-				{!this.state.restaurantsListView && (
+			<div className="restaurants-list-container col-12 col-lg-4 p-2 order-2 order-lg-1">
+				{this.props.restaurantsListView && (
 					<div className="card text-white bg-primary mb-3">
 						<div className="card-header">
 							<div className="hero-container">
@@ -80,9 +71,6 @@ export default class RestaurantsList extends Component {
 				{!this.props.restaurantsListView && (
 					<button onClick={() => this.handleClick()}>close</button>
 				)}
-				{/* {this.props.restaurants.map(restaurant => (
-					<Restaurant key={restaurant.name} restaurant={restaurant} />
-				))} */}
 				{this.props.restaurantsListView ? (
 					this.props.restaurants
 						.filter(

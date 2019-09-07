@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
 import "./Map.css";
+import "bootstrap/dist/css/bootstrap.css";
 import GoogleMapReact from "google-map-react";
 import CurrentPlace from "./CurrentPlace.js";
 import Marker from "./Marker.js";
@@ -37,7 +37,7 @@ export default class Map extends Component {
 
 	render() {
 		return (
-			<div className="map col-8">
+			<div className="map-container col-12 col-lg-8 p-0 order-1 order-lg-2">
 				<GoogleMapReact
 					bootstrapURLKeys={{
 						key: "AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo"

@@ -12,10 +12,6 @@ export default class Marker extends Component {
 
 	handleClick(e) {
 		this.props.handleClick(this.props.restaurant);
-		/* this.setState({ activeMarker: "marker2" }); */
-
-		/* console.log(e.target.classList.remove("marker"));
-		console.log(e.target.classList.add("marker2")); */
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
@@ -23,7 +19,6 @@ export default class Marker extends Component {
 		let element = e.target;
 		console.log(element);
 		element.classList.toggle("targeted-marker");
-		/* document.querySelector("marker").classList.toggle("marker2"); */
 	}
 
 	render() {

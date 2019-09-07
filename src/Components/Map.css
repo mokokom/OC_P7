@@ -1,3 +1,9 @@
-.map {
+.map-container {
 	height: 100vh;
+}
+
+@media only screen and (max-width: 991px) {
+	.map-container {
+		height: 50vh;
+	}
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
+import "./TargetedRestaurant.css";
 
 export default class TargetedRestaurant extends Component {
 	constructor(props) {
@@ -12,7 +13,6 @@ export default class TargetedRestaurant extends Component {
 	componentDidMount() {
 		let averageRate = this.props.restaurant.averageRating;
 		this.setState({ rating: averageRate });
-		/* this.calculateAverageNote(); */
 	}
 
 	render() {

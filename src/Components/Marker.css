@@ -4,7 +4,6 @@
 	width: 30px;
 	cursor: pointer;
 	text-align: center;
-	/* background-image: url("../restaurant-interface-symbol-of-fork-and-knife-couple.svg"); */
 	background-image: url("images/marker.svg");
 	background-repeat: no-repeat;
 	background-size: 30px 30px;
@@ -26,3 +25,11 @@
 	top: -30px;
 	left: -14px;
 }
+
+/* TODO */
+/* .marker:hover {
+	height: 40px;
+	width: 40px;
+	background-size: 40px 40px;
+}
+ */

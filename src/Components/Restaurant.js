@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import StarRatingComponent from "react-star-rating-component";
 import RestaurantItem from "./RestaurantItem.js";
+import "./Restaurant.css";
 
 export default class Restaurant extends Component {
 	constructor(props) {
@@ -26,9 +27,7 @@ export default class Restaurant extends Component {
 
 		let element = e.target;
 		let selectedRestaurant = document.getElementById(element.textContent);
-		console.log(selectedRestaurant);
 		selectedRestaurant.classList.add("targeted-marker");
-		/* element.classList.toggle("targeted-marker"); */
 	}
 
 	onStarClick(nextValue, prevValue, name) {
