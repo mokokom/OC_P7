@@ -41,7 +41,7 @@ export default class RestaurantsList extends Component {
 		const { minRating, maxRating } = this.state;
 		return (
 			<div className="col-4">
-				{this.state.restaurantsListView && (
+				{!this.state.restaurantsListView && (
 					<div className="card text-white bg-primary mb-3">
 						<div className="card-header">
 							<div className="hero-container">

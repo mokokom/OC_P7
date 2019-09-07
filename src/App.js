@@ -32,8 +32,6 @@ class App extends Component {
 			restaurant: restaurant,
 			restaurantsListView: false
 		});
-		console.log(restaurant);
-		console.log(this.state);
 	};
 
 	closeRestaurantTargetView = () => {
