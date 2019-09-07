@@ -31,16 +31,15 @@ export default class Restaurant extends Component {
     } */
 	handleClick(e) {
 		this.props.handleClick(this.props.restaurant);
-		let targetedMarker = document.querySelector(".targeted-marker");
+		/* 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
 		}
 
 		let element = e.target;
-		/* console.log(element.textContent); */
 		let selectedRestaurant = document.getElementById(element.textContent);
 		console.log(selectedRestaurant);
-		selectedRestaurant.classList.add("targeted-marker");
+		selectedRestaurant.classList.add("targeted-marker"); */
 		/* element.classList.toggle("targeted-marker"); */
 	}
 

@@ -10,8 +10,10 @@ class App extends Component {
 		super(props);
 		this.state = {
 			restaurants: [],
-			restaurant: {}
+			restaurant: {},
+			restaurantsListView: true
 		};
+		/* this.handleClick = this.handleClick.bind(this); */
 	}
 
 	async componentDidMount() {
@@ -22,16 +24,41 @@ class App extends Component {
 			let restaurantItem = new RestaurantItem(restaurant);
 			restaurants.push(restaurantItem);
 		}
-		console.log(restaurants);
 		this.setState({ restaurants });
 	}
+
+	handleClick = restaurant => {
+		this.setState({
+			restaurant: restaurant,
+			restaurantsListView: false
+		});
+		console.log(restaurant);
+		console.log(this.state);
+	};
+
+	closeRestaurantTargetView = () => {
+		this.setState({ restaurantsListView: true });
+		let targetedMarker = document.querySelector(".targeted-marker");
+		if (targetedMarker) {
+			targetedMarker.className = "marker";
+		}
+	};
 
 	render() {
 		return (
 			<div className="App container-fluid">
 				<div className="row">
-					<RestaurantsList restaurants={this.state.restaurants} />
-					<Map restaurants={this.state.restaurants} />
+					<RestaurantsList
+						restaurants={this.state.restaurants}
+						restaurant={this.state.restaurant}
+						restaurantsListView={this.state.restaurantsListView}
+						closeRestaurantTargetView={this.closeRestaurantTargetView}
+						handleClick={this.handleClick}
+					/>
+					<Map
+						restaurants={this.state.restaurants}
+						handleClick={this.handleClick}
+					/>
 				</div>
 			</div>
 		);

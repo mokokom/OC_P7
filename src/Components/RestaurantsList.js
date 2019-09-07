@@ -10,8 +10,8 @@ export default class RestaurantsList extends Component {
 		super(props);
 		this.state = {
 			minRating: 1,
-			maxRating: 5,
-			restaurantsListView: true
+			maxRating: 5
+			/* restaurantsListView: true */
 		};
 		this.onStarClick = this.onStarClick.bind(this);
 	}
@@ -24,24 +24,21 @@ export default class RestaurantsList extends Component {
 		}
 	}
 
-	closeRestaurantTargetView() {
+	handleClick = () => {
+		console.log(this.props);
+		this.props.closeRestaurantTargetView();
+	};
+
+	/* closeRestaurantTargetView() {
 		this.setState({ restaurantsListView: true });
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
 		}
-	}
-
-	handleClick(restaurant) {
-		this.setState({
-			restaurant: restaurant,
-			restaurantsListView: false
-		});
-	}
+	} */
 
 	render() {
 		const { minRating, maxRating } = this.state;
-		console.log(this.props);
 		return (
 			<div className="col-4">
 				{this.state.restaurantsListView && (
@@ -80,15 +77,13 @@ export default class RestaurantsList extends Component {
 						</div>
 					</div>
 				)}
-				{!this.state.restaurantsListView && (
-					<button onClick={() => this.closeRestaurantTargetView()}>
-						close
-					</button>
+				{!this.props.restaurantsListView && (
+					<button onClick={() => this.handleClick()}>close</button>
 				)}
 				{/* {this.props.restaurants.map(restaurant => (
 					<Restaurant key={restaurant.name} restaurant={restaurant} />
 				))} */}
-				{this.state.restaurantsListView ? (
+				{this.props.restaurantsListView ? (
 					this.props.restaurants
 						.filter(
 							restaurant =>
@@ -99,7 +94,7 @@ export default class RestaurantsList extends Component {
 							<Restaurant
 								key={restaurant.name}
 								restaurant={restaurant}
-								handleClick={this.handleClick}
+								handleClick={this.props.handleClick}
 							/>
 						))
 				) : (
