@@ -51,7 +51,7 @@ export default class Map extends Component {
 							lat={restaurant.lat}
 							lng={restaurant.long}
 							restaurant={restaurant}
-							handleClick={this.handleClick}
+							handleClick={this.props.handleClick}
 						/>
 					))}
 					<CurrentPlace
