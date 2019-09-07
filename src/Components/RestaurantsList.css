@@ -1,0 +1,10 @@
+.restaurants-list-container {
+	height: 100vh;
+	overflow: scroll;
+}
+
+@media only screen and (max-width: 991px) {
+	.restaurants-list-container {
+		height: 50vh;
+	}
+}

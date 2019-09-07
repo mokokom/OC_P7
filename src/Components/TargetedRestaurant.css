@@ -1,0 +1,4 @@
+.targeted-restaurant {
+	display: flex;
+	flex-direction: column;
+}
