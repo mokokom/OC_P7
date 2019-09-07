@@ -15,23 +15,11 @@ export default class Restaurant extends Component {
 	componentDidMount() {
 		let averageRate = this.props.restaurant.averageRating;
 		this.setState({ rating: averageRate });
-		/* this.calculateAverageNote(); */
 	}
 
-	/* calculateAverageNote() {
-		const ratings = this.props.restaurant.ratings;
-		let ratingsStars = 0;
-		for (let rating of ratings) {
-			ratingsStars += rating.stars;
-		}
-		let averageRating = Math.floor(ratingsStars / ratings.length);
-		this.setState({
-			rating: averageRating
-		});
-    } */
 	handleClick(e) {
 		this.props.handleClick(this.props.restaurant);
-		/* 		let targetedMarker = document.querySelector(".targeted-marker");
+		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
 		}
@@ -39,7 +27,7 @@ export default class Restaurant extends Component {
 		let element = e.target;
 		let selectedRestaurant = document.getElementById(element.textContent);
 		console.log(selectedRestaurant);
-		selectedRestaurant.classList.add("targeted-marker"); */
+		selectedRestaurant.classList.add("targeted-marker");
 		/* element.classList.toggle("targeted-marker"); */
 	}
 
