@@ -37,19 +37,22 @@ export default class RestaurantsList extends Component {
 							<div className="hero-container">
 								<h1 className="logo d-flex justify-content-center">
 									{/* Restaurants reviews */}
-									<i class="fas fa-utensils"></i>
-									{/* <i class="far fa-star"></i> */}
+									<i className="fas fa-utensils"></i>
+									{/* <i className="far fa-star"></i> */}
 								</h1>
+								<p className="d-flex justify-content-end">
+									<i className="fas fa-plus" title="add restaurant"></i>
+								</p>
 							</div>
 						</div>
 						<div className="card-body">
 							<h5 className="card-title text-center">
-								Filter by <i class="far fa-star"></i>
+								Filter by <i className="far fa-star"></i>
 							</h5>
 							<div className="rate-filter d-flex justify-content-around">
 								<div className="search-area d-flex flex-column justify-content-center align-items-center">
 									<h4>
-										<i class="fas fa-sort-amount-down"></i>
+										<i className="fas fa-sort-amount-down"></i>
 									</h4>
 									<div>
 										<StarRatingComponent
@@ -62,7 +65,7 @@ export default class RestaurantsList extends Component {
 								</div>
 								<div className="search-area search-area d-flex flex-column justify-content-center align-items-center">
 									<h4>
-										<i class="fas fa-sort-amount-up"></i>
+										<i className="fas fa-sort-amount-up"></i>
 									</h4>
 									<div>
 										<StarRatingComponent

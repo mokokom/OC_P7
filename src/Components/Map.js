@@ -35,6 +35,10 @@ export default class Map extends Component {
 		}
 	}
 
+	handleMapClick(e) {
+		console.log(e);
+	}
+
 	render() {
 		return (
 			<div className="map-container col-12 col-lg-8 p-0 order-1 order-lg-2">
@@ -44,6 +48,7 @@ export default class Map extends Component {
 					}}
 					center={this.state.location}
 					zoom={13}
+					onClick={this.handleMapClick}
 				>
 					{this.props.restaurants.map(restaurant => (
 						<Marker

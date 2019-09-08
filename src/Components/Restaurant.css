@@ -1,12 +1,18 @@
+:root{
+	--shadowColor: gray;
+}
+
 .card {
-	box-shadow: 2px 3px 5px gray;
+	box-shadow: 2px 3px 5px var(--shadowColor);
 	border: none;
 	border-radius: 0;
+	background-color: var(--restaurantBackColor);
 }
 
 .card:hover {
 	background-color: rgb(238, 238, 238);
 	box-shadow: none;
+	/* box-shadow: 2px 3px 15px 2px var(--shadowColor); */
 }
 
 .restaurant-name:hover {

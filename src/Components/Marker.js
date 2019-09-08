@@ -21,13 +21,45 @@ export default class Marker extends Component {
 		element.classList.toggle("targeted-marker");
 	}
 
+	handleMouseOver() {
+		return <p>{this.props.restaurant.name}</p>;
+	}
+
 	render() {
+		const styleAtt = {
+			width: "10rem",
+			position: "relative",
+			top: "-20px",
+			left: "-60px",
+			zIndex: "1"
+			/* color: "var(--blue)" */
+		};
 		return (
 			<div
 				className="marker"
 				id={this.props.restaurant.name}
 				onClick={e => this.handleClick(e)}
-			/>
+			>
+				{
+					<div className="test" style={styleAtt} text-center>
+						<p>{this.props.restaurant.name}</p>
+					</div>
+				}
+				{/* <div class="test card" style={styleAtt}>
+						<div class="card-body">
+							<h5 class="card-title">{this.props.restaurant.name}</h5>
+							<h6 class="card-subtitle mb-2 text-muted">
+								{this.props.restaurant.description}
+							</h6>
+							<a href="#" class="card-link">
+								Card link
+							</a>
+							<a href="#" class="card-link">
+								Another link
+							</a>
+						</div>
+					</div> */}
+			</div>
 		);
 	}
 }

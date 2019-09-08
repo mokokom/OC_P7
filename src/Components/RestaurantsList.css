@@ -1,22 +1,37 @@
 :root {
-	--yellow: #ffb400;
+	--icon: #ffb400;
+	--restaurantBackColor: #ffffff;
+	--filterBackColor: #0077f7;
 }
 
 .restaurants-list-container {
 	height: 100vh;
 	overflow: scroll;
+	background-color: var(--restaurantBackColor);
+}
+
+.bg-primary {
+	background-color: var(--filterBackColor) !important;
 }
 
 .fa-sort-amount-down {
-	color: var(--yellow);
+	color: var(--icon);
 }
 
 .fa-sort-amount-up {
-	color: var(--yellow);
+	color: var(--icon);
 }
 
 .fa-star {
-	color: var(--yellow);
+	color: var(--icon);
+}
+
+.fa-plus {
+	cursor: pointer;
+}
+
+.fa-plus:hover {
+	color: var(--icon);
 }
 
 @media only screen and (max-width: 991px) {

@@ -26,6 +26,16 @@
 	left: -14px;
 }
 
+.marker .test {
+	display: none;
+}
+
+.marker:hover .test {
+	display: block;
+	font-size: 15px;
+	font-weight: bold;
+}
+
 /* TODO */
 /* .marker:hover {
 	height: 40px;
@@ -33,11 +43,3 @@
 	background-size: 40px 40px;
 }
  */
-
-.fa-map-pin {
-	color: red;
-}
-
-.fa-map-pin-targeted {
-	color: blue;
-}
