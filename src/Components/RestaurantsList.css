@@ -14,6 +14,20 @@
 	background-color: var(--filterBackColor) !important;
 }
 
+.card-form {
+	background-color: var(--filterBackColor);
+	box-shadow: none;
+}
+
+.card-form:hover {
+	background-color: var(--filterBackColor);
+	box-shadow: none;
+}
+
+.btn-form {
+	background-color: #ffb400;
+}
+
 .fa-sort-amount-down {
 	color: var(--icon);
 }

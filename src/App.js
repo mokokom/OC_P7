@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import RestaurantsList from "./Components/RestaurantsList";
 import Map from "./Components/Map";
 import RestaurantItem from "./Components/RestaurantItem.js";
-import "bootstrap/dist/css/bootstrap.css";
+/* import "bootstrap/dist/css/bootstrap.css"; */
 import "./App.css";
 
 class App extends Component {
@@ -11,7 +11,8 @@ class App extends Component {
 		this.state = {
 			restaurants: [],
 			restaurant: {},
-			restaurantsListView: true
+			restaurantsListView: true,
+			formView: false
 		};
 	}
 

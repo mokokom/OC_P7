@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Restaurant from "./Restaurant.js";
 import StarRatingComponent from "react-star-rating-component";
 import TargetedRestaurant from "./TargetedRestaurant.js";
-import "bootstrap/dist/css/bootstrap.css";
+import FormView from "./FormView.js";
+/* import "bootstrap/dist/css/bootstrap.css"; */
 import "./RestaurantsList.css";
 
 export default class RestaurantsList extends Component {
@@ -36,13 +37,9 @@ export default class RestaurantsList extends Component {
 						<div className="card-header">
 							<div className="hero-container">
 								<h1 className="logo d-flex justify-content-center">
-									{/* Restaurants reviews */}
 									<i className="fas fa-utensils"></i>
-									{/* <i className="far fa-star"></i> */}
 								</h1>
-								<p className="d-flex justify-content-end">
-									<i className="fas fa-plus" title="add restaurant"></i>
-								</p>
+								<FormView />
 							</div>
 						</div>
 						<div className="card-body">
