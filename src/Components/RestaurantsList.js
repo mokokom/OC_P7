@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./RestaurantsList.css";
-import "bootstrap/dist/css/bootstrap.css";
 import Restaurant from "./Restaurant.js";
 import StarRatingComponent from "react-star-rating-component";
 import TargetedRestaurant from "./TargetedRestaurant.js";
+import "bootstrap/dist/css/bootstrap.css";
+import "./RestaurantsList.css";
 
 export default class RestaurantsList extends Component {
 	constructor(props) {
@@ -23,10 +23,9 @@ export default class RestaurantsList extends Component {
 		}
 	}
 
-	handleClick = () => {
-		console.log(this.props);
+	/* handleClick = () => {
 		this.props.closeRestaurantTargetView();
-	};
+	}; */
 
 	render() {
 		const { minRating, maxRating } = this.state;
@@ -36,14 +35,22 @@ export default class RestaurantsList extends Component {
 					<div className="card text-white bg-primary mb-3">
 						<div className="card-header">
 							<div className="hero-container">
-								<h1 className="logo">Restaurants reviews</h1>
+								<h1 className="logo d-flex justify-content-center">
+									{/* Restaurants reviews */}
+									<i class="fas fa-utensils"></i>
+									{/* <i class="far fa-star"></i> */}
+								</h1>
 							</div>
 						</div>
 						<div className="card-body">
-							<h5 className="card-title">Primary card title</h5>
+							<h5 className="card-title text-center">
+								Filter by <i class="far fa-star"></i>
+							</h5>
 							<div className="rate-filter d-flex justify-content-around">
-								<div className="search-area">
-									<h4>minimum rate </h4>
+								<div className="search-area d-flex flex-column justify-content-center align-items-center">
+									<h4>
+										<i class="fas fa-sort-amount-down"></i>
+									</h4>
 									<div>
 										<StarRatingComponent
 											name="minRating"
@@ -53,8 +60,10 @@ export default class RestaurantsList extends Component {
 										/>
 									</div>
 								</div>
-								<div className="search-area">
-									<h4>maximum rate </h4>
+								<div className="search-area search-area d-flex flex-column justify-content-center align-items-center">
+									<h4>
+										<i class="fas fa-sort-amount-up"></i>
+									</h4>
 									<div>
 										<StarRatingComponent
 											name="maxRating"
@@ -67,9 +76,6 @@ export default class RestaurantsList extends Component {
 							</div>
 						</div>
 					</div>
-				)}
-				{!this.props.restaurantsListView && (
-					<button onClick={() => this.handleClick()}>close</button>
 				)}
 				{this.props.restaurantsListView ? (
 					this.props.restaurants
@@ -89,6 +95,9 @@ export default class RestaurantsList extends Component {
 					<TargetedRestaurant
 						key={this.props.restaurant.name}
 						restaurant={this.props.restaurant}
+						handleClick={this.props.handleClick}
+						restaurantsListView={this.props.restaurantsListView}
+						closeRestaurantTargetView={this.props.closeRestaurantTargetView}
 					/>
 				)}
 			</div>

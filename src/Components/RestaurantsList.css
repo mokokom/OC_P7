@@ -1,6 +1,22 @@
+:root {
+	--yellow: #ffb400;
+}
+
 .restaurants-list-container {
 	height: 100vh;
 	overflow: scroll;
+}
+
+.fa-sort-amount-down {
+	color: var(--yellow);
+}
+
+.fa-sort-amount-up {
+	color: var(--yellow);
+}
+
+.fa-star {
+	color: var(--yellow);
 }
 
 @media only screen and (max-width: 991px) {

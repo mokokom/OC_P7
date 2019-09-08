@@ -15,19 +15,32 @@ export default class TargetedRestaurant extends Component {
 		this.setState({ rating: averageRate });
 	}
 
+	handleClick = () => {
+		console.log(this.props);
+		this.props.closeRestaurantTargetView();
+	};
+
 	render() {
 		const { rating } = this.state;
 		return (
 			<div className="card">
-				<img
-					className="card-img-top"
-					src={`https://maps.googleapis.com/maps/api/streetview?size=200x200&location=${this.props.restaurant.address}&fov=50&heading=235&pitch=0&key=AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo`}
-					alt="restaurant view"
-				/>
+				<div className="img-container">
+					{!this.props.restaurantsListView && (
+						<button
+							className="btn-primary rounded btn-image"
+							onClick={() => this.handleClick()}
+						>
+							<i class="d-block fas fa-arrow-left fa-lg"></i>
+						</button>
+					)}
+					<img
+						className="card-img-top"
+						src={`https://maps.googleapis.com/maps/api/streetview?size=200x200&location=${this.props.restaurant.address}&fov=50&heading=235&pitch=0&key=AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo`}
+						alt="restaurant view"
+					/>
+				</div>
 				<div className="card-body">
-					<h3 className="restaurant-name" onClick={e => this.handleClick(e)}>
-						{this.props.restaurant.name}
-					</h3>
+					<h3 className="restaurant-name">{this.props.restaurant.name}</h3>
 					<div className="no-pointer">
 						<StarRatingComponent name="rate1" starCount={5} value={rating} />
 					</div>

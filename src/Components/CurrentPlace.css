@@ -1,11 +1,14 @@
+:root {
+	--blue: #0077f7;
+}
+
 .currentPlace {
 	width: 15px;
 	height: 15px;
 	border: 1px solid white;
-	color: #3f51b5;
 	border-radius: 50%;
-	background-color: blue;
-	box-shadow: 0px 0px 25px 5px blue;
+	background-color: var(--blue);
+	box-shadow: 0px 0px 15px 6px var(--blue);
 	position: relative;
 	top: -20px;
 	left: -4px;

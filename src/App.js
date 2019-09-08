@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.css";
 import RestaurantsList from "./Components/RestaurantsList";
 import Map from "./Components/Map";
 import RestaurantItem from "./Components/RestaurantItem.js";
+import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
 
 class App extends Component {
 	constructor(props) {

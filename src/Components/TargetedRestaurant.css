@@ -2,3 +2,18 @@
 	display: flex;
 	flex-direction: column;
 }
+
+.btn-image {
+	position: absolute;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 65px;
+	height: 40px;
+	box-shadow: 3px 4px 8px 1px black;
+}
+
+.btn-image:hover {
+	box-shadow: none;
+}

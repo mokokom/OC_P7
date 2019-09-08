@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./Map.css";
-import "bootstrap/dist/css/bootstrap.css";
 import GoogleMapReact from "google-map-react";
 import CurrentPlace from "./CurrentPlace.js";
 import Marker from "./Marker.js";
+import "bootstrap/dist/css/bootstrap.css";
+import "./Map.css";
 
 export default class Map extends Component {
 	constructor(props) {

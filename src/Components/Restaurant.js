@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
 import StarRatingComponent from "react-star-rating-component";
-import RestaurantItem from "./RestaurantItem.js";
+import "bootstrap/dist/css/bootstrap.css";
 import "./Restaurant.css";
 
 export default class Restaurant extends Component {

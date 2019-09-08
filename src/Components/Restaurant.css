@@ -3,3 +3,16 @@
 	border: none;
 	border-radius: 0;
 }
+
+.card:hover {
+	background-color: rgb(238, 238, 238);
+	box-shadow: none;
+}
+
+.restaurant-name:hover {
+	cursor: pointer;
+}
+
+.no-pointer .dv-star-rating-star {
+	cursor: default !important;
+}
