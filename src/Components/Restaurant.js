@@ -7,7 +7,8 @@ export default class Restaurant extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating: 1
+			rating: 0
+			/* rating: this.props.restaurant.averageRating */
 		};
 		this.onStarClick = this.onStarClick.bind(this);
 	}

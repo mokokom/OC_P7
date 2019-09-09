@@ -12,7 +12,9 @@ class App extends Component {
 			restaurants: [],
 			restaurant: {},
 			restaurantsListView: true,
-			formView: false
+			formView: false,
+			rating: 0,
+			newRating: 0
 		};
 	}
 
@@ -23,7 +25,7 @@ class App extends Component {
 		for (let restaurant of restaurantsResult) {
 			let restaurantItem = new RestaurantItem(restaurant);
 			restaurants.push(restaurantItem);
-			console.log(restaurant);
+			/* console.log(restaurant); */
 		}
 		this.setState({ restaurants });
 	}
@@ -44,15 +46,30 @@ class App extends Component {
 	};
 
 	handleSubmitFormComment = (restaurant, newComment) => {
+		/* restaurants update */
 		console.log(newComment);
-		console.log(restaurant);
 		let updatedComment = restaurant.ratings.concat(newComment);
 		console.log(updatedComment);
-		/* this.setState(prevState=>{
-			return {
-				restaurant: prevState.restaurants.
-			}
-		}) */
+		let items = [...this.state.restaurants];
+		console.log(items);
+		let test = items.indexOf(restaurant);
+		console.log(test);
+		let item = { ...items[test] };
+		console.log(item);
+		item.ratings = updatedComment;
+		items[test] = item;
+		this.setState({ restaurants: items });
+		console.log(this.state.restaurants);
+		console.log(this.state.restaurant);
+
+		/* Restaurant update */
+		/* console.log(newComment);
+		let updatedComment = restaurant.ratings.concat(newComment); */
+		console.log(updatedComment);
+		let item2 = { ...restaurant };
+		console.log(item2);
+		item2.ratings = updatedComment;
+		this.setState({ restaurant: item2 });
 	};
 
 	closeRestaurantTargetView = () => {
@@ -75,6 +92,8 @@ class App extends Component {
 						handleClick={this.handleClick}
 						handleSubmitForm={this.handleSubmitForm}
 						handleSubmitFormComment={this.handleSubmitFormComment}
+						/* rating={this.state.rating}
+						newRating={this.state.newRating} */
 					/>
 					<Map
 						restaurants={this.state.restaurants}

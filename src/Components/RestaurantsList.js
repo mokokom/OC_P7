@@ -89,6 +89,8 @@ export default class RestaurantsList extends Component {
 								key={restaurant.name}
 								restaurant={restaurant}
 								handleClick={this.props.handleClick}
+								/* rating={this.props.rating}
+								newRating={this.props.newRating} */
 							/>
 						))
 				) : (
@@ -99,6 +101,8 @@ export default class RestaurantsList extends Component {
 						restaurantsListView={this.props.restaurantsListView}
 						closeRestaurantTargetView={this.props.closeRestaurantTargetView}
 						handleSubmitFormComment={this.props.handleSubmitFormComment}
+						/* rating={this.props.rating}
+						newRating={this.props.newRating} */
 					/>
 				)}
 			</div>

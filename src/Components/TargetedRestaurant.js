@@ -1,23 +1,26 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import "./TargetedRestaurant.css";
+import FormView from "./FormView.js";
 
 export default class TargetedRestaurant extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			rating: 0,
+			/* rating: this.props.restaurant.averageRating, */
 			newRating: 0
 		};
 	}
 
 	componentDidMount() {
+		console.log(this.props.restaurant);
 		let averageRate = this.props.restaurant.averageRating;
+		console.log(averageRate);
 		this.setState({ rating: averageRate });
 	}
 
 	handleClick = () => {
-		console.log(this.props);
 		this.props.closeRestaurantTargetView();
 	};
 
@@ -27,26 +30,20 @@ export default class TargetedRestaurant extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		/* console.log(e.target.elements.newComment.value); */
 		const newComment = {
-			stars: e.target.elements.rating.value,
+			stars: parseInt(e.target.elements.rating.value),
 			comment: e.target.elements.newComment.value
 		};
 		this.props.handleSubmitFormComment(this.props.restaurant, newComment);
-		/* let newRest = this.props.restaurant;
-		newRest.ratings.concat(newComment);
-		console.log(newRest.ratings);
-		console.log(this.props.restaurant.ratings);
-		console.log(this.props.handleClick); */
-		/* let restupdate = this.props.restaurant.ratings.concat(newComment);
-		console.log(restupdate); */
-		/* Find how to pass the new comment to the restaurant state */
+		let getForm = document.getElementsByName("add-comment-form");
+		getForm[0].reset();
 	};
 
 	render() {
 		const { rating } = this.state;
 		return (
-			<div className="card">
+			<div className="card ">
+				<FormView handleSubmitForm={this.props.handleSubmitForm} />
 				<div className="img-container">
 					{!this.props.restaurantsListView && (
 						<button
@@ -63,10 +60,18 @@ export default class TargetedRestaurant extends Component {
 					/>
 				</div>
 				<div className="card-body">
-					<h3 className="restaurant-name">{this.props.restaurant.name}</h3>
+					<div className="d-flex justify-content-start align-items-center">
+						<h3 className="restaurant-name pr-3">
+							{this.props.restaurant.name}
+						</h3>{" "}
+						<span>{this.props.restaurant.description}</span>
+					</div>
 					<div className="no-pointer">
 						<StarRatingComponent name="rate1" starCount={5} value={rating} />
 					</div>
+					{/* <p>
+						<em>{this.props.restaurant.description}</em>
+					</p> */}
 					<address className="restaurant-adress">
 						{this.props.restaurant.address}
 					</address>
@@ -83,7 +88,7 @@ export default class TargetedRestaurant extends Component {
 						></i>
 					</p>
 					<div className="collapse" id="collapseFormComment">
-						<form onSubmit={e => this.handleSubmit(e)}>
+						<form onSubmit={e => this.handleSubmit(e)} name="add-comment-form">
 							<div className="form-group">
 								<div className="row">
 									<textarea
@@ -111,31 +116,16 @@ export default class TargetedRestaurant extends Component {
 								</div>
 							</div>
 						</form>
-						{/* <form>
-							<div className="row">
-								<textarea
-									className="col-12 mb-2"
-									name="newComment"
-									id="newComment"
-									cols="30"
-									rows="10"
-									placeholder="Write your comment here"
-								></textarea>
-								<div className="col-12 mb-2">
-									<StarRatingComponent
-										name="rating"
-										starCount={5}
-										value={this.state.rating}
-										onStarClick={this.onStarClick}
-									/>
-								</div>
-							</div>
-						</form> */}
 					</div>
 					{this.props.restaurant.ratings.map(restaurant => {
 						return (
 							<div>
-								<p>{restaurant.comment}</p> <hr />
+								<p>{restaurant.comment}</p>
+								<p>
+									<i className="far fa-star"></i>
+									{`${restaurant.stars}/5`}
+								</p>
+								<hr />
 							</div>
 						);
 					})}

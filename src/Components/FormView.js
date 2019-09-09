@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RestaurantItem from "./RestaurantItem.js";
 import StarRatingComponent from "react-star-rating-component";
+import "./FormView.css";
 
 export default class FormView extends Component {
 	constructor(props) {
@@ -28,8 +29,8 @@ export default class FormView extends Component {
 		let addNewRestaurant = new RestaurantItem(newRestaurant);
 		this.calcAverageRating(addNewRestaurant);
 		this.props.handleSubmitForm(addNewRestaurant);
-		let test = document.getElementsByName("test");
-		test[0].reset();
+		let getForm = document.getElementsByName("add-restaurant-form");
+		getForm[0].reset();
 	};
 
 	calcAverageRating(restaurant) {
@@ -55,7 +56,7 @@ export default class FormView extends Component {
 					></i>
 				</p>
 				<div className="collapse" id="collapseForm">
-					<form onSubmit={e => this.handleSubmit(e)} name="test">
+					<form onSubmit={e => this.handleSubmit(e)} name="add-restaurant-form">
 						<div className="row">
 							<div className="col-12 col-sm-6 mb-2">
 								<input
