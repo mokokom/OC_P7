@@ -34,6 +34,7 @@ export default class Restaurant extends Component {
 	}
 
 	render() {
+		/* console.log(this.props.restaurant); */
 		const { rating } = this.state;
 		return (
 			<div className="card container-fluid mb-3 p-2">

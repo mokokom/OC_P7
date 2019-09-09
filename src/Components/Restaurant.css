@@ -1,5 +1,5 @@
 :root {
-	--shadowColor: rgb(233, 233, 233);
+	--shadowColor: rgb(197, 197, 197);
 }
 
 .card {
@@ -10,7 +10,7 @@
 }
 
 .card:hover {
-	background-color: var(--shadowColor);
+	/* background-color: var(--shadowColor); */
 	box-shadow: none;
 	/* box-shadow: 2px 3px 15px 2px var(--shadowColor); */
 }

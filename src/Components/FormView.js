@@ -11,11 +11,13 @@ export default class FormView extends Component {
 	}
 	handleSubmit = e => {
 		e.preventDefault();
-		console.log(e.target.elements.rating.value);
+		/* 		console.log(e.target.elements.rating.value); */
 		const newRestaurant = {
 			restaurantName: e.target.elements.name.value,
 			description: e.target.elements.description.value,
-			address: e.target.elements.address.value,
+			address: `${e.target.elements.address.value}, ${e.target.elements.postalCode.value}`,
+			lat: e.target.elements.latitude.value,
+			long: e.target.elements.longitude.value,
 			ratings: [
 				{
 					stars: e.target.elements.rating.value,
@@ -23,10 +25,16 @@ export default class FormView extends Component {
 				}
 			]
 		};
-		console.log(newRestaurant);
 		let addNewRestaurant = new RestaurantItem(newRestaurant);
-		this.props.handleState(addNewRestaurant);
+		this.calcAverageRating(addNewRestaurant);
+		this.props.handleSubmitForm(addNewRestaurant);
+		let test = document.getElementsByName("test");
+		test[0].reset();
 	};
+
+	calcAverageRating(restaurant) {
+		return restaurant.averageRating;
+	}
 
 	onStarClick = (nextValue, prevValue, name) => {
 		this.setState({ rating: nextValue });
@@ -47,7 +55,7 @@ export default class FormView extends Component {
 					></i>
 				</p>
 				<div className="collapse" id="collapseForm">
-					<form onSubmit={e => this.handleSubmit(e)}>
+					<form onSubmit={e => this.handleSubmit(e)} name="test">
 						<div className="row">
 							<div className="col-12 col-sm-6 mb-2">
 								<input
@@ -55,6 +63,7 @@ export default class FormView extends Component {
 									className="form-control"
 									name="name"
 									placeholder="Restaurant name"
+									required
 								/>
 							</div>
 							<div className="col-12 col-sm-6 mb-2">
@@ -63,6 +72,7 @@ export default class FormView extends Component {
 									className="form-control"
 									name="description"
 									placeholder="Description"
+									required
 								/>
 							</div>
 							<div className="col-12 col-sm-6 mb-2">
@@ -71,6 +81,7 @@ export default class FormView extends Component {
 									className="form-control"
 									name="address"
 									placeholder="Address"
+									required
 								/>
 							</div>
 							<div className="col-12 col-sm-6 mb-2">
@@ -78,7 +89,26 @@ export default class FormView extends Component {
 									type="text"
 									className="form-control"
 									name="postalCode"
-									placeholder="Postal code"
+									placeholder={"Postal code"}
+									required
+								/>
+							</div>
+							<div className="col-12 col-sm-6 mb-2">
+								<input
+									type="text"
+									className="form-control"
+									name="latitude"
+									placeholder="Latitude"
+									required
+								/>
+							</div>
+							<div className="col-12 col-sm-6 mb-2">
+								<input
+									type="text"
+									className="form-control"
+									name="longitude"
+									placeholder="Longitude"
+									required
 								/>
 							</div>
 							<div className="col-12 col-sm-6 mb-2">

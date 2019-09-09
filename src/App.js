@@ -28,13 +28,12 @@ class App extends Component {
 		this.setState({ restaurants });
 	}
 
-	handleState = newRestaurant => {
+	handleSubmitForm = newRestaurant => {
 		this.setState(prevState => {
 			return {
 				restaurants: prevState.restaurants.concat(newRestaurant)
 			};
 		});
-		console.log(this.state.restaurants);
 	};
 
 	handleClick = restaurant => {
@@ -42,6 +41,18 @@ class App extends Component {
 			restaurant: restaurant,
 			restaurantsListView: false
 		});
+	};
+
+	handleSubmitFormComment = (restaurant, newComment) => {
+		console.log(newComment);
+		console.log(restaurant);
+		let updatedComment = restaurant.ratings.concat(newComment);
+		console.log(updatedComment);
+		/* this.setState(prevState=>{
+			return {
+				restaurant: prevState.restaurants.
+			}
+		}) */
 	};
 
 	closeRestaurantTargetView = () => {
@@ -62,7 +73,8 @@ class App extends Component {
 						restaurantsListView={this.state.restaurantsListView}
 						closeRestaurantTargetView={this.closeRestaurantTargetView}
 						handleClick={this.handleClick}
-						handleState={this.handleState}
+						handleSubmitForm={this.handleSubmitForm}
+						handleSubmitFormComment={this.handleSubmitFormComment}
 					/>
 					<Map
 						restaurants={this.state.restaurants}

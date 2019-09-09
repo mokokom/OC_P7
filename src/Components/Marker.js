@@ -34,6 +34,7 @@ export default class Marker extends Component {
 			zIndex: "1"
 			/* color: "var(--blue)" */
 		};
+		/* console.log(this.props); */
 		return (
 			<div
 				className="marker"

@@ -12,7 +12,7 @@ export default class RestaurantItem {
 
 	calculaverageRating() {
 		let ratingsStars = 0;
-		if (this.ratings.length > 1) {
+		if (this.ratings.length >= 1) {
 			for (let rating of this.ratings) {
 				ratingsStars += rating.stars;
 			}

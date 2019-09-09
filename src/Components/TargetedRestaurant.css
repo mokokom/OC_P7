@@ -11,9 +11,18 @@
 	align-items: center;
 	width: 65px;
 	height: 40px;
-	box-shadow: 3px 4px 8px 1px black;
+	box-shadow: 3px 4px 9px 1px rgb(0, 0, 0);
 }
 
 .btn-image:hover {
 	box-shadow: none;
+}
+
+textarea {
+	border: none;
+	box-shadow: 0px 0px 9px 1px gray;
+}
+
+textarea:focus {
+	box-shadow: 0px 0px 3px 0px gray;
 }

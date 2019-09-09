@@ -39,7 +39,7 @@ export default class RestaurantsList extends Component {
 								<h1 className="logo d-flex justify-content-center">
 									<i className="fas fa-utensils"></i>
 								</h1>
-								<FormView handleState={this.props.handleState} />
+								<FormView handleSubmitForm={this.props.handleSubmitForm} />
 							</div>
 						</div>
 						<div className="card-body">
@@ -98,6 +98,7 @@ export default class RestaurantsList extends Component {
 						handleClick={this.props.handleClick}
 						restaurantsListView={this.props.restaurantsListView}
 						closeRestaurantTargetView={this.props.closeRestaurantTargetView}
+						handleSubmitFormComment={this.props.handleSubmitFormComment}
 					/>
 				)}
 			</div>
