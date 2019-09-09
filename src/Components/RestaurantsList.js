@@ -39,7 +39,7 @@ export default class RestaurantsList extends Component {
 								<h1 className="logo d-flex justify-content-center">
 									<i className="fas fa-utensils"></i>
 								</h1>
-								<FormView />
+								<FormView handleState={this.props.handleState} />
 							</div>
 						</div>
 						<div className="card-body">

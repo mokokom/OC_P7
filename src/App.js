@@ -23,9 +23,19 @@ class App extends Component {
 		for (let restaurant of restaurantsResult) {
 			let restaurantItem = new RestaurantItem(restaurant);
 			restaurants.push(restaurantItem);
+			console.log(restaurant);
 		}
 		this.setState({ restaurants });
 	}
+
+	handleState = newRestaurant => {
+		this.setState(prevState => {
+			return {
+				restaurants: prevState.restaurants.concat(newRestaurant)
+			};
+		});
+		console.log(this.state.restaurants);
+	};
 
 	handleClick = restaurant => {
 		this.setState({
@@ -52,6 +62,7 @@ class App extends Component {
 						restaurantsListView={this.state.restaurantsListView}
 						closeRestaurantTargetView={this.closeRestaurantTargetView}
 						handleClick={this.handleClick}
+						handleState={this.handleState}
 					/>
 					<Map
 						restaurants={this.state.restaurants}
