@@ -7,7 +7,8 @@ export default class FormView extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating: 3
+			rating: 3,
+			isClicked: false
 		};
 	}
 	handleSubmit = e => {
@@ -41,12 +42,22 @@ export default class FormView extends Component {
 		this.setState({ rating: nextValue });
 	};
 
+	handleBtnIcon() {
+		this.setState(prevState => {
+			console.log(prevState);
+			return {
+				isClicked: !prevState.isClicked
+			};
+		});
+	}
+
 	render() {
 		return (
 			<div>
 				<p className="d-flex justify-content-end">
 					<i
-						className="fas fa-plus"
+						onClick={() => this.handleBtnIcon()}
+						className={this.state.isClicked ? "fas fa-minus" : "fas fa-plus"}
 						title="add restaurant"
 						data-toggle="collapse"
 						href="#collapseForm"
@@ -128,24 +139,18 @@ export default class FormView extends Component {
 									onStarClick={this.onStarClick}
 								/>
 							</div>
-							{/* <div class="col-12 col-sm-6 mb-2">
-								<input
-									type="text"
-									class="form-control"
-									name="latitude"
-									placeholder="Latitude"
-								/>
-							</div>
-							<div class="col-12 col-sm-6 mb-2">
-								<input
-									type="text"
-									class="form-control"
-									name="longitude"
-									placeholder="Longitude"
-								/>
-							</div> */}
 							<div className="col-12 text-center">
-								<button className="btn btn-form rounded">Add</button>
+								<button
+									className="btn btn-form rounded"
+									data-toggle="collapse"
+									href="#collapseForm"
+									role="button"
+									aria-expanded="false"
+									aria-controls="collapseForm"
+									onClick={() => this.handleBtnIcon()}
+								>
+									Add
+								</button>
 							</div>
 						</div>
 					</form>

@@ -101,6 +101,7 @@ export default class RestaurantsList extends Component {
 						restaurantsListView={this.props.restaurantsListView}
 						closeRestaurantTargetView={this.props.closeRestaurantTargetView}
 						handleSubmitFormComment={this.props.handleSubmitFormComment}
+						handleSubmitForm={this.props.handleSubmitForm}
 						/* rating={this.props.rating}
 						newRating={this.props.newRating} */
 					/>

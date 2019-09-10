@@ -9,7 +9,8 @@ export default class TargetedRestaurant extends Component {
 		this.state = {
 			rating: 0,
 			/* rating: this.props.restaurant.averageRating, */
-			newRating: 0
+			newRating: 0,
+			isClicked: false
 		};
 	}
 
@@ -39,6 +40,14 @@ export default class TargetedRestaurant extends Component {
 		getForm[0].reset();
 	};
 
+	handleBtnIcon() {
+		this.setState(prevState => {
+			return {
+				isClicked: !prevState.isClicked
+			};
+		});
+	}
+
 	render() {
 		const { rating } = this.state;
 		return (
@@ -63,7 +72,7 @@ export default class TargetedRestaurant extends Component {
 					<div className="d-flex justify-content-start align-items-center">
 						<h3 className="restaurant-name pr-3">
 							{this.props.restaurant.name}
-						</h3>{" "}
+						</h3>
 						<span>{this.props.restaurant.description}</span>
 					</div>
 					<div className="no-pointer">
@@ -78,7 +87,9 @@ export default class TargetedRestaurant extends Component {
 					<h3>Tous les avis</h3>
 					<p className="d-flex justify-content-end">
 						<i
-							className="fas fa-plus"
+							/* className="fas fa-plus" */
+							onClick={() => this.handleBtnIcon()}
+							className={this.state.isClicked ? "fas fa-minus" : "fas fa-plus"}
 							title="add comment"
 							data-toggle="collapse"
 							href="#collapseFormComment"
@@ -111,7 +122,17 @@ export default class TargetedRestaurant extends Component {
 										</div>
 									</div>
 									<div className="col-12 mb-2 text-center">
-										<button className="btn-primary rounded">Add</button>
+										<button
+											className="btn-primary rounded"
+											data-toggle="collapse"
+											href="#collapseFormComment"
+											role="button"
+											aria-expanded="false"
+											aria-controls="collapseFormComment"
+											onClick={() => this.handleBtnIcon()}
+										>
+											Add
+										</button>
 									</div>
 								</div>
 							</div>
