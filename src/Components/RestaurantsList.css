@@ -40,13 +40,13 @@
 	color: var(--icon);
 }
 
-.fa-plus {
+/* .fa-plus {
 	cursor: pointer;
 }
 
 .fa-plus:hover {
 	color: var(--icon);
-}
+} */
 
 @media only screen and (max-width: 991px) {
 	.restaurants-list-container {

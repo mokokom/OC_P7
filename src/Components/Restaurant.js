@@ -10,7 +10,7 @@ export default class Restaurant extends Component {
 			rating: 0
 			/* rating: this.props.restaurant.averageRating */
 		};
-		this.onStarClick = this.onStarClick.bind(this);
+		/* this.onStarClick = this.onStarClick.bind(this); */
 	}
 
 	componentDidMount() {
@@ -30,9 +30,9 @@ export default class Restaurant extends Component {
 		selectedRestaurant.classList.add("targeted-marker");
 	}
 
-	onStarClick(nextValue, prevValue, name) {
+	/* onStarClick(nextValue, prevValue, name) {
 		this.setState({ rating: nextValue });
-	}
+	} */
 
 	render() {
 		/* console.log(this.props.restaurant); */

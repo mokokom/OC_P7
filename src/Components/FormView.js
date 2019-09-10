@@ -49,6 +49,7 @@ export default class FormView extends Component {
 				isClicked: !prevState.isClicked
 			};
 		});
+		console.log(this.props);
 	}
 
 	render() {
@@ -112,6 +113,11 @@ export default class FormView extends Component {
 									name="latitude"
 									placeholder="Latitude"
 									required
+									value={
+										this.props.newRestaurantPosition == null
+											? ""
+											: this.props.newRestaurantPosition.lat
+									}
 								/>
 							</div>
 							<div className="col-12 col-sm-6 mb-2">
@@ -121,6 +127,11 @@ export default class FormView extends Component {
 									name="longitude"
 									placeholder="Longitude"
 									required
+									value={
+										this.props.newRestaurantPosition == null
+											? ""
+											: this.props.newRestaurantPosition.lng
+									}
 								/>
 							</div>
 							<div className="col-12 col-sm-6 mb-2">

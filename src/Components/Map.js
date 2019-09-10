@@ -35,9 +35,12 @@ export default class Map extends Component {
 		}
 	}
 
-	handleMapClick(e) {
+	handleMapClick = e => {
 		console.log(e);
-	}
+		let lat = e.lat;
+		let lng = e.lng;
+		this.props.getLatLng(lat, lng);
+	};
 
 	render() {
 		return (

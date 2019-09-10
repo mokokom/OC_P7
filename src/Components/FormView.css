@@ -1,3 +1,13 @@
 /* form {
 	background-color: var(--filterBackColor);
 } */
+
+.fa-plus,
+.fa-minus {
+	cursor: pointer;
+}
+
+.fa-plus:hover,
+.fa-minus:hover {
+	color: var(--icon);
+}

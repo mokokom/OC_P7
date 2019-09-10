@@ -31,8 +31,10 @@ export default class TargetedRestaurant extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
+		let newStars = parseInt(e.target.elements.rating.value);
+		newStars = newStars ? newStars : 0;
 		const newComment = {
-			stars: parseInt(e.target.elements.rating.value),
+			stars: newStars,
 			comment: e.target.elements.newComment.value
 		};
 		this.props.handleSubmitFormComment(this.props.restaurant, newComment);
@@ -109,6 +111,7 @@ export default class TargetedRestaurant extends Component {
 										cols="30"
 										rows="5"
 										placeholder="Write your comment here"
+										required
 									></textarea>
 									<div className="col-12 mb-2">
 										<div className="d-flex align-items-center">

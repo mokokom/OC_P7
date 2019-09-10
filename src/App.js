@@ -14,7 +14,8 @@ class App extends Component {
 			restaurantsListView: true,
 			formView: false,
 			rating: 0,
-			newRating: 0
+			newRating: 0,
+			newRestaurantPosition: null
 		};
 	}
 
@@ -50,26 +51,36 @@ class App extends Component {
 		console.log(newComment);
 		let updatedComment = restaurant.ratings.concat(newComment);
 		console.log(updatedComment);
-		let items = [...this.state.restaurants];
-		console.log(items);
-		let test = items.indexOf(restaurant);
-		console.log(test);
-		let item = { ...items[test] };
-		console.log(item);
-		item.ratings = updatedComment;
-		items[test] = item;
-		this.setState({ restaurants: items });
-		console.log(this.state.restaurants);
-		console.log(this.state.restaurant);
+		let restaurantObj = [...this.state.restaurants];
+		console.log(restaurantObj);
+		let findRestaurant = restaurantObj.indexOf(restaurant);
+		console.log(findRestaurant);
+		let theRestaurant = { ...restaurantObj[findRestaurant] };
+		console.log(theRestaurant);
+		theRestaurant.ratings = updatedComment;
+		restaurantObj[findRestaurant] = theRestaurant;
+		this.setState({ restaurants: restaurantObj });
 
 		/* Restaurant update */
 		/* console.log(newComment);
 		let updatedComment = restaurant.ratings.concat(newComment); */
 		console.log(updatedComment);
-		let item2 = { ...restaurant };
-		console.log(item2);
-		item2.ratings = updatedComment;
-		this.setState({ restaurant: item2 });
+		let theRestaurantTargeted = { ...restaurant };
+		theRestaurantTargeted.ratings = updatedComment;
+		console.log(theRestaurantTargeted);
+		this.setState({ restaurant: theRestaurantTargeted });
+		console.log(this.state.restaurants);
+		console.log(this.state.restaurant);
+	};
+
+	getLatLng = (lat, lng) => {
+		/* console.log(`lat: ${lat} et lng: ${lng}`); newRestaurantPosition*/
+		let LatLngOnClick = {
+			lat,
+			lng
+		};
+		this.setState({ newRestaurantPosition: LatLngOnClick });
+		console.log(this.state.newRestaurantPosition);
 	};
 
 	closeRestaurantTargetView = () => {
@@ -92,12 +103,14 @@ class App extends Component {
 						handleClick={this.handleClick}
 						handleSubmitForm={this.handleSubmitForm}
 						handleSubmitFormComment={this.handleSubmitFormComment}
+						newRestaurantPosition={this.state.newRestaurantPosition}
 						/* rating={this.state.rating}
 						newRating={this.state.newRating} */
 					/>
 					<Map
 						restaurants={this.state.restaurants}
 						handleClick={this.handleClick}
+						getLatLng={this.getLatLng}
 					/>
 				</div>
 			</div>
