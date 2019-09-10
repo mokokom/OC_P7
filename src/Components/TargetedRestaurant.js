@@ -7,19 +7,17 @@ export default class TargetedRestaurant extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating: 0,
-			/* rating: this.props.restaurant.averageRating, */
+			/* rating: 0, */
+			rating: this.props.restaurant.averageRating,
 			newRating: 0,
 			isClicked: false
 		};
 	}
 
-	componentDidMount() {
-		console.log(this.props.restaurant);
+	/* componentDidMount() {
 		let averageRate = this.props.restaurant.averageRating;
-		console.log(averageRate);
 		this.setState({ rating: averageRate });
-	}
+	} */
 
 	handleClick = () => {
 		this.props.closeRestaurantTargetView();
@@ -54,7 +52,7 @@ export default class TargetedRestaurant extends Component {
 		const { rating } = this.state;
 		return (
 			<div className="card ">
-				<FormView handleSubmitForm={this.props.handleSubmitForm} />
+				{/* <FormView handleSubmitForm={this.props.handleSubmitForm} /> */}
 				<div className="img-container">
 					{!this.props.restaurantsListView && (
 						<button
@@ -89,7 +87,6 @@ export default class TargetedRestaurant extends Component {
 					<h3>Tous les avis</h3>
 					<p className="d-flex justify-content-end">
 						<i
-							/* className="fas fa-plus" */
 							onClick={() => this.handleBtnIcon()}
 							className={this.state.isClicked ? "fas fa-minus" : "fas fa-plus"}
 							title="add comment"

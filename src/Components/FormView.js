@@ -8,12 +8,12 @@ export default class FormView extends Component {
 		super(props);
 		this.state = {
 			rating: 3,
-			isClicked: false
+			isClicked: false,
+			toggleBtn: true
 		};
 	}
 	handleSubmit = e => {
 		e.preventDefault();
-		/* 		console.log(e.target.elements.rating.value); */
 		const newRestaurant = {
 			restaurantName: e.target.elements.name.value,
 			description: e.target.elements.description.value,
@@ -49,7 +49,14 @@ export default class FormView extends Component {
 				isClicked: !prevState.isClicked
 			};
 		});
-		console.log(this.props);
+	}
+
+	checkRequiredInput() {
+		console.log("required");
+		let forms = document.getElementsByName("add-restaurant-form");
+		let form = forms[0];
+		console.log(typeof form);
+		console.log(form);
 	}
 
 	render() {
@@ -151,17 +158,34 @@ export default class FormView extends Component {
 								/>
 							</div>
 							<div className="col-12 text-center">
-								<button
-									className="btn btn-form rounded"
-									data-toggle="collapse"
-									href="#collapseForm"
-									role="button"
-									aria-expanded="false"
-									aria-controls="collapseForm"
-									onClick={() => this.handleBtnIcon()}
-								>
-									Add
-								</button>
+								{/* this.checkRequiredInput() */}
+								{/* this.state.toggleBtn && (
+									<button
+										className="btn btn-form rounded"
+										data-toggle="collapse"
+										href="#collapseForm"
+										role="button"
+										aria-expanded="false"
+										aria-controls="collapseForm"
+										onClick={() => this.handleBtnIcon()}
+									>
+										Add
+									</button>
+								) */}
+								{
+									<button
+										className="btn btn-form rounded"
+										/* data-toggle="collapse" */
+										data-toggle="collapse"
+										href="#collapseForm"
+										role="button"
+										aria-expanded="false"
+										aria-controls="collapseForm"
+										onClick={() => this.handleBtnIcon()}
+									>
+										Add
+									</button>
+								}
 							</div>
 						</div>
 					</form>

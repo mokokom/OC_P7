@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import RestaurantsList from "./Components/RestaurantsList";
 import Map from "./Components/Map";
 import RestaurantItem from "./Components/RestaurantItem.js";
-/* import "bootstrap/dist/css/bootstrap.css"; */
 import "./App.css";
 
 class App extends Component {
@@ -47,40 +46,29 @@ class App extends Component {
 	};
 
 	handleSubmitFormComment = (restaurant, newComment) => {
-		/* restaurants update */
-		console.log(newComment);
+		/* Restaurants update */
 		let updatedComment = restaurant.ratings.concat(newComment);
-		console.log(updatedComment);
 		let restaurantObj = [...this.state.restaurants];
-		console.log(restaurantObj);
 		let findRestaurant = restaurantObj.indexOf(restaurant);
-		console.log(findRestaurant);
 		let theRestaurant = { ...restaurantObj[findRestaurant] };
-		console.log(theRestaurant);
 		theRestaurant.ratings = updatedComment;
 		restaurantObj[findRestaurant] = theRestaurant;
-		this.setState({ restaurants: restaurantObj });
+		this.setState({ restaurants: restaurantObj, restaurant: restaurantObj });
 
 		/* Restaurant update */
-		/* console.log(newComment);
-		let updatedComment = restaurant.ratings.concat(newComment); */
-		console.log(updatedComment);
 		let theRestaurantTargeted = { ...restaurant };
 		theRestaurantTargeted.ratings = updatedComment;
-		console.log(theRestaurantTargeted);
 		this.setState({ restaurant: theRestaurantTargeted });
-		console.log(this.state.restaurants);
-		console.log(this.state.restaurant);
+		/* console.log(this.state.restaurants);
+		console.log(this.state.restaurant); */
 	};
 
 	getLatLng = (lat, lng) => {
-		/* console.log(`lat: ${lat} et lng: ${lng}`); newRestaurantPosition*/
 		let LatLngOnClick = {
 			lat,
 			lng
 		};
 		this.setState({ newRestaurantPosition: LatLngOnClick });
-		console.log(this.state.newRestaurantPosition);
 	};
 
 	closeRestaurantTargetView = () => {
@@ -91,7 +79,14 @@ class App extends Component {
 		}
 	};
 
+	test() {
+		console.log(this.state.restaurant);
+		/* console.log(this.state.restaurant.calculaverageRating); */
+		/* return this.state.restaurant.calculaverageRating; */
+	}
+
 	render() {
+		this.test();
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">
@@ -104,8 +99,6 @@ class App extends Component {
 						handleSubmitForm={this.handleSubmitForm}
 						handleSubmitFormComment={this.handleSubmitFormComment}
 						newRestaurantPosition={this.state.newRestaurantPosition}
-						/* rating={this.state.rating}
-						newRating={this.state.newRating} */
 					/>
 					<Map
 						restaurants={this.state.restaurants}

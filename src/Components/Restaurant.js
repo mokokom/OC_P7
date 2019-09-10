@@ -1,49 +1,64 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
-/* import "bootstrap/dist/css/bootstrap.css"; */
 import "./Restaurant.css";
 
 export default class Restaurant extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating: 0
-			/* rating: this.props.restaurant.averageRating */
+			/* rating: 0 */
+			rating: this.props.restaurant.averageRating
 		};
 		/* this.onStarClick = this.onStarClick.bind(this); */
 	}
 
-	componentDidMount() {
+	/* componentDidMount() {
 		let averageRate = this.props.restaurant.averageRating;
 		this.setState({ rating: averageRate });
-	}
+	} */
 
-	handleClick(e) {
+	handleClick(restaurant) {
 		this.props.handleClick(this.props.restaurant);
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
 		}
 
-		let element = e.target;
-		let selectedRestaurant = document.getElementById(element.textContent);
+		let selectedRestaurant = document.getElementById(restaurant);
 		selectedRestaurant.classList.add("targeted-marker");
 	}
 
-	/* onStarClick(nextValue, prevValue, name) {
-		this.setState({ rating: nextValue });
-	} */
+	handleMouseOver(restaurant) {
+		/* this.props.handleClick(this.props.restaurant); */
+		let targetedMarker = document.querySelector(".targeted-marker");
+		if (targetedMarker) {
+			targetedMarker.className = "marker";
+		}
+		let selectedRestaurant = document.getElementById(restaurant);
+		selectedRestaurant.classList.add("targeted-marker", "name");
+	}
+
+	handleMouseLeave() {
+		let targetedMarker = document.querySelector(".targeted-marker");
+		if (targetedMarker) {
+			targetedMarker.className = "marker";
+		}
+	}
 
 	render() {
-		/* console.log(this.props.restaurant); */
 		const { rating } = this.state;
 		return (
-			<div className="card container-fluid mb-3 p-2">
+			<div
+				className="card restaurant-card container-fluid mb-3 p-2 hvr-shrink "
+				onClick={() => this.handleClick(this.props.restaurant.name)}
+				onMouseOver={() => this.handleMouseOver(this.props.restaurant.name)}
+				onMouseLeave={() => {
+					this.handleMouseLeave();
+				}}
+			>
 				<div className="row">
 					<div className="col-lg-6 col-12 text-center text-lg-right">
-						<h3 className="restaurant-name" onClick={e => this.handleClick(e)}>
-							{this.props.restaurant.name}
-						</h3>
+						<h3 className="restaurant-name">{this.props.restaurant.name}</h3>
 						<div className="no-pointer">
 							<StarRatingComponent name="rate1" starCount={5} value={rating} />
 						</div>

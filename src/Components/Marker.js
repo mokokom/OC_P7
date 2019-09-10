@@ -32,17 +32,15 @@ export default class Marker extends Component {
 			top: "-20px",
 			left: "-60px",
 			zIndex: "1"
-			/* color: "var(--blue)" */
 		};
-		/* console.log(this.props); */
 		return (
 			<div
-				className="marker"
+				className="marker hvr-grow"
 				id={this.props.restaurant.name}
 				onClick={e => this.handleClick(e)}
 			>
 				{
-					<div className="test" style={styleAtt} text-center>
+					<div className="name text-center" style={styleAtt}>
 						<p>{this.props.restaurant.name}</p>
 					</div>
 				}

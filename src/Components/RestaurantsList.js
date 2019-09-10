@@ -3,7 +3,6 @@ import Restaurant from "./Restaurant.js";
 import StarRatingComponent from "react-star-rating-component";
 import TargetedRestaurant from "./TargetedRestaurant.js";
 import FormView from "./FormView.js";
-/* import "bootstrap/dist/css/bootstrap.css"; */
 import "./RestaurantsList.css";
 
 export default class RestaurantsList extends Component {
@@ -23,10 +22,6 @@ export default class RestaurantsList extends Component {
 			this.setState({ maxRating: nextValue });
 		}
 	}
-
-	/* handleClick = () => {
-		this.props.closeRestaurantTargetView();
-	}; */
 
 	render() {
 		const { minRating, maxRating } = this.state;
@@ -92,8 +87,6 @@ export default class RestaurantsList extends Component {
 								key={restaurant.name}
 								restaurant={restaurant}
 								handleClick={this.props.handleClick}
-								/* rating={this.props.rating}
-								newRating={this.props.newRating} */
 							/>
 						))
 				) : (
@@ -105,8 +98,6 @@ export default class RestaurantsList extends Component {
 						closeRestaurantTargetView={this.props.closeRestaurantTargetView}
 						handleSubmitFormComment={this.props.handleSubmitFormComment}
 						handleSubmitForm={this.props.handleSubmitForm}
-						/* rating={this.props.rating}
-						newRating={this.props.newRating} */
 					/>
 				)}
 			</div>

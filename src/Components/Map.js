@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import CurrentPlace from "./CurrentPlace.js";
 import Marker from "./Marker.js";
-/* import "bootstrap/dist/css/bootstrap.css"; */
 import "./Map.css";
 
 export default class Map extends Component {
@@ -36,7 +35,6 @@ export default class Map extends Component {
 	}
 
 	handleMapClick = e => {
-		console.log(e);
 		let lat = e.lat;
 		let lng = e.lng;
 		this.props.getLatLng(lat, lng);
@@ -46,12 +44,12 @@ export default class Map extends Component {
 		return (
 			<div
 				className="map-container col-12 col-lg-8 p-0 order-1 order-lg-2"
-				title="add restaurant"
+				/* title="add restaurant"
 				data-toggle="collapse"
 				href="#collapseForm"
 				role="button"
 				aria-expanded="false"
-				aria-controls="collapseForm"
+				aria-controls="collapseForm" */
 			>
 				<GoogleMapReact
 					bootstrapURLKeys={{

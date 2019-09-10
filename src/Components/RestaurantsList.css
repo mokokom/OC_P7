@@ -40,14 +40,6 @@
 	color: var(--icon);
 }
 
-/* .fa-plus {
-	cursor: pointer;
-}
-
-.fa-plus:hover {
-	color: var(--icon);
-} */
-
 @media only screen and (max-width: 991px) {
 	.restaurants-list-container {
 		height: 50vh;
