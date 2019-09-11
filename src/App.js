@@ -11,7 +11,7 @@ class App extends Component {
 			restaurants: [],
 			restaurant: {},
 			restaurantsListView: true,
-			formView: false,
+			Form: false,
 			rating: 0,
 			newRating: 0,
 			newRestaurantPosition: null

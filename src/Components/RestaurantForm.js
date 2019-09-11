@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import RestaurantItem from "./RestaurantItem.js";
 import StarRatingComponent from "react-star-rating-component";
-import "./FormView.css";
+import "./RestaurantForm.css";
 
-export default class FormView extends Component {
+export default class RestaurantForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -52,11 +52,13 @@ export default class FormView extends Component {
 	}
 
 	checkRequiredInput() {
-		console.log("required");
 		let forms = document.getElementsByName("add-restaurant-form");
 		let form = forms[0];
 		console.log(typeof form);
-		console.log(form);
+		console.log(forms);
+		/* for (let key in form) {
+			console.log(key);
+		} */
 	}
 
 	render() {
@@ -158,7 +160,7 @@ export default class FormView extends Component {
 								/>
 							</div>
 							<div className="col-12 text-center">
-								{/* this.checkRequiredInput() */}
+								{this.checkRequiredInput()}
 								{/* this.state.toggleBtn && (
 									<button
 										className="btn btn-form rounded"

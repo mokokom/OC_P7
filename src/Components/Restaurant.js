@@ -35,13 +35,13 @@ export default class Restaurant extends Component {
 			targetedMarker.className = "marker";
 		}
 		let selectedRestaurant = document.getElementById(restaurant);
-		selectedRestaurant.classList.add("targeted-marker", "name");
+		selectedRestaurant.classList.add("targeted-marker");
 	}
 
 	handleMouseLeave() {
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
-			targetedMarker.className = "marker";
+			targetedMarker.className = "marker hvr-grow";
 		}
 	}
 

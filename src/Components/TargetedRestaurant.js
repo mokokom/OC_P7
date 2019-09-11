@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import "./TargetedRestaurant.css";
-import FormView from "./FormView.js";
 
 export default class TargetedRestaurant extends Component {
 	constructor(props) {
@@ -52,7 +51,7 @@ export default class TargetedRestaurant extends Component {
 		const { rating } = this.state;
 		return (
 			<div className="card ">
-				{/* <FormView handleSubmitForm={this.props.handleSubmitForm} /> */}
+				{/* <Form handleSubmitForm={this.props.handleSubmitForm} /> */}
 				<div className="img-container">
 					{!this.props.restaurantsListView && (
 						<button

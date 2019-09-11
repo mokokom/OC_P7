@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Restaurant from "./Restaurant.js";
 import StarRatingComponent from "react-star-rating-component";
 import TargetedRestaurant from "./TargetedRestaurant.js";
-import FormView from "./FormView.js";
+import RestaurantForm from "./RestaurantForm.js";
 import "./RestaurantsList.css";
 
 export default class RestaurantsList extends Component {
@@ -34,7 +34,7 @@ export default class RestaurantsList extends Component {
 								<h1 className="logo d-flex justify-content-center">
 									<i className="fas fa-utensils"></i>
 								</h1>
-								<FormView
+								<RestaurantForm
 									handleSubmitForm={this.props.handleSubmitForm}
 									newRestaurantPosition={this.props.newRestaurantPosition}
 								/>
