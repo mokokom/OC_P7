@@ -1,6 +1,6 @@
 export default class RestaurantItem {
 	constructor(restaurant) {
-		this.id = `restaurant${RestaurantItem.incrementId()}`;
+		this.id = `restaurant_${RestaurantItem.incrementId()}`;
 		this.name = restaurant.restaurantName;
 		this.description = restaurant.description;
 		this.address = restaurant.address;
