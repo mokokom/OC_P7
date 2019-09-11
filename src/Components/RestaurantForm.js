@@ -51,15 +51,12 @@ export default class RestaurantForm extends Component {
 		});
 	}
 
-	checkRequiredInput() {
-		let forms = document.getElementsByName("add-restaurant-form");
-		let form = forms[0];
-		console.log(typeof form);
-		console.log(forms);
-		/* for (let key in form) {
-			console.log(key);
-		} */
-	}
+	/* 	checkRequiredInput() {
+		let myForm = document.getElementById("restaurant-form");
+		console.log(myForm);
+		let form = myForm.elements;
+		console.log(form);
+	} */
 
 	render() {
 		return (
@@ -77,7 +74,11 @@ export default class RestaurantForm extends Component {
 					></i>
 				</p>
 				<div className="collapse" id="collapseForm">
-					<form onSubmit={e => this.handleSubmit(e)} name="add-restaurant-form">
+					<form
+						onSubmit={e => this.handleSubmit(e)}
+						name="add-restaurant-form"
+						id="restaurant-form"
+					>
 						<div className="row">
 							<div className="col-12 col-sm-6 mb-2">
 								<input
@@ -160,7 +161,7 @@ export default class RestaurantForm extends Component {
 								/>
 							</div>
 							<div className="col-12 text-center">
-								{this.checkRequiredInput()}
+								{/* this.checkRequiredInput() */}
 								{/* this.state.toggleBtn && (
 									<button
 										className="btn btn-form rounded"
@@ -177,8 +178,6 @@ export default class RestaurantForm extends Component {
 								{
 									<button
 										className="btn btn-form rounded"
-										/* data-toggle="collapse" */
-										data-toggle="collapse"
 										href="#collapseForm"
 										role="button"
 										aria-expanded="false"
