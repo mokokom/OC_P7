@@ -46,19 +46,27 @@ class App extends Component {
 	};
 
 	handleSubmitFormComment = (restaurant, newComment) => {
-		/* Restaurants update */
+		console.log(restaurant);
 		let updatedComment = restaurant.ratings.concat(newComment);
+		console.log(updatedComment);
+		restaurant.ratings = updatedComment;
+		console.log(restaurant);
+		restaurant.averageRating = restaurant.calculaverageRating();
+		console.log(restaurant);
+		this.setState({ restaurant });
+		/* Restaurants update */
+		/* let updatedComment = restaurant.ratings.concat(newComment);
 		let restaurantObj = [...this.state.restaurants];
 		let findRestaurant = restaurantObj.indexOf(restaurant);
 		let theRestaurant = { ...restaurantObj[findRestaurant] };
 		theRestaurant.ratings = updatedComment;
 		restaurantObj[findRestaurant] = theRestaurant;
-		this.setState({ restaurants: restaurantObj, restaurant: restaurantObj });
+		this.setState({ restaurants: restaurantObj, restaurant: restaurantObj }); */
 
 		/* Restaurant update */
-		let theRestaurantTargeted = { ...restaurant };
+		/* let theRestaurantTargeted = { ...restaurant };
 		theRestaurantTargeted.ratings = updatedComment;
-		this.setState({ restaurant: theRestaurantTargeted });
+		this.setState({ restaurant: theRestaurantTargeted }); */
 		/* console.log(this.state.restaurants);
 		console.log(this.state.restaurant); */
 	};
