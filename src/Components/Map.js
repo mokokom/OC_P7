@@ -44,8 +44,8 @@ export default class Map extends Component {
 		return (
 			<div
 				className="map-container col-12 col-lg-8 p-0 order-1 order-lg-2"
-				/* title="add restaurant"
-				data-toggle="collapse"
+				title="add restaurant"
+				/* data-toggle="collapse"
 				href="#collapseForm"
 				role="button"
 				aria-expanded="false"
