@@ -35,6 +35,7 @@ export default class TargetedRestaurant extends Component {
 			comment: e.target.elements.newComment.value
 		};
 		this.props.handleSubmitFormComment(this.props.restaurant, newComment);
+		this.setState({ rating: this.props.restaurant.averageRating });
 		let getForm = document.getElementsByName("add-comment-form");
 		getForm[0].reset();
 	};
