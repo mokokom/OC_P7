@@ -50,8 +50,8 @@ export default class Restaurant extends Component {
 		return (
 			<div
 				className="card restaurant-card container-fluid mb-3 p-2 hvr-shrink "
-				onClick={() => this.handleClick(this.props.restaurant.name)}
-				onMouseOver={() => this.handleMouseOver(this.props.restaurant.name)}
+				onClick={() => this.handleClick(this.props.restaurant.id)}
+				onMouseOver={() => this.handleMouseOver(this.props.restaurant.id)}
 				onMouseLeave={() => {
 					this.handleMouseLeave();
 				}}

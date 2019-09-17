@@ -1,5 +1,6 @@
 export default class RestaurantItem {
 	constructor(restaurant) {
+		this.id = `restaurant_${RestaurantItem.incrementId()}`;
 		this.name = restaurant.restaurantName;
 		this.description = restaurant.description;
 		this.address = restaurant.address;
@@ -8,6 +9,12 @@ export default class RestaurantItem {
 		this.long = restaurant.long;
 		this.ratings = restaurant.ratings;
 		this.averageRating = this.calculaverageRating();
+	}
+
+	static incrementId() {
+		if (!this.latestId) this.latestId = 1;
+		else this.latestId++;
+		return this.latestId;
 	}
 
 	calculaverageRating() {

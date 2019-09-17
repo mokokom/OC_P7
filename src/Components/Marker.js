@@ -36,7 +36,7 @@ export default class Marker extends Component {
 		return (
 			<div
 				className="marker hvr-grow"
-				id={this.props.restaurant.name}
+				id={this.props.restaurant.id}
 				onClick={e => this.handleClick(e)}
 			>
 				{
