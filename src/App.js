@@ -46,29 +46,10 @@ class App extends Component {
 	};
 
 	handleSubmitFormComment = (restaurant, newComment) => {
-		console.log(restaurant);
 		let updatedComment = restaurant.ratings.concat(newComment);
-		console.log(updatedComment);
 		restaurant.ratings = updatedComment;
-		console.log(restaurant);
 		restaurant.averageRating = restaurant.calculaverageRating();
-		console.log(restaurant);
 		this.setState({ restaurant });
-		/* Restaurants update */
-		/* let updatedComment = restaurant.ratings.concat(newComment);
-		let restaurantObj = [...this.state.restaurants];
-		let findRestaurant = restaurantObj.indexOf(restaurant);
-		let theRestaurant = { ...restaurantObj[findRestaurant] };
-		theRestaurant.ratings = updatedComment;
-		restaurantObj[findRestaurant] = theRestaurant;
-		this.setState({ restaurants: restaurantObj, restaurant: restaurantObj }); */
-
-		/* Restaurant update */
-		/* let theRestaurantTargeted = { ...restaurant };
-		theRestaurantTargeted.ratings = updatedComment;
-		this.setState({ restaurant: theRestaurantTargeted }); */
-		/* console.log(this.state.restaurants);
-		console.log(this.state.restaurant); */
 	};
 
 	getLatLng = (lat, lng) => {
@@ -87,14 +68,13 @@ class App extends Component {
 		}
 	};
 
-	test() {
+	/* 	test() {
 		console.log(this.state.restaurant);
-		/* console.log(this.state.restaurant.calculaverageRating); */
-		/* return this.state.restaurant.calculaverageRating; */
-	}
+	} */
 
 	render() {
-		this.test();
+		/* this.test(); */
+		console.log(window);
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">
