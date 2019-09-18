@@ -1,3 +1,5 @@
+let latestId = 0;
+
 export default class RestaurantItem {
 	constructor(restaurant) {
 		this.id = `restaurant_${RestaurantItem.incrementId()}`;
@@ -12,9 +14,8 @@ export default class RestaurantItem {
 	}
 
 	static incrementId() {
-		if (!this.latestId) this.latestId = 1;
-		else this.latestId++;
-		return this.latestId;
+		latestId++;
+		return latestId;
 	}
 
 	calculaverageRating() {

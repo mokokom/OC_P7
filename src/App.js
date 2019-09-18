@@ -18,17 +18,47 @@ class App extends Component {
 		};
 	}
 
-	async componentDidMount() {
+	/* 	async componentDidMount() {
 		let result = await fetch("/restaurants.json");
 		let restaurantsResult = await result.json();
 		let restaurants = [];
 		for (let restaurant of restaurantsResult) {
 			let restaurantItem = new RestaurantItem(restaurant);
 			restaurants.push(restaurantItem);
-			/* console.log(restaurant); */
 		}
 		this.setState({ restaurants });
+	} */
+
+	getNearbyRestaurants(maps, location) {
+		return new Promise((resolve, reject) => {
+			const divElmt = document.createElement("div");
+			const service = new maps.places.PlacesService(divElmt);
+			const request = {
+				location: new maps.LatLng(location.lat, location.lng),
+				radius: "500",
+				type: ["restaurant"]
+			};
+
+			service.nearbySearch(request, (results, status) => {
+				let restaurants = [];
+				if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+					for (let result of results) {
+						console.log(result);
+						/* let restaurant = new RestaurantItem({restaurantName: result.name}) */
+					}
+					resolve(results);
+				} else {
+					reject(status);
+				}
+			});
+		});
 	}
+
+	/* Lancer dans map */
+	apiLoadedCallback = async (map, maps, location) => {
+		console.log(map, maps, location);
+		let results = await this.getNearbyRestaurants(maps, location);
+	};
 
 	handleSubmitForm = newRestaurant => {
 		this.setState(prevState => {
@@ -92,6 +122,7 @@ class App extends Component {
 						restaurants={this.state.restaurants}
 						handleClick={this.handleClick}
 						getLatLng={this.getLatLng}
+						apiLoadedCallback={this.apiLoadedCallback}
 					/>
 				</div>
 			</div>

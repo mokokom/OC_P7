@@ -40,6 +40,10 @@ export default class Map extends Component {
 		this.props.getLatLng(lat, lng);
 	};
 
+	apiLoaded(map, maps) {
+		this.props.apiLoadedCallback(map, maps, this.state.location);
+	}
+
 	render() {
 		return (
 			<div
@@ -53,11 +57,16 @@ export default class Map extends Component {
 			>
 				<GoogleMapReact
 					bootstrapURLKeys={{
-						key: "AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo"
+						key: "AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo",
+						libraries: "places"
 					}}
 					center={this.state.location}
 					zoom={13}
 					onClick={this.handleMapClick}
+					yesIWantToUseGoogleMapApiInternals
+					onGoogleApiLoaded={({ map, maps }) => {
+						this.apiLoaded(map, maps);
+					}}
 				>
 					{this.props.restaurants.map(restaurant => (
 						<Marker
