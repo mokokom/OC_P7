@@ -20,12 +20,13 @@ export default class RestaurantForm extends Component {
 			address: `${e.target.elements.address.value}, ${e.target.elements.postalCode.value}`,
 			lat: e.target.elements.latitude.value,
 			long: e.target.elements.longitude.value,
-			ratings: [
+			ratings: e.target.elements.rating.value
+			/* ratings: [
 				{
 					stars: e.target.elements.rating.value,
 					comment: e.target.elements.comments.value
 				}
-			]
+			] */
 		};
 		let addNewRestaurant = new RestaurantItem(newRestaurant);
 		this.calcAverageRating(addNewRestaurant);

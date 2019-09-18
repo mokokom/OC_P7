@@ -49,6 +49,7 @@ export default class TargetedRestaurant extends Component {
 	}
 
 	render() {
+		console.log(this.props.restaurant);
 		const { rating } = this.state;
 		return (
 			<div className="card ">
@@ -138,7 +139,7 @@ export default class TargetedRestaurant extends Component {
 							</div>
 						</form>
 					</div>
-					{this.props.restaurant.ratings.map(restaurant => {
+					{/* this.props.restaurant.ratings.map(restaurant => {
 						return (
 							<div>
 								<p>{restaurant.comment}</p>
@@ -149,7 +150,7 @@ export default class TargetedRestaurant extends Component {
 								<hr />
 							</div>
 						);
-					})}
+					}) */}
 				</div>
 			</div>
 		);

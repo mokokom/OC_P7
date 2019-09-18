@@ -35,7 +35,7 @@ class App extends Component {
 			const service = new maps.places.PlacesService(divElmt);
 			const request = {
 				location: new maps.LatLng(location.lat, location.lng),
-				radius: "500",
+				radius: "1500",
 				type: ["restaurant"]
 			};
 
@@ -43,7 +43,6 @@ class App extends Component {
 				let restaurants = [];
 				if (status == window.google.maps.places.PlacesServiceStatus.OK) {
 					for (let result of results) {
-						/* console.log(result); */
 						let restaurant = new RestaurantItem({
 							restaurantName: result.name,
 							description: result.types[0],
@@ -52,7 +51,6 @@ class App extends Component {
 							long: result.geometry.location.lng(),
 							ratings: result.rating
 						});
-						console.log(restaurant);
 						restaurants.push(restaurant);
 					}
 					resolve(restaurants); /* replace result by restaurants */
@@ -67,7 +65,6 @@ class App extends Component {
 	apiLoadedCallback = async (map, maps, location) => {
 		console.log(map, maps, location);
 		let results = await this.getNearbyRestaurants(maps, location);
-		/* console.log(results); */
 		this.setState({ restaurants: results });
 	};
 
@@ -115,7 +112,7 @@ class App extends Component {
 
 	render() {
 		/* this.test(); */
-		console.log(this.state.restaurants);
+		console.log(this.state);
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">
