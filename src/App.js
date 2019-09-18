@@ -43,10 +43,19 @@ class App extends Component {
 				let restaurants = [];
 				if (status == window.google.maps.places.PlacesServiceStatus.OK) {
 					for (let result of results) {
-						console.log(result);
-						/* let restaurant = new RestaurantItem({restaurantName: result.name}) */
+						/* console.log(result); */
+						let restaurant = new RestaurantItem({
+							restaurantName: result.name,
+							description: result.types[0],
+							address: result.vicinity,
+							lat: result.geometry.location.lat(),
+							long: result.geometry.location.lng(),
+							ratings: result.rating
+						});
+						console.log(restaurant);
+						restaurants.push(restaurant);
 					}
-					resolve(results);
+					resolve(restaurants); /* replace result by restaurants */
 				} else {
 					reject(status);
 				}
@@ -58,6 +67,8 @@ class App extends Component {
 	apiLoadedCallback = async (map, maps, location) => {
 		console.log(map, maps, location);
 		let results = await this.getNearbyRestaurants(maps, location);
+		/* console.log(results); */
+		this.setState({ restaurants: results });
 	};
 
 	handleSubmitForm = newRestaurant => {
@@ -104,7 +115,7 @@ class App extends Component {
 
 	render() {
 		/* this.test(); */
-		console.log(window);
+		console.log(this.state.restaurants);
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">

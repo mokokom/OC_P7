@@ -6,11 +6,10 @@ export default class RestaurantItem {
 		this.name = restaurant.restaurantName;
 		this.description = restaurant.description;
 		this.address = restaurant.address;
-		this.address = restaurant.address;
 		this.lat = restaurant.lat;
 		this.long = restaurant.long;
 		this.ratings = restaurant.ratings;
-		this.averageRating = this.calculaverageRating();
+		/* this.averageRating = this.calculaverageRating(); */
 	}
 
 	static incrementId() {
@@ -18,7 +17,7 @@ export default class RestaurantItem {
 		return latestId;
 	}
 
-	calculaverageRating() {
+	/* 	calculaverageRating() {
 		let ratingsStars = 0;
 		if (this.ratings.length >= 1) {
 			for (let rating of this.ratings) {
@@ -27,5 +26,5 @@ export default class RestaurantItem {
 			let averageRating = Math.floor(ratingsStars / this.ratings.length);
 			return averageRating;
 		}
-	}
+	} */
 }
