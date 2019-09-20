@@ -24,6 +24,7 @@
 	position: relative;
 	top: -30px;
 	left: -14px;
+	z-index: 1;
 }
 
 .marker .name {
@@ -34,6 +35,7 @@
 	display: block;
 	font-size: 15px;
 	font-weight: bold;
+	z-index: 1;
 }
 
 .hvr-grow {

@@ -10,15 +10,41 @@ export default class Marker extends Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
-	handleClick(e) {
-		this.props.handleClick(this.props.restaurant);
+	handleClick(e, restaurant) {
+		/* this.props.handleClick(this.props.restaurant); */
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
-			targetedMarker.className = "marker";
+			targetedMarker.className = "marker hvr-grow";
 		}
 		let element = e.target;
 		console.log(element);
 		element.classList.toggle("targeted-marker");
+		this.handleDetailsRequest(restaurant);
+	}
+
+	handleDetailsRequest(restaurant) {
+		if (restaurant.place_id) {
+			var request = {
+				placeId: restaurant.place_id,
+				fields: [
+					"name",
+					"rating",
+					"formatted_phone_number",
+					"reviews",
+					"photos"
+				]
+			};
+			const callback = (place, status) => {
+				if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+					restaurant.reviews = place.reviews;
+					restaurant.photos = place.photos;
+					this.props.handleClick(this.props.restaurant);
+				}
+			};
+			const divElmt = document.createElement("div");
+			const service = new window.google.maps.places.PlacesService(divElmt);
+			service.getDetails(request, callback);
+		}
 	}
 
 	handleMouseOver() {
@@ -37,7 +63,7 @@ export default class Marker extends Component {
 			<div
 				className="marker hvr-grow"
 				id={this.props.restaurant.id}
-				onClick={e => this.handleClick(e)}
+				onClick={e => this.handleClick(e, this.props.restaurant)}
 			>
 				{
 					<div className="name text-center" style={styleAtt}>

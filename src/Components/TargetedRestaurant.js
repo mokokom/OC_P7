@@ -18,8 +18,14 @@ export default class TargetedRestaurant extends Component {
 		this.setState({ rating: averageRate });
 	} */
 
-	handleClick = () => {
+	handleClick = restaurant => {
 		this.props.closeRestaurantTargetView();
+		let targetedMarker = document.querySelector(".targeted-marker");
+		if (targetedMarker) {
+			targetedMarker.className = "marker hvr-grow";
+		}
+		let selectedRestaurant = document.getElementById(restaurant);
+		selectedRestaurant.classList.add("targeted-marker");
 	};
 
 	onStarClick = (nextValue, prevValue, name) => {
@@ -49,24 +55,97 @@ export default class TargetedRestaurant extends Component {
 	}
 
 	render() {
+		console.log(this.props.restaurant);
 		const { rating } = this.state;
+		/* let restaurantPhotos = this.props.restaurant.photos; */
 		return (
 			<div className="card ">
 				{/* <Form handleSubmitForm={this.props.handleSubmitForm} /> */}
 				<div className="img-container">
+					{/* <img
+						className="card-img-top"
+						src={`https://maps.googleapis.com/maps/api/streetview?size=200x200&location=${this.props.restaurant.address}&fov=50&heading=235&pitch=0&key=AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo`}
+						alt="restaurant view"
+					/> */}
+
+					{this.props.restaurant.photos.length > 0 ? (
+						<div
+							id="carouselExampleIndicators"
+							className="carousel slide"
+							data-ride="carousel"
+						>
+							<ol className="carousel-indicators">
+								{this.props.restaurant.photos.map((photo, index) => {
+									return (
+										<li
+											data-target="#carouselExampleIndicators"
+											data-slide-to={index}
+											className={index === 0 ? "active" : ""}
+										></li>
+									);
+								})}
+							</ol>
+							<div className="carousel-inner">
+								{this.props.restaurant.photos.map((photo, index) => {
+									return (
+										<div
+											className={
+												index === 0 ? "carousel-item active" : "carousel-item"
+											}
+										>
+											<img
+												className="d-block w-100"
+												src={photo.getUrl({
+													maxWidth: 200,
+													maxHeight: 200
+												})}
+												alt="Restaurant image"
+											/>
+										</div>
+									);
+								})}
+							</div>
+							<a
+								className="carousel-control-prev"
+								href="#carouselExampleIndicators"
+								role="button"
+								data-slide="prev"
+							>
+								<span
+									className="carousel-control-prev-icon"
+									aria-hidden="true"
+								></span>
+								<span className="sr-only">Previous</span>
+							</a>
+							<a
+								className="carousel-control-next"
+								href="#carouselExampleIndicators"
+								role="button"
+								data-slide="next"
+							>
+								<span
+									className="carousel-control-next-icon"
+									aria-hidden="true"
+								></span>
+								<span className="sr-only">Next</span>
+							</a>
+						</div>
+					) : (
+						<img
+							className="card-img-top"
+							src={`https://maps.googleapis.com/maps/api/streetview?size=200x200&location=${this.props.restaurant.address}&fov=50&heading=235&pitch=0&key=AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo`}
+							alt="restaurant view"
+						/>
+					)}
+
 					{!this.props.restaurantsListView && (
 						<button
 							className="btn-primary rounded btn-image hvr-shrink"
-							onClick={() => this.handleClick()}
+							onClick={() => this.handleClick(this.props.restaurant.id)}
 						>
 							<i className="d-block fas fa-arrow-left fa-lg"></i>
 						</button>
 					)}
-					<img
-						className="card-img-top"
-						src={`https://maps.googleapis.com/maps/api/streetview?size=200x200&location=${this.props.restaurant.address}&fov=50&heading=235&pitch=0&key=AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo`}
-						alt="restaurant view"
-					/>
 				</div>
 				<div className="card-body">
 					<div className="d-flex justify-content-start align-items-center">
@@ -139,6 +218,13 @@ export default class TargetedRestaurant extends Component {
 						</form>
 					</div>
 					{this.props.restaurant.reviews.map(restaurant => {
+						/* for (let photo of this.props.restaurant.photos) {
+							photo = photo.getUrl({
+								maxWidth: 90,
+								maxHeight: 90
+							});
+						} */
+
 						return (
 							<div>
 								<p>{restaurant.text}</p>

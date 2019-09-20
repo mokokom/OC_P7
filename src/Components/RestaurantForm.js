@@ -18,9 +18,10 @@ export default class RestaurantForm extends Component {
 			restaurantName: e.target.elements.name.value,
 			description: e.target.elements.description.value,
 			address: `${e.target.elements.address.value}, ${e.target.elements.postalCode.value}`,
-			lat: e.target.elements.latitude.value,
-			long: e.target.elements.longitude.value,
-			ratings: e.target.elements.rating.value
+			lat: Number(e.target.elements.latitude.value),
+			long: Number(e.target.elements.longitude.value),
+			ratings: Number(e.target.elements.rating.value)
+			/* place_id: null */
 			/* ratings: [
 				{
 					stars: e.target.elements.rating.value,
@@ -29,7 +30,7 @@ export default class RestaurantForm extends Component {
 			] */
 		};
 		let addNewRestaurant = new RestaurantItem(newRestaurant);
-		this.calcAverageRating(addNewRestaurant);
+		/* this.calcAverageRating(addNewRestaurant); */
 		this.props.handleSubmitForm(addNewRestaurant);
 		let getForm = document.getElementsByName("add-restaurant-form");
 		getForm[0].reset();
