@@ -3,6 +3,7 @@ import Restaurant from "./Restaurant.js";
 import StarRatingComponent from "react-star-rating-component";
 import TargetedRestaurant from "./TargetedRestaurant.js";
 import RestaurantForm from "./RestaurantForm.js";
+import SearchRestaurant from "./SearchRestaurant.js";
 import "./RestaurantsList.css";
 
 export default class RestaurantsList extends Component {
@@ -72,6 +73,12 @@ export default class RestaurantsList extends Component {
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="card-footer bg-transparent ">
+							<SearchRestaurant
+								handleSubmitForm={this.props.handleSubmitForm}
+								newRestaurantPosition={this.props.newRestaurantPosition}
+							/>
 						</div>
 					</div>
 				)}
