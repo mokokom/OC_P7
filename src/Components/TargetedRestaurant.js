@@ -68,7 +68,8 @@ export default class TargetedRestaurant extends Component {
 						alt="restaurant view"
 					/> */}
 
-					{this.props.restaurant.photos.length > 0 ? (
+					{this.props.restaurant.photos &&
+					this.props.restaurant.photos.length > 0 ? (
 						<div
 							id="carouselExampleIndicators"
 							className="carousel slide"
@@ -217,24 +218,25 @@ export default class TargetedRestaurant extends Component {
 							</div>
 						</form>
 					</div>
-					{this.props.restaurant.reviews.map(restaurant => {
-						/* for (let photo of this.props.restaurant.photos) {
+					{this.props.restaurant.reviews &&
+						this.props.restaurant.reviews.map(restaurant => {
+							/* for (let photo of this.props.restaurant.photos) {
 							photo = photo.getUrl({
 								maxWidth: 90,
 								maxHeight: 90
 							});
 						} */
 
-						return (
-							<div>
-								<p>{restaurant.text}</p>
-								<p>
-									<i className="far fa-star"></i>
-									{`${restaurant.rating}/5`}
-								</p>
-							</div>
-						);
-					})}
+							return (
+								<div>
+									<p>{restaurant.text}</p>
+									<p>
+										<i className="far fa-star"></i>
+										{`${restaurant.rating}/5`}
+									</p>
+								</div>
+							);
+						})}
 				</div>
 			</div>
 		);

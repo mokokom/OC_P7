@@ -19,32 +19,30 @@ export default class Marker extends Component {
 		let element = e.target;
 		console.log(element);
 		element.classList.toggle("targeted-marker");
-		this.handleDetailsRequest(restaurant);
+		if (restaurant.place_id) {
+			this.handleDetailsRequest(restaurant);
+		} else {
+			this.props.handleClick(this.props.restaurant);
+		}
 	}
 
 	handleDetailsRequest(restaurant) {
-		if (restaurant.place_id) {
-			var request = {
-				placeId: restaurant.place_id,
-				fields: [
-					"name",
-					"rating",
-					"formatted_phone_number",
-					"reviews",
-					"photos"
-				]
-			};
-			const callback = (place, status) => {
-				if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-					restaurant.reviews = place.reviews;
-					restaurant.photos = place.photos;
-					this.props.handleClick(this.props.restaurant);
-				}
-			};
-			const divElmt = document.createElement("div");
-			const service = new window.google.maps.places.PlacesService(divElmt);
-			service.getDetails(request, callback);
-		}
+		/* if (restaurant.place_id) { */
+		var request = {
+			placeId: restaurant.place_id,
+			fields: ["name", "rating", "formatted_phone_number", "reviews", "photos"]
+		};
+		const callback = (place, status) => {
+			if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+				restaurant.reviews = place.reviews;
+				restaurant.photos = place.photos;
+				this.props.handleClick(this.props.restaurant);
+			}
+		};
+		const divElmt = document.createElement("div");
+		const service = new window.google.maps.places.PlacesService(divElmt);
+		service.getDetails(request, callback);
+		/* } */
 	}
 
 	handleMouseOver() {
