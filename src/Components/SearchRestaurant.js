@@ -12,7 +12,7 @@ export default class RestaurantSearch extends Component {
 	render() {
 		return (
 			<div>
-				<div className="d-flex justify-content-end">
+				<p className="d-flex justify-content-end">
 					<i
 						/* onClick={() => this.handleBtnIcon()} */
 						className={"fas fa-search"}
@@ -24,7 +24,7 @@ export default class RestaurantSearch extends Component {
 						aria-controls="collapseForm"
 						/* onClick={this.handleSearchBox} */
 					></i>
-				</div>
+				</p>
 
 				<div className="row mb-2 collapse" id="collapseSearch">
 					<div className="col" /* onClick={this.handleClick} */>

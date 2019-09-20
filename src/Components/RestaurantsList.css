@@ -5,6 +5,14 @@
 	--shadowColor: #282828;
 } */
 
+.card-title {
+	color: var(--textColor);
+}
+
+.card {
+	background-color: #303030;
+}
+
 .restaurants-list-container {
 	height: 100vh;
 	overflow: scroll;
@@ -38,6 +46,10 @@
 }
 
 .fa-star {
+	color: var(--icon);
+}
+
+.fa-utensils {
 	color: var(--icon);
 }
 

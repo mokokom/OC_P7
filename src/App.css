@@ -3,11 +3,15 @@
 }
 
 :root {
+	/* --icon: #ffd892; */
 	--icon: #ffb400;
-	--restaurantContainerBackColor: #282828;
-	--restaurantBackColor: #282828;
-	--headerBackColor: #282828;
-	--cardColor: #e4e4e4;
+	--restaurantContainerBackColor: #303030;
+	--restaurantBackColor: #303030;
+	--shadowColor: #242424;
+	--headerBackColor: #242424;
+	--headerTextColor: #93c991;
+	--textColor: #eefdee;
+	--redColor: #ff4242;
 }
 
 .btn-primary {

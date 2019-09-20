@@ -6,10 +6,29 @@
 .fa-minus {
 	cursor: pointer;
 } */
-
+.fa-plus,
+.fa-minus,
+.fa-search {
+	color: var(--textColor);
+}
 .fa-plus:hover,
 .fa-minus:hover,
 .fa-search:hover {
-	color: var(--icon);
+	color: var(--redColor);
 	cursor: pointer;
+}
+
+.form-control,
+.form-control:focus {
+	background-color: #303030;
+	color: var(--headerTextColor);
+}
+
+/* .form-control:focus {
+	border-color: var(--redColor);
+}
+ */
+.btn-form {
+	background-color: #303030 !important;
+	color: var(--headerTextColor);
 }

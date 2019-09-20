@@ -141,7 +141,7 @@ export default class TargetedRestaurant extends Component {
 
 					{!this.props.restaurantsListView && (
 						<button
-							className="btn-primary rounded btn-image hvr-shrink"
+							className="btn rounded btn-image hvr-shrink"
 							onClick={() => this.handleClick(this.props.restaurant.id)}
 						>
 							<i className="d-block fas fa-arrow-left fa-lg"></i>

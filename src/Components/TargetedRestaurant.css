@@ -1,3 +1,9 @@
+.card-body,
+.img-container {
+	background-color: var(--headerBackColor);
+	color: var(--textColor);
+}
+
 .targeted-restaurant {
 	display: flex;
 	flex-direction: column;
@@ -49,3 +55,19 @@ textarea:focus {
 .carousel-item {
 	height: 200px;
 }
+
+.fa-arrow-left {
+	color: var(--headerTextColor);
+}
+
+.btn,
+.btn:hover {
+	/* background-color: var(--headerTextColor);
+	color: var(--shadowColor); */
+	background-color: var(--shadowColor);
+	color: var(--headerTextColor);
+}
+/* .btn-primary:hover {
+	background-color: var(--shadowColor);
+	color: var(--headerTextColor);
+} */
