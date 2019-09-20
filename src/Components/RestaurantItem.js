@@ -10,6 +10,7 @@ export default class RestaurantItem {
 		this.long = restaurant.long;
 		this.ratings = restaurant.ratings;
 		this.averageRating = restaurant.ratings;
+		this.place_id = restaurant.place_id;
 		/* this.averageRating = this.calculaverageRating(); */
 	}
 

@@ -18,14 +18,49 @@ export default class Restaurant extends Component {
 	} */
 
 	handleClick(restaurant) {
-		this.props.handleClick(this.props.restaurant);
+		/* 		console.log(restaurant); */
+		/* this.props.handleClick(this.props.restaurant); */
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
 		}
 
-		let selectedRestaurant = document.getElementById(restaurant);
+		let selectedRestaurant = document.getElementById(restaurant.id);
 		selectedRestaurant.classList.add("targeted-marker");
+
+		this.handleDetailsRequest(restaurant);
+
+		/* var request = {
+			placeId: restaurant.place_id,
+			fields: ["name", "rating", "formatted_phone_number", "reviews"]
+		};
+
+		const callback = (place, status) => {
+			if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+				restaurant.reviews = place.reviews;
+				this.props.handleClick(this.props.restaurant);
+			}
+		};
+		const divElmt = document.createElement("div");
+		const service = new window.google.maps.places.PlacesService(divElmt);
+		service.getDetails(request, callback); */
+	}
+
+	handleDetailsRequest(restaurant) {
+		var request = {
+			placeId: restaurant.place_id,
+			fields: ["name", "rating", "formatted_phone_number", "reviews"]
+		};
+
+		const callback = (place, status) => {
+			if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+				restaurant.reviews = place.reviews;
+				this.props.handleClick(this.props.restaurant);
+			}
+		};
+		const divElmt = document.createElement("div");
+		const service = new window.google.maps.places.PlacesService(divElmt);
+		service.getDetails(request, callback);
 	}
 
 	handleMouseOver(restaurant) {
@@ -50,7 +85,7 @@ export default class Restaurant extends Component {
 		return (
 			<div
 				className="card restaurant-card container-fluid mb-3 p-2 hvr-shrink "
-				onClick={() => this.handleClick(this.props.restaurant.id)}
+				onClick={() => this.handleClick(this.props.restaurant)}
 				onMouseOver={() => this.handleMouseOver(this.props.restaurant.id)}
 				onMouseLeave={() => {
 					this.handleMouseLeave();

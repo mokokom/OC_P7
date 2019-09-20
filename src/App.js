@@ -41,6 +41,7 @@ class App extends Component {
 
 			service.nearbySearch(request, (results, status) => {
 				let restaurants = [];
+				console.log(results);
 				if (status == window.google.maps.places.PlacesServiceStatus.OK) {
 					for (let result of results) {
 						let restaurant = new RestaurantItem({
@@ -49,7 +50,8 @@ class App extends Component {
 							address: result.vicinity,
 							lat: result.geometry.location.lat(),
 							long: result.geometry.location.lng(),
-							ratings: result.rating
+							ratings: result.rating,
+							place_id: result.place_id
 						});
 						restaurants.push(restaurant);
 					}
@@ -81,6 +83,7 @@ class App extends Component {
 			restaurant: restaurant,
 			restaurantsListView: false
 		});
+		console.log(this.state.restaurant);
 	};
 
 	handleSubmitFormComment = (restaurant, newComment) => {
@@ -112,7 +115,7 @@ class App extends Component {
 
 	render() {
 		/* this.test(); */
-		console.log(this.state);
+		/* console.log(this.state); */
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">
