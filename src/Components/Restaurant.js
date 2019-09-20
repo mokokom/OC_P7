@@ -61,7 +61,6 @@ export default class Restaurant extends Component {
 				restaurant.reviews = place.reviews;
 				restaurant.photos = place.photos;
 				this.props.handleClick(this.props.restaurant);
-				console.log(place);
 			}
 		};
 		const divElmt = document.createElement("div");

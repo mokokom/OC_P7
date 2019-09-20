@@ -2,6 +2,14 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--icon: #ffb400;
+	--restaurantContainerBackColor: #282828;
+	--restaurantBackColor: #282828;
+	--headerBackColor: #282828;
+	--cardColor: #e4e4e4;
+}
+
 .btn-primary {
 	border: none;
 }

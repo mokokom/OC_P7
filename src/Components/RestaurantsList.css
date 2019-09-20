@@ -1,26 +1,27 @@
-:root {
+/* :root {
 	--icon: #ffb400;
-	--restaurantBackColor: #ffffff;
-	--filterBackColor: #0077f7;
-}
+	--restaurantBackColor: #333333;
+	--filterBackColor: #333333;
+	--shadowColor: #282828;
+} */
 
 .restaurants-list-container {
 	height: 100vh;
 	overflow: scroll;
-	background-color: var(--restaurantBackColor);
+	background-color: var(--restaurantContainerBackColor);
 }
 
 .bg-primary {
-	background-color: var(--filterBackColor) !important;
+	background-color: var(--headerBackColor) !important;
 }
 
 .card-form {
-	background-color: var(--filterBackColor);
+	background-color: var(--headerBackColor);
 	box-shadow: none;
 }
 
 .card-form:hover {
-	background-color: var(--filterBackColor);
+	background-color: var(--headerBackColor);
 	box-shadow: none;
 }
 

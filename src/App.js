@@ -158,7 +158,8 @@ class App extends Component {
 
 	render() {
 		/* this.test(); */
-		console.log(this.state);
+		/* console.log(this.state); */
+		/* console.log(window); */
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">

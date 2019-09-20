@@ -1,6 +1,6 @@
-:root {
-	--shadowColor: rgb(240, 240, 240);
-}
+/* :root {
+	--shadowColor: #282828;
+} */
 
 /* .restaurant-card {
 	box-shadow: 2px 3px 5px var(--shadowColor);
@@ -14,6 +14,10 @@
 	box-shadow: none;
 	background-color: var(--shadowColor);
 	box-shadow: 12px 13px 35px 2px var(--shadowColor);
+}
+.restaurant-card {
+	background-color: var(--restaurantBackColor);
+	color: var(--cardColor);
 }
 
 .hvr-shrink {
