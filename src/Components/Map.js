@@ -37,7 +37,15 @@ export default class Map extends Component {
 	handleMapClick = e => {
 		let lat = e.lat;
 		let lng = e.lng;
-		this.props.getLatLng(lat, lng);
+
+		let geocoder = new window.google.maps.Geocoder();
+		console.log(geocoder);
+		let latlng = { lat, lng };
+		geocoder.geocode({ location: latlng }, (results, status) => {
+			if (status === "OK") {
+				this.props.getLatLng(lat, lng, results[0].formatted_address);
+			}
+		});
 	};
 
 	apiLoaded(map, maps) {

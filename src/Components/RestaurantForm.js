@@ -14,6 +14,7 @@ export default class RestaurantForm extends Component {
 	}
 	handleSubmit = e => {
 		e.preventDefault();
+
 		const newRestaurant = {
 			restaurantName: e.target.elements.name.value,
 			description: e.target.elements.description.value,
@@ -100,21 +101,23 @@ export default class RestaurantForm extends Component {
 									required
 								/>
 							</div>
-							<div className="col-12 col-sm-6 mb-2">
+							<div className="col-12 mb-2">
 								<input
 									type="text"
 									className="form-control"
 									name="address"
 									placeholder="Address"
+									value={this.props.newRestaurantPosition.address}
 									required
 								/>
 							</div>
-							<div className="col-12 col-sm-6 mb-2">
+							<div className="col-12 mb-2">
 								<input
 									type="text"
 									className="form-control"
 									name="postalCode"
 									placeholder={"Postal code"}
+									value={this.props.newRestaurantPosition.postalCode}
 									required
 								/>
 							</div>
@@ -126,9 +129,9 @@ export default class RestaurantForm extends Component {
 									placeholder="Latitude"
 									required
 									value={
-										this.props.newRestaurantPosition == null
+										this.props.newRestaurantPosition.LatLngOnClick == null
 											? ""
-											: this.props.newRestaurantPosition.lat
+											: this.props.newRestaurantPosition.LatLngOnClick.lat
 									}
 								/>
 							</div>
@@ -140,9 +143,9 @@ export default class RestaurantForm extends Component {
 									placeholder="Longitude"
 									required
 									value={
-										this.props.newRestaurantPosition == null
+										this.props.newRestaurantPosition.LatLngOnClick == null
 											? ""
-											: this.props.newRestaurantPosition.lng
+											: this.props.newRestaurantPosition.LatLngOnClick.lng
 									}
 								/>
 							</div>

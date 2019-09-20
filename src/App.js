@@ -14,7 +14,12 @@ class App extends Component {
 			Form: false,
 			rating: 0,
 			newRating: 0,
-			newRestaurantPosition: null
+			newRestaurantPosition: {
+				LatLngOnClick: null,
+				address: null,
+				postalCode: null
+			}
+			/* newRestaurantPosition: null */
 		};
 	}
 
@@ -55,7 +60,7 @@ class App extends Component {
 						});
 						restaurants.push(restaurant);
 					}
-					resolve(restaurants); /* replace result by restaurants */
+					resolve(restaurants);
 				} else {
 					reject(status);
 				}
@@ -63,11 +68,18 @@ class App extends Component {
 		});
 	}
 
-	/* Lancer dans map */
 	apiLoadedCallback = async (map, maps, location) => {
 		console.log(map, maps, location);
 		let results = await this.getNearbyRestaurants(maps, location);
 		this.setState({ restaurants: results });
+		/* let geocoder = new window.google.maps.Geocoder();
+		console.log(geocoder);
+		let latlng = { lat: parseFloat(48.88623), lng: parseFloat(2.36118) };
+		geocoder.geocode({ location: latlng }, function(results, status) {
+			if (status === "OK") {
+				console.log(results[0]);
+			}
+		}); */
 	};
 
 	handleSubmitForm = newRestaurant => {
@@ -93,12 +105,18 @@ class App extends Component {
 		this.setState({ restaurant });
 	};
 
-	getLatLng = (lat, lng) => {
+	getLatLng = (lat, lng, formatted_address) => {
 		let LatLngOnClick = {
 			lat,
 			lng
 		};
-		this.setState({ newRestaurantPosition: LatLngOnClick });
+		let splitAdress = formatted_address.split(",");
+		let address = splitAdress[0];
+		let postalCode = splitAdress[1] + splitAdress[2];
+		this.setState({
+			newRestaurantPosition: { LatLngOnClick, address, postalCode }
+		});
+		/* this.setState({ newRestaurantPosition: LatLngOnClick }); */
 	};
 
 	closeRestaurantTargetView = () => {
