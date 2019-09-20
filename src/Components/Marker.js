@@ -45,9 +45,9 @@ export default class Marker extends Component {
 		/* } */
 	}
 
-	handleMouseOver() {
+	/* handleMouseOver() {
 		return <p>{this.props.restaurant.name}</p>;
-	}
+	} */
 
 	render() {
 		const styleAtt = {
@@ -62,12 +62,11 @@ export default class Marker extends Component {
 				className="marker hvr-grow"
 				id={this.props.restaurant.id}
 				onClick={e => this.handleClick(e, this.props.restaurant)}
+				title={this.props.restaurant.name}
 			>
-				{
-					<div className="name text-center" style={styleAtt}>
+				{/* <div className="name text-center" style={styleAtt}>
 						<p>{this.props.restaurant.name}</p>
-					</div>
-				}
+					</div> */}
 				{/* <div class="test card" style={styleAtt}>
 						<div class="card-body">
 							<h5 class="card-title">{this.props.restaurant.name}</h5>

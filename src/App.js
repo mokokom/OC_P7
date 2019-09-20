@@ -69,17 +69,8 @@ class App extends Component {
 	}
 
 	apiLoadedCallback = async (map, maps, location) => {
-		console.log(map, maps, location);
 		let results = await this.getNearbyRestaurants(maps, location);
 		this.setState({ restaurants: results });
-		/* let geocoder = new window.google.maps.Geocoder();
-		console.log(geocoder);
-		let latlng = { lat: parseFloat(48.88623), lng: parseFloat(2.36118) };
-		geocoder.geocode({ location: latlng }, function(results, status) {
-			if (status === "OK") {
-				console.log(results[0]);
-			}
-		}); */
 	};
 
 	handleSubmitForm = newRestaurant => {
@@ -95,15 +86,23 @@ class App extends Component {
 			restaurant: restaurant,
 			restaurantsListView: false
 		});
-		console.log(this.state.restaurant);
 	};
 
 	handleSubmitFormComment = (restaurant, newComment) => {
+		let updatedComment = restaurant.reviews.concat({
+			author_name: null,
+			rating: newComment.stars,
+			text: newComment.comment
+		});
+		restaurant.reviews = updatedComment;
+		this.setState({ restaurant });
+	};
+	/* handleSubmitFormComment = (restaurant, newComment) => {
 		let updatedComment = restaurant.ratings.concat(newComment);
 		restaurant.ratings = updatedComment;
 		restaurant.averageRating = restaurant.calculaverageRating();
 		this.setState({ restaurant });
-	};
+	}; */
 
 	getLatLng = (lat, lng, formatted_address) => {
 		let LatLngOnClick = {
