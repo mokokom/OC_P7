@@ -22,6 +22,7 @@ export default class RestaurantSearch extends Component {
 						role="button"
 						aria-expanded="false"
 						aria-controls="collapseForm"
+						/* onClick={this.handleSearchBox} */
 					></i>
 				</div>
 
@@ -31,9 +32,9 @@ export default class RestaurantSearch extends Component {
 							type="text"
 							className="form-control"
 							id="search"
-							placeholder="Search.."
+							placeholder="Search a restaurant.."
 						/>
-						{<button type="submit">search</button>}
+						{/* <button type="submit">search</button> */}
 					</div>
 				</div>
 			</div>

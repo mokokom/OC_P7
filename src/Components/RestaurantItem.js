@@ -8,8 +8,8 @@ export default class RestaurantItem {
 		this.address = restaurant.address;
 		this.lat = restaurant.lat;
 		this.long = restaurant.long;
-		this.ratings = restaurant.ratings;
-		this.averageRating = restaurant.ratings;
+		this.ratings = Math.floor(restaurant.ratings);
+		this.averageRating = Math.floor(restaurant.ratings);
 		this.place_id = restaurant.place_id;
 		/* this.averageRating = this.calculaverageRating(); */
 	}

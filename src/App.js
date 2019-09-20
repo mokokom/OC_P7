@@ -46,7 +46,6 @@ class App extends Component {
 
 			service.nearbySearch(request, (results, status) => {
 				let restaurants = [];
-				console.log(results);
 				if (status == window.google.maps.places.PlacesServiceStatus.OK) {
 					for (let result of results) {
 						let restaurant = new RestaurantItem({
@@ -71,7 +70,34 @@ class App extends Component {
 	apiLoadedCallback = async (map, maps, location) => {
 		let results = await this.getNearbyRestaurants(maps, location);
 		this.setState({ restaurants: results });
+		this.handleSearchBox(map);
 	};
+
+	handleSearchBox(map) {
+		let input = document.getElementById("search");
+		let searchBox = new window.google.maps.places.SearchBox(input);
+		map.addListener("bounds_changed", () => {
+			searchBox.setBounds(map.getBounds());
+		});
+		searchBox.addListener("places_changed", () => {
+			var places = searchBox.getPlaces();
+			let restaurants = [];
+			for (let result of places) {
+				let restaurant = new RestaurantItem({
+					restaurantName: result.name,
+					description: result.types[0],
+					address: result.formatted_address,
+					lat: result.geometry.location.lat(),
+					long: result.geometry.location.lng(),
+					ratings: result.rating,
+					place_id: result.place_id
+				});
+				restaurants.push(restaurant);
+			}
+			this.setState({ restaurants });
+		});
+		/* this.handleMarkers(searchBox, map); */
+	}
 
 	handleSubmitForm = newRestaurant => {
 		this.setState(prevState => {

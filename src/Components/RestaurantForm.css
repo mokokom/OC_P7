@@ -2,12 +2,14 @@
 	background-color: var(--filterBackColor);
 } */
 
-.fa-plus,
+/* .fa-plus,
 .fa-minus {
 	cursor: pointer;
-}
+} */
 
 .fa-plus:hover,
-.fa-minus:hover {
+.fa-minus:hover,
+.fa-search:hover {
 	color: var(--icon);
+	cursor: pointer;
 }
