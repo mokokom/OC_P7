@@ -6,9 +6,8 @@
 	color: var(--textColor);
 }
 
-.card-header:hover {
+.div-collapse:hover {
 	background-color: var(--restaurantBackColor);
-	/* color: var(--headerBackColor); */
 }
 
 .targeted-restaurant {
@@ -91,4 +90,19 @@ textarea:focus {
 	padding: 15px;
 	border-radius: 10px;
 	margin-bottom: 5px;
+}
+
+.profil {
+	max-height: 50px;
+}
+
+a {
+	color: var(--textColor);
+}
+a:hover {
+	color: var(--headerTextColor);
+}
+
+.div-collapse {
+	cursor: pointer;
 }

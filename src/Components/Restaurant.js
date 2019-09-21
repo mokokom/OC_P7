@@ -53,7 +53,17 @@ export default class Restaurant extends Component {
 	handleDetailsRequest(restaurant) {
 		var request = {
 			placeId: restaurant.place_id,
-			fields: ["name", "rating", "formatted_phone_number", "reviews", "photos"]
+			fields: [
+				"name",
+				"rating",
+				"formatted_phone_number",
+				"reviews",
+				"photos",
+				"opening_hours",
+				"website",
+				"price_level",
+				"user_ratings_total"
+			]
 		};
 
 		const callback = (place, status) => {
@@ -62,8 +72,20 @@ export default class Restaurant extends Component {
 				restaurant.reviews = place.reviews;
 				restaurant.photos = place.photos;
 				restaurant.phone = place.formatted_phone_number;
+				restaurant.website = place.website;
+				restaurant.user_ratings_total = place.user_ratings_total;
+				{
+					place.opening_hours
+						? (restaurant.isOpen = place.opening_hours.open_now)
+						: (restaurant.isOpen = null);
+				}
+				{
+					place.opening_hours
+						? (restaurant.weekday_text = place.opening_hours.weekday_text)
+						: (restaurant.weekday_text = null);
+				}
 				this.props.handleClick(this.props.restaurant);
-				console.log(restaurant);
+				console.log(restaurant.isOpen);
 			} else {
 				console.log(`Error: ${status}`);
 			}

@@ -75,6 +75,7 @@ export default class TargetedRestaurant extends Component {
 						<h3 className="restaurant-name pr-3">
 							{this.props.restaurant.name}
 						</h3>
+
 						<span>{this.props.restaurant.description}</span>
 					</div>
 					<div className="no-pointer">
@@ -83,74 +84,24 @@ export default class TargetedRestaurant extends Component {
 					<address className="restaurant-adress">
 						<p>{this.props.restaurant.address}</p>
 						<p>{this.props.restaurant.phone}</p>
+						{this.props.restaurant.website && (
+							<a href={this.props.restaurant.website} target="_blank">
+								website
+							</a>
+						)}
 					</address>
-
-					<p className="d-flex justify-content-end">
-						<i
-							onClick={() => this.handleBtnIcon()}
-							className={this.state.isClicked ? "fas fa-minus" : "fas fa-plus"}
-							title="add comment"
-							data-toggle="collapse"
-							href="#collapseFormComment"
-							role="button"
-							aria-expanded="false"
-							aria-controls="collapseFormComment"
-						></i>
-					</p>
-					<div className="collapse" id="collapseFormComment">
-						<form onSubmit={e => this.handleSubmit(e)} name="add-comment-form">
-							<div className="form-group">
-								<div className="row">
-									<textarea
-										className="col-12 mb-2"
-										name="newComment"
-										id="newComment"
-										cols="30"
-										rows="5"
-										placeholder="Write your comment here"
-										required
-									></textarea>
-									<div className="col-12 mb-2">
-										<div className="d-flex align-items-center">
-											<label className="mr-2">Your rating</label>
-											<StarRatingComponent
-												name="rating"
-												starCount={5}
-												value={this.state.newRating}
-												onStarClick={this.onStarClick}
-											/>
-										</div>
-									</div>
-									<div className="col-12 mb-2 text-center">
-										<button
-											className="btn-primary rounded"
-											data-toggle="collapse"
-											href="#collapseFormComment"
-											role="button"
-											aria-expanded="false"
-											aria-controls="collapseFormComment"
-											onClick={() => this.handleBtnIcon()}
-										>
-											Add
-										</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
 					<div id="accordion">
 						<div className="card">
-							<div className="card-header" id="headingOne">
+							<div
+								className="card-header div-collapse"
+								id="headingOne"
+								data-toggle="collapse"
+								data-target="#collapseOne"
+								aria-expanded="false"
+								aria-controls="collapseOne"
+							>
 								<h5 className="mb-0">
-									<button
-										className="btn btn-link"
-										data-toggle="collapse"
-										data-target="#collapseOne"
-										aria-expanded="true"
-										aria-controls="collapseOne"
-									>
-										Photos
-									</button>
+									<button className="btn btn-link">Photos</button>
 								</h5>
 							</div>
 
@@ -237,17 +188,16 @@ export default class TargetedRestaurant extends Component {
 							</div>
 						</div>
 						<div className="card">
-							<div className="card-header" id="headingTwo">
+							<div
+								className="card-header div-collapse"
+								id="headingTwo"
+								data-toggle="collapse"
+								data-target="#collapseTwo"
+								aria-expanded="false"
+								aria-controls="collapseTwo"
+							>
 								<h5 className="mb-0">
-									<button
-										className="btn btn-link collapsed"
-										data-toggle="collapse"
-										data-target="#collapseTwo"
-										aria-expanded="false"
-										aria-controls="collapseTwo"
-									>
-										Avis
-									</button>
+									<button className="btn btn-link collapsed">Avis</button>
 								</h5>
 							</div>
 							<div
@@ -257,15 +207,88 @@ export default class TargetedRestaurant extends Component {
 								data-parent="#accordion"
 							>
 								<div className="card-body">
-									<h3>Tous les avis</h3> <hr />
+									<p className="d-flex justify-content-end">
+										<i
+											onClick={() => this.handleBtnIcon()}
+											className={
+												this.state.isClicked ? "fas fa-minus" : "fas fa-plus"
+											}
+											title="add comment"
+											data-toggle="collapse"
+											href="#collapseFormComment"
+											role="button"
+											aria-expanded="true"
+											aria-controls="collapseFormComment"
+										></i>
+									</p>
+									<div className="collapse" id="collapseFormComment">
+										<form
+											onSubmit={e => this.handleSubmit(e)}
+											name="add-comment-form"
+										>
+											<div className="form-group">
+												<div className="row">
+													<textarea
+														className="col-12 mb-2"
+														name="newComment"
+														id="newComment"
+														cols="30"
+														rows="5"
+														placeholder="Write your comment here"
+														required
+													></textarea>
+													<div className="col-12 mb-2">
+														<div className="d-flex align-items-center">
+															<label className="mr-2">Your rating</label>
+															<StarRatingComponent
+																name="rating"
+																starCount={5}
+																value={this.state.newRating}
+																onStarClick={this.onStarClick}
+															/>
+														</div>
+													</div>
+													<div className="col-12 mb-2 text-center">
+														<button
+															className="btn-primary rounded"
+															data-toggle="collapse"
+															href="#collapseFormComment"
+															role="button"
+															aria-expanded="false"
+															aria-controls="collapseFormComment"
+															onClick={() => this.handleBtnIcon()}
+														>
+															Add
+														</button>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+									<h3>All reviews</h3>
+									<small>
+										{this.props.restaurant.ratings +
+											"/5" +
+											" - " +
+											this.props.restaurant.user_ratings_total +
+											" ratings"}
+									</small>
+									<hr />
 									{this.props.restaurant.reviews &&
 										this.props.restaurant.reviews.map(review => {
 											return (
 												<div className="group-review">
-													<p>{review.text}</p>
 													<p>
-														<i>{review.author_name}</i>
+														{review.profile_photo_url && (
+															<img
+																className="m-2 img-fluid profil"
+																src={review.profile_photo_url}
+																alt=""
+															/>
+														)}
+														<i>{review.author_name && review.author_name}</i>
 													</p>
+													<p>{review.text}</p>
 													<p>
 														<i className="far fa-star"></i>
 														{`${review.rating}/5`}
@@ -276,41 +299,49 @@ export default class TargetedRestaurant extends Component {
 								</div>
 							</div>
 						</div>
-						<div className="card">
-							<div className="card-header" id="headingThree">
-								<h5 className="mb-0">
-									<button
-										className="btn btn-link collapsed"
-										data-toggle="collapse"
-										data-target="#collapseThree"
-										aria-expanded="false"
-										aria-controls="collapseThree"
-									>
-										Collapsible Group Item #3
-									</button>
-								</h5>
-							</div>
-							<div
-								id="collapseThree"
-								className="collapse"
-								aria-labelledby="headingThree"
-								data-parent="#accordion"
-							>
-								<div className="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life
-									accusamus terry richardson ad squid. 3 wolf moon officia aute,
-									non cupidatat skateboard dolor brunch. Food truck quinoa
-									nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-									aliqua put a bird on it squid single-origin coffee nulla
-									assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-									beer labore wes anderson cred nesciunt sapiente ea proident.
-									Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-									beer farm-to-table, raw denim aesthetic synth nesciunt you
-									probably haven't heard of them accusamus labore sustainable
-									VHS.
+						{
+							<div className="card">
+								<div className="card-header" id="headingThree">
+									<h5 className="mb-0">
+										<button
+											className="btn btn-link collapsed"
+											data-toggle="collapse"
+											data-target="#collapseThree"
+											aria-expanded="false"
+											aria-controls="collapseThree"
+										>
+											Opening hours
+											<small>
+												{this.props.restaurant.isOpen === null
+													? ""
+													: (this.props.restaurant.isOpen && "(open)") ||
+													  (!this.props.restaurant.isOpen && "(closed)")}
+											</small>
+										</button>
+									</h5>
 								</div>
+								{
+									<div
+										id="collapseThree"
+										className="collapse"
+										aria-labelledby="headingThree"
+										data-parent="#accordion"
+									>
+										<div className="card-body">
+											{this.props.restaurant.weekday_text ? (
+												<ul>
+													{this.props.restaurant.weekday_text.map(day => (
+														<li>{day}</li>
+													))}
+												</ul>
+											) : (
+												<p>No opening hours information</p>
+											)}
+										</div>
+									</div>
+								}
 							</div>
-						</div>
+						}
 					</div>
 					{/* 					{this.props.restaurant.photos &&
 					this.props.restaurant.photos.length > 0 ? (

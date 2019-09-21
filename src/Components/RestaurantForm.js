@@ -31,6 +31,12 @@ export default class RestaurantForm extends Component {
 			] */
 		};
 		let addNewRestaurant = new RestaurantItem(newRestaurant);
+		addNewRestaurant.reviews = [
+			{
+				text: e.target.elements.comments.value,
+				rating: e.target.elements.rating.value
+			}
+		];
 		/* this.calcAverageRating(addNewRestaurant); */
 		this.props.handleSubmitForm(addNewRestaurant);
 		let getForm = document.getElementsByName("add-restaurant-form");
