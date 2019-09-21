@@ -301,15 +301,16 @@ export default class TargetedRestaurant extends Component {
 						</div>
 						{
 							<div className="card">
-								<div className="card-header" id="headingThree">
+								<div
+									className="card-header div-collapse"
+									id="headingThree"
+									data-toggle="collapse"
+									data-target="#collapseThree"
+									aria-expanded="false"
+									aria-controls="collapseThree"
+								>
 									<h5 className="mb-0">
-										<button
-											className="btn btn-link collapsed"
-											data-toggle="collapse"
-											data-target="#collapseThree"
-											aria-expanded="false"
-											aria-controls="collapseThree"
-										>
+										<button className="btn btn-link collapsed">
 											Opening hours
 											<small>
 												{this.props.restaurant.isOpen === null
