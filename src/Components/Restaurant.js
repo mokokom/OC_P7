@@ -57,10 +57,15 @@ export default class Restaurant extends Component {
 		};
 
 		const callback = (place, status) => {
+			console.log(place);
 			if (status == window.google.maps.places.PlacesServiceStatus.OK) {
 				restaurant.reviews = place.reviews;
 				restaurant.photos = place.photos;
+				restaurant.phone = place.formatted_phone_number;
 				this.props.handleClick(this.props.restaurant);
+				console.log(restaurant);
+			} else {
+				console.log(`Error: ${status}`);
 			}
 		};
 		const divElmt = document.createElement("div");

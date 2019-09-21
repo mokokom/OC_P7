@@ -81,7 +81,8 @@ export default class TargetedRestaurant extends Component {
 						<StarRatingComponent name="rate1" starCount={5} value={rating} />
 					</div>
 					<address className="restaurant-adress">
-						{this.props.restaurant.address}
+						<p>{this.props.restaurant.address}</p>
+						<p>{this.props.restaurant.phone}</p>
 					</address>
 
 					<p className="d-flex justify-content-end">
@@ -258,13 +259,16 @@ export default class TargetedRestaurant extends Component {
 								<div className="card-body">
 									<h3>Tous les avis</h3> <hr />
 									{this.props.restaurant.reviews &&
-										this.props.restaurant.reviews.map(restaurant => {
+										this.props.restaurant.reviews.map(review => {
 											return (
-												<div>
-													<p>{restaurant.text}</p>
+												<div className="group-review">
+													<p>{review.text}</p>
+													<p>
+														<i>{review.author_name}</i>
+													</p>
 													<p>
 														<i className="far fa-star"></i>
-														{`${restaurant.rating}/5`}
+														{`${review.rating}/5`}
 													</p>
 												</div>
 											);

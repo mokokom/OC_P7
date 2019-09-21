@@ -31,7 +31,7 @@ export default class Map extends Component {
 
 			service.nearbySearch(request, (results, status) => {
 				let restaurants = [];
-				if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+				if (status === window.google.maps.places.PlacesServiceStatus.OK) {
 					for (let result of results) {
 						let restaurant = new RestaurantItem({
 							restaurantName: result.name,

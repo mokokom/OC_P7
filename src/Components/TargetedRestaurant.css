@@ -6,6 +6,11 @@
 	color: var(--textColor);
 }
 
+.card-header:hover {
+	background-color: var(--restaurantBackColor);
+	/* color: var(--headerBackColor); */
+}
+
 .targeted-restaurant {
 	display: flex;
 	flex-direction: column;
@@ -79,4 +84,11 @@ textarea:focus {
 .btn-link:hover {
 	color: var(--headerTextColor);
 	text-decoration: none;
+}
+
+.group-review {
+	background-color: var(--restaurantBackColor);
+	padding: 15px;
+	border-radius: 10px;
+	margin-bottom: 5px;
 }

@@ -74,7 +74,7 @@ export default class RestaurantsList extends Component {
 								</div>
 							</div>
 						</div>
-						<div class="card-footer bg-transparent ">
+						<div className="card-footer bg-transparent ">
 							<SearchRestaurant
 								handleSubmitForm={this.props.handleSubmitForm}
 								newRestaurantPosition={this.props.newRestaurantPosition}
