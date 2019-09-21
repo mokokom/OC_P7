@@ -34,7 +34,7 @@ class App extends Component {
 		this.setState({ restaurants });
 	} */
 
-	getNearbyRestaurants(maps, location) {
+	/* getNearbyRestaurants(maps, location) {
 		return new Promise((resolve, reject) => {
 			const divElmt = document.createElement("div");
 			const service = new maps.places.PlacesService(divElmt);
@@ -96,9 +96,8 @@ class App extends Component {
 			}
 			this.setState({ restaurants });
 		});
-		/* this.handleMarkers(searchBox, map); */
 	}
-
+ */
 	handleSubmitForm = newRestaurant => {
 		this.setState(prevState => {
 			return {
@@ -152,9 +151,9 @@ class App extends Component {
 		}
 	};
 
-	/* 	test() {
-		console.log(this.state.restaurant);
-	} */
+	searchBoxSetState = restaurants => {
+		this.setState({ restaurants });
+	};
 
 	render() {
 		/* this.test(); */
@@ -178,6 +177,7 @@ class App extends Component {
 						handleClick={this.handleClick}
 						getLatLng={this.getLatLng}
 						apiLoadedCallback={this.apiLoadedCallback}
+						searchBoxSetState={this.searchBoxSetState}
 					/>
 				</div>
 			</div>

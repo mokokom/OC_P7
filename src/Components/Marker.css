@@ -31,10 +31,8 @@
 	display: none;
 }
 
-.marker:hover .name {
-	display: block;
-	font-size: 15px;
-	font-weight: bold;
+.marker:hover {
+	background-image: url("images/marker2.svg");
 	z-index: 1;
 }
 

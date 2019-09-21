@@ -102,7 +102,7 @@ export default class Restaurant extends Component {
 						<div className="no-pointer">
 							<StarRatingComponent name="rate1" starCount={5} value={rating} />
 						</div>
-						<p className="card-title">{this.props.restaurant.description}</p>
+						<p className="card-text">{this.props.restaurant.description}</p>
 						<p className="card-text">{this.props.restaurant.address}</p>
 					</div>
 

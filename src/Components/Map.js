@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import CurrentPlace from "./CurrentPlace.js";
 import Marker from "./Marker.js";
+import RestaurantItem from "./RestaurantItem.js";
 import "./Map.css";
 
 export default class Map extends Component {
@@ -17,6 +18,72 @@ export default class Map extends Component {
 
 	componentDidMount() {
 		this.getLocation();
+	}
+	getNearbyRestaurants(maps, location) {
+		return new Promise((resolve, reject) => {
+			const divElmt = document.createElement("div");
+			const service = new maps.places.PlacesService(divElmt);
+			const request = {
+				location: new maps.LatLng(location.lat, location.lng),
+				radius: "1500",
+				type: ["restaurant"]
+			};
+
+			service.nearbySearch(request, (results, status) => {
+				let restaurants = [];
+				if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+					for (let result of results) {
+						let restaurant = new RestaurantItem({
+							restaurantName: result.name,
+							description: result.types[0],
+							address: result.vicinity,
+							lat: result.geometry.location.lat(),
+							long: result.geometry.location.lng(),
+							ratings: result.rating,
+							place_id: result.place_id
+						});
+						restaurants.push(restaurant);
+					}
+					resolve(restaurants);
+				} else {
+					reject(status);
+				}
+			});
+		});
+	}
+
+	apiLoaded = async (map, maps, location) => {
+		let results = await this.getNearbyRestaurants(maps, location);
+		/* this.setState({ restaurants: results }); */
+		this.props.searchBoxSetState(results);
+		/* this.handleSearchBox(map); */
+	};
+
+	handleSearchBox(map) {
+		let input = document.getElementById("search");
+		let searchBox = new window.google.maps.places.SearchBox(input);
+		map.addListener("bounds_changed", () => {
+			searchBox.setBounds(map.getBounds());
+		});
+		searchBox.addListener("places_changed", () => {
+			var places = searchBox.getPlaces();
+			let restaurants = [];
+			for (let result of places) {
+				let restaurant = new RestaurantItem({
+					restaurantName: result.name,
+					description: result.types[0],
+					address: result.formatted_address,
+					lat: result.geometry.location.lat(),
+					long: result.geometry.location.lng(),
+					ratings: result.rating,
+					place_id: result.place_id
+				});
+				restaurants.push(restaurant);
+				console.log(restaurants);
+			}
+			/* this.setState({ restaurants }); */
+			this.props.searchBoxSetState(restaurants);
+		});
 	}
 
 	getLocation() {
@@ -48,164 +115,12 @@ export default class Map extends Component {
 		});
 	};
 
-	apiLoaded(map, maps) {
+	/* apiLoaded(map, maps) {
 		this.props.apiLoadedCallback(map, maps, this.state.location);
-	}
+	} */
 
 	createMapOptions() {
 		return {
-			/* [
-				{
-					featureType: "administrative",
-					elementType: "labels.text.fill",
-					stylers: [
-						{
-							color: "#6195a0"
-						}
-					]
-				},
-				{
-					featureType: "landscape",
-					elementType: "all",
-					stylers: [
-						{
-							color: "#f2f2f2"
-						}
-					]
-				},
-				{
-					featureType: "landscape",
-					elementType: "geometry.fill",
-					stylers: [
-						{
-							color: "#ffffff"
-						}
-					]
-				},
-				{
-					featureType: "poi",
-					elementType: "all",
-					stylers: [
-						{
-							visibility: "off"
-						}
-					]
-				},
-				{
-					featureType: "poi.park",
-					elementType: "geometry.fill",
-					stylers: [
-						{
-							color: "#e6f3d6"
-						},
-						{
-							visibility: "on"
-						}
-					]
-				},
-				{
-					featureType: "road",
-					elementType: "all",
-					stylers: [
-						{
-							saturation: -100
-						},
-						{
-							lightness: 45
-						},
-						{
-							visibility: "simplified"
-						}
-					]
-				},
-				{
-					featureType: "road.highway",
-					elementType: "all",
-					stylers: [
-						{
-							visibility: "simplified"
-						}
-					]
-				},
-				{
-					featureType: "road.highway",
-					elementType: "geometry.fill",
-					stylers: [
-						{
-							color: "#f4d2c5"
-						},
-						{
-							visibility: "simplified"
-						}
-					]
-				},
-				{
-					featureType: "road.highway",
-					elementType: "labels.text",
-					stylers: [
-						{
-							color: "#4e4e4e"
-						}
-					]
-				},
-				{
-					featureType: "road.arterial",
-					elementType: "geometry.fill",
-					stylers: [
-						{
-							color: "#f4f4f4"
-						}
-					]
-				},
-				{
-					featureType: "road.arterial",
-					elementType: "labels.text.fill",
-					stylers: [
-						{
-							color: "#787878"
-						}
-					]
-				},
-				{
-					featureType: "road.arterial",
-					elementType: "labels.icon",
-					stylers: [
-						{
-							visibility: "off"
-						}
-					]
-				},
-				{
-					featureType: "transit",
-					elementType: "all",
-					stylers: [
-						{
-							visibility: "off"
-						}
-					]
-				},
-				{
-					featureType: "water",
-					elementType: "all",
-					stylers: [
-						{
-							color: "#eaf6f8"
-						},
-						{
-							visibility: "on"
-						}
-					]
-				},
-				{
-					featureType: "water",
-					elementType: "geometry.fill",
-					stylers: [
-						{
-							color: "#eaf6f8"
-						}
-					]
-				}
-			] */
 			styles: [
 				{
 					featureType: "all",
@@ -502,7 +417,9 @@ export default class Map extends Component {
 					onClick={this.handleMapClick}
 					yesIWantToUseGoogleMapApiInternals
 					onGoogleApiLoaded={({ map, maps }) => {
-						this.apiLoaded(map, maps);
+						this.apiLoaded(map, maps, this.state.location);
+						/* this.apiLoaded(map, maps); */
+						this.handleSearchBox(map);
 					}}
 					options={this.createMapOptions}
 				>

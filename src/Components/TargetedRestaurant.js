@@ -97,8 +97,8 @@ export default class TargetedRestaurant extends Component {
 											<img
 												className="d-block w-100"
 												src={photo.getUrl({
-													maxWidth: 200,
-													maxHeight: 200
+													maxWidth: 300,
+													maxHeight: 500
 												})}
 												alt="Restaurant image"
 											/>

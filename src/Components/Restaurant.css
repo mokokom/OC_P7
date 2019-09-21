@@ -9,10 +9,14 @@
 	background-color: var(--restaurantBackColor);
 } */
 
+/* .restaurant-name:hover {
+	color: var(--headerTextColor);
+} */
+
 .restaurant-card:hover {
 	cursor: pointer;
 	box-shadow: none;
-	color: var(--headerTextColor);
+	color: var(--headerTextColor) !important;
 	background-color: var(--shadowColor);
 	box-shadow: 12px 13px 35px 2px var(--shadowColor);
 }
@@ -43,4 +47,8 @@
 
 .no-pointer .dv-star-rating-star {
 	cursor: default !important;
+}
+
+.dv-star-rating-empty-star i {
+	color: #535353;
 }
