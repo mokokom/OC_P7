@@ -1,5 +1,7 @@
 .card-body,
-.img-container {
+.img-container,
+#newComment,
+.card-header {
 	background-color: var(--headerBackColor);
 	color: var(--textColor);
 }
@@ -45,11 +47,11 @@
 
 textarea {
 	border: none;
-	box-shadow: 0px 0px 9px 1px gray;
+	box-shadow: 0px 0px 9px 1px var(--textColor);
 }
 
 textarea:focus {
-	box-shadow: 0px 0px 3px 0px gray;
+	box-shadow: 0px 0px 3px 0px var(--headerTextColor);
 }
 
 .carousel-item {
@@ -60,14 +62,21 @@ textarea:focus {
 	color: var(--headerTextColor);
 }
 
-.btn,
-.btn:hover {
-	/* background-color: var(--headerTextColor);
-	color: var(--shadowColor); */
-	background-color: var(--shadowColor);
+.btn-primary {
+	background-color: var(--restaurantBackColor);
 	color: var(--headerTextColor);
 }
-/* .btn-primary:hover {
-	background-color: var(--shadowColor);
+
+.btn-primary:hover {
+	background-color: var(--headerTextColor);
+	color: var(--restaurantBackColor);
+}
+
+.btn-link {
 	color: var(--headerTextColor);
-} */
+}
+
+.btn-link:hover {
+	color: var(--headerTextColor);
+	text-decoration: none;
+}

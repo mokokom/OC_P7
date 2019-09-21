@@ -29,6 +29,10 @@
 }
  */
 .btn-form {
-	background-color: #303030 !important;
+	background-color: var(--restaurantBackColor) !important;
 	color: var(--headerTextColor);
+}
+.btn-form:hover {
+	background-color: var(--headerTextColor) !important;
+	color: var(--restaurantBackColor);
 }
