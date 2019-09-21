@@ -4,18 +4,32 @@ import StarRatingComponent from "react-star-rating-component";
 import "./RestaurantForm.css";
 
 export default class RestaurantSearch extends Component {
-	/* handleClick(e) {
-        e.preventDefault();
-        
-	} */
+	constructor(props) {
+		super(props);
+		this.state = {
+			isClicked: false
+		};
+	}
+	handleBtnIcon() {
+		this.setState(prevState => {
+			console.log(prevState);
+			return {
+				isClicked: !prevState.isClicked
+			};
+		});
+	}
 
 	render() {
 		return (
 			<div>
 				<p className="d-flex justify-content-end">
 					<i
-						/* onClick={() => this.handleBtnIcon()} */
-						className={"fas fa-search"}
+						onClick={() => this.handleBtnIcon()}
+						className={
+							this.state.isClicked
+								? "fas fa-search-minus"
+								: "fas fa-search-plus"
+						}
 						title="add restaurant"
 						data-toggle="collapse"
 						href="#collapseSearch"

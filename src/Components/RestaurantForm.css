@@ -8,12 +8,14 @@
 } */
 .fa-plus,
 .fa-minus,
-.fa-search {
+.fa-search-plus,
+.fa-search-minus {
 	color: var(--textColor);
 }
 .fa-plus:hover,
 .fa-minus:hover,
-.fa-search:hover {
+.fa-search-plus:hover,
+.fa-search-minus:hover {
 	color: var(--redColor);
 	cursor: pointer;
 }
