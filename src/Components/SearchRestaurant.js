@@ -12,7 +12,6 @@ export default class RestaurantSearch extends Component {
 	}
 	handleBtnIcon() {
 		this.setState(prevState => {
-			console.log(prevState);
 			return {
 				isClicked: !prevState.isClicked
 			};
@@ -30,7 +29,7 @@ export default class RestaurantSearch extends Component {
 								? "fas fa-search-minus"
 								: "fas fa-search-plus"
 						}
-						title="add restaurant"
+						title="search restaurant"
 						data-toggle="collapse"
 						href="#collapseSearch"
 						role="button"

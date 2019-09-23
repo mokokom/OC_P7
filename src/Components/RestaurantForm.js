@@ -7,7 +7,7 @@ export default class RestaurantForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			inputAddress: "",
+			/* 			inputAddress: "", */
 			rating: 3,
 			isClicked: false,
 			toggleBtn: true
@@ -19,6 +19,7 @@ export default class RestaurantForm extends Component {
 		const newRestaurant = {
 			restaurantName: e.target.elements.name.value,
 			description: e.target.elements.description.value,
+			/* address: this.state.inputAddress, */
 			address: `${e.target.elements.address.value}, ${e.target.elements.postalCode.value}`,
 			lat: Number(e.target.elements.latitude.value),
 			long: Number(e.target.elements.longitude.value),
@@ -73,6 +74,14 @@ export default class RestaurantForm extends Component {
 		console.log(form);
 	} */
 
+	/* handleChange = () => {
+		this.setState({ inputAddress: this.props.newRestaurantPosition.address });
+		console.log(
+			this.state.inputAddress,
+			this.props.newRestaurantPosition.address
+		);
+	}; */
+
 	render() {
 		return (
 			<div>
@@ -120,6 +129,12 @@ export default class RestaurantForm extends Component {
 									name="address"
 									placeholder="Address"
 									defaultValue={this.props.newRestaurantPosition.address}
+									/* defaultValue={
+										this.props.newRestaurantPosition.address
+											? this.props.newRestaurantPosition.address
+											: this.props.newRestaurantPosition.address
+									} */
+									/* onChange={this.handleChange} */
 									required
 								/>
 							</div>
@@ -177,7 +192,7 @@ export default class RestaurantForm extends Component {
 									placeholder="Comments"
 								/>
 							</div>
-							<div className="col-12 col-sm-6 mb-2">
+							<div className="col-12 text-center mb-2">
 								<StarRatingComponent
 									name="rating"
 									starCount={5}

@@ -19,6 +19,10 @@ export default class RestaurantItem {
 		return latestId;
 	}
 
+	/* getAverageRating(){
+
+	} */
+
 	/* 	calculaverageRating() {
 		let ratingsStars = 0;
 		if (this.ratings.length >= 1) {

@@ -113,13 +113,14 @@ class App extends Component {
 		});
 	};
 
-	handleSubmitFormComment = (restaurant, newComment) => {
+	handleSubmitFormComment = (restaurant, newComment, rating) => {
 		let updatedComment = restaurant.reviews.concat({
 			author_name: newComment.author,
 			rating: newComment.stars,
 			text: newComment.comment
 		});
 		restaurant.reviews = updatedComment;
+		restaurant.ratings = rating;
 		this.setState({ restaurant });
 	};
 	/* handleSubmitFormComment = (restaurant, newComment) => {
@@ -140,7 +141,7 @@ class App extends Component {
 		this.setState({
 			newRestaurantPosition: { LatLngOnClick, address, postalCode }
 		});
-		/* this.setState({ newRestaurantPosition: LatLngOnClick }); */
+		/* console.log(this.state); */
 	};
 
 	closeRestaurantTargetView = () => {
@@ -149,6 +150,13 @@ class App extends Component {
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
 		}
+		this.setState({
+			newRestaurantPosition: {
+				LatLngOnClick: null,
+				address: null,
+				postalCode: null
+			}
+		});
 	};
 
 	searchBoxSetState = restaurants => {
@@ -156,8 +164,7 @@ class App extends Component {
 	};
 
 	render() {
-		/* this.test(); */
-		/* console.log(this.state); */
+		console.log(this.state);
 		/* console.log(window); */
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">

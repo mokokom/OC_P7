@@ -37,11 +37,15 @@ export default class TargetedRestaurant extends Component {
 		let newStars = parseInt(e.target.elements.rating.value);
 		newStars = newStars ? newStars : 0;
 		const newComment = {
-			author: e.target.elements.author.value,
+			author: e.target.elements.authorComment.value,
 			stars: newStars,
 			comment: e.target.elements.newComment.value
 		};
-		this.props.handleSubmitFormComment(this.props.restaurant, newComment);
+		this.props.handleSubmitFormComment(
+			this.props.restaurant,
+			newComment,
+			newStars
+		);
 		this.setState({ rating: this.props.restaurant.averageRating });
 		let getForm = document.getElementsByName("add-comment-form");
 		getForm[0].reset();
@@ -56,7 +60,6 @@ export default class TargetedRestaurant extends Component {
 	}
 
 	render() {
-		console.log(this.props.restaurant);
 		const { rating } = this.state;
 		/* let restaurantPhotos = this.props.restaurant.photos; */
 		return (

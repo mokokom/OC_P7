@@ -104,6 +104,7 @@ export default class Map extends Component {
 	handleMapClick = e => {
 		let lat = e.lat;
 		let lng = e.lng;
+		console.log(lat, lng);
 		let geocoder = new window.google.maps.Geocoder();
 		let latlng = { lat, lng };
 		geocoder.geocode({ location: latlng }, (results, status) => {
