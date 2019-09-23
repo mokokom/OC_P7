@@ -1,6 +1,7 @@
 .card-body,
 .img-container,
 #newComment,
+[name="authorComment"],
 .card-header {
 	background-color: var(--headerBackColor);
 	color: var(--textColor);
@@ -49,12 +50,14 @@
 	transform: scale(0.9);
 }
 
-textarea {
+textarea,
+[name="authorComment"] {
 	border: none;
-	box-shadow: 0px 0px 9px 1px var(--textColor);
+	box-shadow: 0px 0px 5px 0px var(--textColor);
 }
 
-textarea:focus {
+textarea:focus,
+[name="authorComment"]:focus {
 	box-shadow: 0px 0px 3px 0px var(--headerTextColor);
 }
 

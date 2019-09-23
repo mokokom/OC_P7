@@ -115,7 +115,7 @@ class App extends Component {
 
 	handleSubmitFormComment = (restaurant, newComment) => {
 		let updatedComment = restaurant.reviews.concat({
-			author_name: null,
+			author_name: newComment.author,
 			rating: newComment.stars,
 			text: newComment.comment
 		});

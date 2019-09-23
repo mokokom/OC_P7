@@ -7,6 +7,7 @@ export default class RestaurantForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			inputAddress: "",
 			rating: 3,
 			isClicked: false,
 			toggleBtn: true
@@ -33,6 +34,7 @@ export default class RestaurantForm extends Component {
 		let addNewRestaurant = new RestaurantItem(newRestaurant);
 		addNewRestaurant.reviews = [
 			{
+				author_name: e.target.elements.author.value,
 				text: e.target.elements.comments.value,
 				rating: e.target.elements.rating.value
 			}
@@ -59,6 +61,10 @@ export default class RestaurantForm extends Component {
 			};
 		});
 	}
+
+	/* handleInput(e){
+		this.setState({inputAddress: e.target.value})
+	} */
 
 	/* 	checkRequiredInput() {
 		let myForm = document.getElementById("restaurant-form");
@@ -113,7 +119,7 @@ export default class RestaurantForm extends Component {
 									className="form-control"
 									name="address"
 									placeholder="Address"
-									value={this.props.newRestaurantPosition.address}
+									defaultValue={this.props.newRestaurantPosition.address}
 									required
 								/>
 							</div>
@@ -123,7 +129,7 @@ export default class RestaurantForm extends Component {
 									className="form-control"
 									name="postalCode"
 									placeholder={"Postal code"}
-									value={this.props.newRestaurantPosition.postalCode}
+									defaultValue={this.props.newRestaurantPosition.postalCode}
 									required
 								/>
 							</div>
@@ -134,7 +140,7 @@ export default class RestaurantForm extends Component {
 									name="latitude"
 									placeholder="Latitude"
 									required
-									value={
+									defaultValue={
 										this.props.newRestaurantPosition.LatLngOnClick == null
 											? ""
 											: this.props.newRestaurantPosition.LatLngOnClick.lat
@@ -148,11 +154,19 @@ export default class RestaurantForm extends Component {
 									name="longitude"
 									placeholder="Longitude"
 									required
-									value={
+									defaultValue={
 										this.props.newRestaurantPosition.LatLngOnClick == null
 											? ""
 											: this.props.newRestaurantPosition.LatLngOnClick.lng
 									}
+								/>
+							</div>
+							<div className="col-12 col-sm-6 mb-2">
+								<input
+									type="text"
+									className="form-control"
+									name="author"
+									placeholder="Your name"
 								/>
 							</div>
 							<div className="col-12 col-sm-6 mb-2">

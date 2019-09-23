@@ -37,6 +37,7 @@ export default class TargetedRestaurant extends Component {
 		let newStars = parseInt(e.target.elements.rating.value);
 		newStars = newStars ? newStars : 0;
 		const newComment = {
+			author: e.target.elements.author.value,
 			stars: newStars,
 			comment: e.target.elements.newComment.value
 		};
@@ -228,6 +229,13 @@ export default class TargetedRestaurant extends Component {
 										>
 											<div className="form-group">
 												<div className="row">
+													<input
+														className="col-12 mb-2"
+														type="text"
+														name="authorComment"
+														placeholder="Your name"
+													/>
+
 													<textarea
 														className="col-12 mb-2"
 														name="newComment"
