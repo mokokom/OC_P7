@@ -120,7 +120,8 @@ class App extends Component {
 			text: newComment.comment
 		});
 		restaurant.reviews = updatedComment;
-		restaurant.rating = rating;
+		/* restaurant.rating = rating; */
+		restaurant.user_ratings_total++;
 		this.setState({ restaurant });
 	};
 	/* handleSubmitFormComment = (restaurant, newComment) => {
