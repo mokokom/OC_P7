@@ -39,7 +39,7 @@ export default class Map extends Component {
 							address: result.vicinity,
 							lat: result.geometry.location.lat(),
 							long: result.geometry.location.lng(),
-							ratings: result.rating,
+							rating: result.rating,
 							place_id: result.place_id
 						});
 						restaurants.push(restaurant);
@@ -75,13 +75,11 @@ export default class Map extends Component {
 					address: result.formatted_address,
 					lat: result.geometry.location.lat(),
 					long: result.geometry.location.lng(),
-					ratings: result.rating,
+					rating: result.rating,
 					place_id: result.place_id
 				});
 				restaurants.push(restaurant);
-				console.log(restaurants);
 			}
-			/* this.setState({ restaurants }); */
 			this.props.searchBoxSetState(restaurants);
 		});
 	}
@@ -104,7 +102,6 @@ export default class Map extends Component {
 	handleMapClick = e => {
 		let lat = e.lat;
 		let lng = e.lng;
-		console.log(lat, lng);
 		let geocoder = new window.google.maps.Geocoder();
 		let latlng = { lat, lng };
 		geocoder.geocode({ location: latlng }, (results, status) => {

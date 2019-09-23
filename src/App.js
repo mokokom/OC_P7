@@ -54,7 +54,7 @@ class App extends Component {
 							address: result.vicinity,
 							lat: result.geometry.location.lat(),
 							long: result.geometry.location.lng(),
-							ratings: result.rating,
+							rating: result.rating,
 							place_id: result.place_id
 						});
 						restaurants.push(restaurant);
@@ -89,7 +89,7 @@ class App extends Component {
 					address: result.formatted_address,
 					lat: result.geometry.location.lat(),
 					long: result.geometry.location.lng(),
-					ratings: result.rating,
+					rating: result.rating,
 					place_id: result.place_id
 				});
 				restaurants.push(restaurant);
@@ -120,12 +120,12 @@ class App extends Component {
 			text: newComment.comment
 		});
 		restaurant.reviews = updatedComment;
-		restaurant.ratings = rating;
+		restaurant.rating = rating;
 		this.setState({ restaurant });
 	};
 	/* handleSubmitFormComment = (restaurant, newComment) => {
-		let updatedComment = restaurant.ratings.concat(newComment);
-		restaurant.ratings = updatedComment;
+		let updatedComment = restaurant.rating.concat(newComment);
+		restaurant.rating = updatedComment;
 		restaurant.averageRating = restaurant.calculaverageRating();
 		this.setState({ restaurant });
 	}; */
@@ -141,7 +141,6 @@ class App extends Component {
 		this.setState({
 			newRestaurantPosition: { LatLngOnClick, address, postalCode }
 		});
-		/* console.log(this.state); */
 	};
 
 	closeRestaurantTargetView = () => {
@@ -164,8 +163,8 @@ class App extends Component {
 	};
 
 	render() {
-		console.log(this.state);
-		/* console.log(window); */
+		/* console.log(this.state);
+		console.log(window); */
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">

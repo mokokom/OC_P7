@@ -278,7 +278,7 @@ export default class TargetedRestaurant extends Component {
 									</div>
 									<h3>All reviews</h3>
 									<small>
-										{this.props.restaurant.ratings +
+										{this.props.restaurant.rating +
 											"/5" +
 											" - " +
 											this.props.restaurant.user_ratings_total +
@@ -297,7 +297,9 @@ export default class TargetedRestaurant extends Component {
 																alt=""
 															/>
 														)}
-														<i>{review.author_name && review.author_name}</i>
+														<i>{review.author_name && review.author_name}</i>{" "}
+														<br />
+														<small>{review.relative_time_description}</small>
 													</p>
 													<p>{review.text}</p>
 													<p>

@@ -7,7 +7,7 @@ export default class Restaurant extends Component {
 		super(props);
 		this.state = {
 			/* rating: 0 */
-			rating: Number(this.props.restaurant.averageRating)
+			rating: Number(this.props.restaurant.rating)
 		};
 		/* this.onStarClick = this.onStarClick.bind(this); */
 	}
@@ -67,7 +67,6 @@ export default class Restaurant extends Component {
 		};
 
 		const callback = (place, status) => {
-			console.log(place);
 			if (status == window.google.maps.places.PlacesServiceStatus.OK) {
 				restaurant.reviews = place.reviews;
 				restaurant.photos = place.photos;
@@ -85,7 +84,6 @@ export default class Restaurant extends Component {
 						: (restaurant.weekday_text = null);
 				}
 				this.props.handleClick(this.props.restaurant);
-				console.log(restaurant.isOpen);
 			} else {
 				console.log(`Error: ${status}`);
 			}

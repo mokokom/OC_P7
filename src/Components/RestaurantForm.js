@@ -23,9 +23,9 @@ export default class RestaurantForm extends Component {
 			address: `${e.target.elements.address.value}, ${e.target.elements.postalCode.value}`,
 			lat: Number(e.target.elements.latitude.value),
 			long: Number(e.target.elements.longitude.value),
-			ratings: Number(e.target.elements.rating.value)
+			rating: Number(e.target.elements.rating.value)
 			/* place_id: null */
-			/* ratings: [
+			/* rating: [
 				{
 					stars: e.target.elements.rating.value,
 					comment: e.target.elements.comments.value
@@ -56,7 +56,6 @@ export default class RestaurantForm extends Component {
 
 	handleBtnIcon() {
 		this.setState(prevState => {
-			console.log(prevState);
 			return {
 				isClicked: !prevState.isClicked
 			};

@@ -17,7 +17,6 @@ export default class Marker extends Component {
 			targetedMarker.className = "marker hvr-grow";
 		}
 		let element = e.target;
-		console.log(element);
 		element.classList.toggle("targeted-marker");
 		if (restaurant.place_id) {
 			this.handleDetailsRequest(restaurant);
