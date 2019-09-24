@@ -89,10 +89,10 @@ export default class Map extends Component {
 	}
 
 	apiLoaded = async (map, maps, location) => {
-		/* map.addListener("dragend", () => {
+		map.addListener("dragend", () => {
 			console.log("draged");
 			this.getNearbyRestaurantsOnDrag(maps, map);
-		}); */
+		});
 		let results = await this.getNearbyRestaurants(maps, location);
 		/* this.setState({ restaurants: results }); */
 		this.props.searchBoxSetState(results);
