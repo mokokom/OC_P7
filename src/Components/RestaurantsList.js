@@ -32,8 +32,19 @@ export default class RestaurantsList extends Component {
 					<div className="card text-white bg-primary mb-3">
 						<div className="card-header">
 							<div className="hero-container">
-								<h1 className="logo d-flex justify-content-center">iEat</h1>
-								{/* <i className="fas fa-utensils"></i> */}
+								<div className="d-flex flex-column align-items-center justify-content-center">
+									<h1 className="logo d-flex justify-content-center">iEat</h1>
+									<a
+										href="https://mokokom.com/"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<small>
+											<i>by mokokom</i>
+										</small>
+										{/* <i className="fas fa-utensils"></i> */}
+									</a>
+								</div>
 
 								<RestaurantForm
 									handleSubmitForm={this.props.handleSubmitForm}

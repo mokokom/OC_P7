@@ -114,7 +114,6 @@ export default class TargetedRestaurant extends Component {
 								<h5 className="mb-0">
 									<button className="btn btn-link">
 										Photos
-										{/* <small>{` (${this.props.restaurant.photos.length})`}</small> */}
 										{this.props.restaurant.photos && (
 											<small>{` (${this.props.restaurant.photos.length})`}</small>
 										)}
