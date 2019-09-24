@@ -77,7 +77,6 @@ export default class Map extends Component {
 			if (places.length == 0) {
 				return;
 			}
-			console.log(places);
 			let restaurants = [];
 			for (let result of places) {
 				let restaurant = new RestaurantItem({
