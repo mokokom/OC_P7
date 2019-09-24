@@ -42,7 +42,7 @@ export default class Marker extends Component {
 		};
 
 		const callback = (place, status) => {
-			if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+			if (status === window.google.maps.places.PlacesServiceStatus.OK) {
 				restaurant.reviews = place.reviews;
 				restaurant.photos = place.photos;
 				restaurant.phone = place.formatted_phone_number;
@@ -73,13 +73,13 @@ export default class Marker extends Component {
 	} */
 
 	render() {
-		const styleAtt = {
+		/* 		const styleAtt = {
 			width: "10rem",
 			position: "relative",
 			top: "-20px",
 			left: "-60px",
 			zIndex: "1"
-		};
+		}; */
 		return (
 			<div
 				className="marker hvr-grow"

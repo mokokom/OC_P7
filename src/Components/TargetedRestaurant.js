@@ -89,7 +89,11 @@ export default class TargetedRestaurant extends Component {
 						<p>{this.props.restaurant.address}</p>
 						<p>{this.props.restaurant.phone}</p>
 						{this.props.restaurant.website && (
-							<a href={this.props.restaurant.website} target="_blank">
+							<a
+								href={this.props.restaurant.website}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								website
 							</a>
 						)}
@@ -150,7 +154,7 @@ export default class TargetedRestaurant extends Component {
 																	maxWidth: 300,
 																	maxHeight: 500
 																})}
-																alt="Restaurant image"
+																alt="Restaurant"
 															/>
 														</div>
 													);
@@ -200,15 +204,13 @@ export default class TargetedRestaurant extends Component {
 								aria-expanded="false"
 								aria-controls="collapseTwo"
 							>
-								<h5 className="mb-0">
-									<button className="btn btn-link collapsed">Avis</button>
-									<small>
-										{this.props.restaurant.rating +
-											"/5" +
-											" - " +
-											this.props.restaurant.user_ratings_total +
-											" ratings"}
-									</small>
+								<h5 className="mb-0 d-inline">
+									<button className="btn btn-link collapsed">
+										Reviews
+										<small className="d-inline">
+											{` (${this.props.restaurant.user_ratings_total} ratings)`}
+										</small>
+									</button>
 								</h5>
 							</div>
 							<div
@@ -333,10 +335,12 @@ export default class TargetedRestaurant extends Component {
 										<button className="btn btn-link collapsed">
 											Opening hours
 											<small>
-												{this.props.restaurant.isOpen === null
-													? ""
-													: (this.props.restaurant.isOpen && "(open)") ||
-													  (!this.props.restaurant.isOpen && "(closed)")}
+												{`${
+													this.props.restaurant.isOpen === null
+														? ""
+														: (this.props.restaurant.isOpen && " (open)") ||
+														  (!this.props.restaurant.isOpen && " (closed)")
+												}`}
 											</small>
 										</button>
 									</h5>

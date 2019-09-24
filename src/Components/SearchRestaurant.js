@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import RestaurantItem from "./RestaurantItem.js";
-import StarRatingComponent from "react-star-rating-component";
 import "./RestaurantForm.css";
 
 export default class RestaurantSearch extends Component {

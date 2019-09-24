@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import RestaurantsList from "./Components/RestaurantsList";
 import Map from "./Components/Map";
-import RestaurantItem from "./Components/RestaurantItem.js";
 import "./App.css";
 
 class App extends Component {
@@ -183,7 +182,6 @@ class App extends Component {
 						restaurants={this.state.restaurants}
 						handleClick={this.handleClick}
 						getLatLng={this.getLatLng}
-						apiLoadedCallback={this.apiLoadedCallback}
 						apiLoadedCallback={this.apiLoadedCallback}
 					/>
 				</div>
