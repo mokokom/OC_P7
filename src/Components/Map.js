@@ -57,7 +57,6 @@ export default class Map extends Component {
 		let lat = getCenter.lat();
 		let lng = getCenter.lng();
 		let location = { lat, lng };
-		console.log(location);
 		const divElmt = document.createElement("div");
 		const service = new maps.places.PlacesService(divElmt);
 		const request = {
@@ -83,20 +82,19 @@ export default class Map extends Component {
 				}
 				this.props.apiLoadedCallback(restaurants);
 			} else {
-				console.log("error");
+				console.error(
+					`The app looks for restaurant around 1500 radius from the center of your screen. Zoom on a city, a place where people live, to have a chance to catch some restaurants!! Error status: ${status}`
+				);
 			}
 		});
 	}
 
 	apiLoaded = async (map, maps, location) => {
 		map.addListener("dragend", () => {
-			console.log("draged");
 			this.getNearbyRestaurantsOnDrag(maps, map);
 		});
 		let results = await this.getNearbyRestaurants(maps, location);
-		/* this.setState({ restaurants: results }); */
 		this.props.apiLoadedCallback(results);
-		/* this.handleSearchBox(map); */
 	};
 
 	handleSearchBox(map) {

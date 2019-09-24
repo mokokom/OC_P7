@@ -202,6 +202,13 @@ export default class TargetedRestaurant extends Component {
 							>
 								<h5 className="mb-0">
 									<button className="btn btn-link collapsed">Avis</button>
+									<small>
+										{this.props.restaurant.rating +
+											"/5" +
+											" - " +
+											this.props.restaurant.user_ratings_total +
+											" ratings"}
+									</small>
 								</h5>
 							</div>
 							<div

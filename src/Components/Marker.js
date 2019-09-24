@@ -26,22 +26,46 @@ export default class Marker extends Component {
 	}
 
 	handleDetailsRequest(restaurant) {
-		/* if (restaurant.place_id) { */
 		var request = {
 			placeId: restaurant.place_id,
-			fields: ["name", "rating", "formatted_phone_number", "reviews", "photos"]
+			fields: [
+				"name",
+				"rating",
+				"formatted_phone_number",
+				"reviews",
+				"photos",
+				"opening_hours",
+				"website",
+				"price_level",
+				"user_ratings_total"
+			]
 		};
+
 		const callback = (place, status) => {
-			if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+			if (status == window.google.maps.places.PlacesServiceStatus.OK) {
 				restaurant.reviews = place.reviews;
 				restaurant.photos = place.photos;
+				restaurant.phone = place.formatted_phone_number;
+				restaurant.website = place.website;
+				restaurant.user_ratings_total = place.user_ratings_total;
+				{
+					place.opening_hours
+						? (restaurant.isOpen = place.opening_hours.open_now)
+						: (restaurant.isOpen = null);
+				}
+				{
+					place.opening_hours
+						? (restaurant.weekday_text = place.opening_hours.weekday_text)
+						: (restaurant.weekday_text = null);
+				}
 				this.props.handleClick(this.props.restaurant);
+			} else {
+				console.log(`Error: ${status}`);
 			}
 		};
 		const divElmt = document.createElement("div");
 		const service = new window.google.maps.places.PlacesService(divElmt);
 		service.getDetails(request, callback);
-		/* } */
 	}
 
 	/* handleMouseOver() {
