@@ -52,7 +52,47 @@ export default class Map extends Component {
 		});
 	}
 
+	getNearbyRestaurantsOnDrag(maps, map) {
+		let getCenter = map.getCenter();
+		let lat = getCenter.lat();
+		let lng = getCenter.lng();
+		let location = { lat, lng };
+		console.log(location);
+		const divElmt = document.createElement("div");
+		const service = new maps.places.PlacesService(divElmt);
+		const request = {
+			location: new maps.LatLng(location.lat, location.lng),
+			radius: "1500",
+			type: ["restaurant"]
+		};
+
+		service.nearbySearch(request, (results, status) => {
+			let restaurants = [];
+			if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+				for (let result of results) {
+					let restaurant = new RestaurantItem({
+						restaurantName: result.name,
+						description: result.types[0],
+						address: result.vicinity,
+						lat: result.geometry.location.lat(),
+						long: result.geometry.location.lng(),
+						rating: result.rating,
+						place_id: result.place_id
+					});
+					restaurants.push(restaurant);
+				}
+				this.props.searchBoxSetState(results);
+			} else {
+				console.log("error");
+			}
+		});
+	}
+
 	apiLoaded = async (map, maps, location) => {
+		/* map.addListener("dragend", () => {
+			console.log("draged");
+			this.getNearbyRestaurantsOnDrag(maps, map);
+		}); */
 		let results = await this.getNearbyRestaurants(maps, location);
 		/* this.setState({ restaurants: results }); */
 		this.props.searchBoxSetState(results);
