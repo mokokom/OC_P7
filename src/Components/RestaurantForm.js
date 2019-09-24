@@ -7,7 +7,6 @@ export default class RestaurantForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			/* 			inputAddress: "", */
 			rating: 3,
 			isClicked: false,
 			toggleBtn: true
@@ -15,22 +14,13 @@ export default class RestaurantForm extends Component {
 	}
 	handleSubmit = e => {
 		e.preventDefault();
-
 		const newRestaurant = {
 			restaurantName: e.target.elements.name.value,
 			description: e.target.elements.description.value,
-			/* address: this.state.inputAddress, */
 			address: `${e.target.elements.address.value}, ${e.target.elements.postalCode.value}`,
 			lat: Number(e.target.elements.latitude.value),
 			long: Number(e.target.elements.longitude.value),
 			rating: Number(e.target.elements.rating.value)
-			/* place_id: null */
-			/* rating: [
-				{
-					stars: e.target.elements.rating.value,
-					comment: e.target.elements.comments.value
-				}
-			] */
 		};
 		let addNewRestaurant = new RestaurantItem(newRestaurant);
 		addNewRestaurant.reviews = [
@@ -40,7 +30,7 @@ export default class RestaurantForm extends Component {
 				rating: e.target.elements.rating.value
 			}
 		];
-		/* this.calcAverageRating(addNewRestaurant); */
+		addNewRestaurant.user_ratings_total = addNewRestaurant.reviews.length;
 		this.props.handleSubmitForm(addNewRestaurant);
 		let getForm = document.getElementsByName("add-restaurant-form");
 		getForm[0].reset();
@@ -61,25 +51,6 @@ export default class RestaurantForm extends Component {
 			};
 		});
 	}
-
-	/* handleInput(e){
-		this.setState({inputAddress: e.target.value})
-	} */
-
-	/* 	checkRequiredInput() {
-		let myForm = document.getElementById("restaurant-form");
-		console.log(myForm);
-		let form = myForm.elements;
-		console.log(form);
-	} */
-
-	/* handleChange = () => {
-		this.setState({ inputAddress: this.props.newRestaurantPosition.address });
-		console.log(
-			this.state.inputAddress,
-			this.props.newRestaurantPosition.address
-		);
-	}; */
 
 	render() {
 		return (
@@ -128,12 +99,6 @@ export default class RestaurantForm extends Component {
 									name="address"
 									placeholder="Address"
 									defaultValue={this.props.newRestaurantPosition.address}
-									/* defaultValue={
-										this.props.newRestaurantPosition.address
-											? this.props.newRestaurantPosition.address
-											: this.props.newRestaurantPosition.address
-									} */
-									/* onChange={this.handleChange} */
 									required
 								/>
 							</div>
@@ -200,32 +165,16 @@ export default class RestaurantForm extends Component {
 								/>
 							</div>
 							<div className="col-12 text-center">
-								{/* this.checkRequiredInput() */}
-								{/* this.state.toggleBtn && (
-									<button
-										className="btn btn-form rounded"
-										data-toggle="collapse"
-										href="#collapseForm"
-										role="button"
-										aria-expanded="false"
-										aria-controls="collapseForm"
-										onClick={() => this.handleBtnIcon()}
-									>
-										Add
-									</button>
-								) */}
-								{
-									<button
-										className="btn btn-form rounded"
-										href="#collapseForm"
-										role="button"
-										aria-expanded="false"
-										aria-controls="collapseForm"
-										onClick={() => this.handleBtnIcon()}
-									>
-										Add
-									</button>
-								}
+								<button
+									className="btn btn-form rounded"
+									href="#collapseForm"
+									role="button"
+									aria-expanded="false"
+									aria-controls="collapseForm"
+									onClick={() => this.handleBtnIcon()}
+								>
+									Add
+								</button>
 							</div>
 						</div>
 					</form>

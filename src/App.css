@@ -3,7 +3,6 @@
 }
 
 :root {
-	/* --icon: #ffd892; */
 	--icon: #ffb400;
 	--restaurantContainerBackColor: #303030;
 	--restaurantBackColor: #303030;
@@ -16,4 +15,13 @@
 
 .btn-primary {
 	border: none;
+}
+
+h1 {
+	font-size: 60px;
+	color: #ffb400;
+}
+
+a:hover {
+	text-decoration: none;
 }

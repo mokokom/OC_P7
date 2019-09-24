@@ -6,20 +6,11 @@ export default class Restaurant extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			/* rating: 0 */
 			rating: Number(this.props.restaurant.rating)
 		};
-		/* this.onStarClick = this.onStarClick.bind(this); */
 	}
 
-	/* componentDidMount() {
-		let averageRate = this.props.restaurant.averageRating;
-		this.setState({ rating: averageRate });
-	} */
-
 	handleClick(restaurant) {
-		/* 		console.log(restaurant); */
-		/* this.props.handleClick(this.props.restaurant); */
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
@@ -33,21 +24,6 @@ export default class Restaurant extends Component {
 		} else {
 			this.props.handleClick(this.props.restaurant);
 		}
-
-		/* var request = {
-			placeId: restaurant.place_id,
-			fields: ["name", "rating", "formatted_phone_number", "reviews"]
-		};
-
-		const callback = (place, status) => {
-			if (status == window.google.maps.places.PlacesServiceStatus.OK) {
-				restaurant.reviews = place.reviews;
-				this.props.handleClick(this.props.restaurant);
-			}
-		};
-		const divElmt = document.createElement("div");
-		const service = new window.google.maps.places.PlacesService(divElmt);
-		service.getDetails(request, callback); */
 	}
 
 	handleDetailsRequest(restaurant) {
@@ -94,7 +70,6 @@ export default class Restaurant extends Component {
 	}
 
 	handleMouseOver(restaurant) {
-		/* this.props.handleClick(this.props.restaurant); */
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker hvr-grow";

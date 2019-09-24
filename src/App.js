@@ -18,85 +18,9 @@ class App extends Component {
 				address: null,
 				postalCode: null
 			}
-			/* newRestaurantPosition: null */
 		};
 	}
 
-	/* 	async componentDidMount() {
-		let result = await fetch("/restaurants.json");
-		let restaurantsResult = await result.json();
-		let restaurants = [];
-		for (let restaurant of restaurantsResult) {
-			let restaurantItem = new RestaurantItem(restaurant);
-			restaurants.push(restaurantItem);
-		}
-		this.setState({ restaurants });
-	} */
-
-	/* getNearbyRestaurants(maps, location) {
-		return new Promise((resolve, reject) => {
-			const divElmt = document.createElement("div");
-			const service = new maps.places.PlacesService(divElmt);
-			const request = {
-				location: new maps.LatLng(location.lat, location.lng),
-				radius: "1500",
-				type: ["restaurant"]
-			};
-
-			service.nearbySearch(request, (results, status) => {
-				let restaurants = [];
-				if (status == window.google.maps.places.PlacesServiceStatus.OK) {
-					for (let result of results) {
-						let restaurant = new RestaurantItem({
-							restaurantName: result.name,
-							description: result.types[0],
-							address: result.vicinity,
-							lat: result.geometry.location.lat(),
-							long: result.geometry.location.lng(),
-							rating: result.rating,
-							place_id: result.place_id
-						});
-						restaurants.push(restaurant);
-					}
-					resolve(restaurants);
-				} else {
-					reject(status);
-				}
-			});
-		});
-	}
-
-	apiLoadedCallback = async (map, maps, location) => {
-		let results = await this.getNearbyRestaurants(maps, location);
-		this.setState({ restaurants: results });
-		this.handleSearchBox(map);
-	};
-
-	handleSearchBox(map) {
-		let input = document.getElementById("search");
-		let searchBox = new window.google.maps.places.SearchBox(input);
-		map.addListener("bounds_changed", () => {
-			searchBox.setBounds(map.getBounds());
-		});
-		searchBox.addListener("places_changed", () => {
-			var places = searchBox.getPlaces();
-			let restaurants = [];
-			for (let result of places) {
-				let restaurant = new RestaurantItem({
-					restaurantName: result.name,
-					description: result.types[0],
-					address: result.formatted_address,
-					lat: result.geometry.location.lat(),
-					long: result.geometry.location.lng(),
-					rating: result.rating,
-					place_id: result.place_id
-				});
-				restaurants.push(restaurant);
-			}
-			this.setState({ restaurants });
-		});
-	}
- */
 	handleSubmitForm = newRestaurant => {
 		this.setState(prevState => {
 			return {
@@ -119,16 +43,9 @@ class App extends Component {
 			text: newComment.comment
 		});
 		restaurant.reviews = updatedComment;
-		/* restaurant.rating = rating; */
 		restaurant.user_ratings_total++;
 		this.setState({ restaurant });
 	};
-	/* handleSubmitFormComment = (restaurant, newComment) => {
-		let updatedComment = restaurant.rating.concat(newComment);
-		restaurant.rating = updatedComment;
-		restaurant.averageRating = restaurant.calculaverageRating();
-		this.setState({ restaurant });
-	}; */
 
 	getLatLng = (lat, lng, formatted_address) => {
 		let LatLngOnClick = {
@@ -163,8 +80,6 @@ class App extends Component {
 	};
 
 	render() {
-		/* console.log(this.state);
-		console.log(window); */
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">

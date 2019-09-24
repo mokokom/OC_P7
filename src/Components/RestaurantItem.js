@@ -9,10 +9,9 @@ export default class RestaurantItem {
 		this.lat = restaurant.lat;
 		this.long = restaurant.long;
 		this.rating = Math.floor(restaurant.rating);
-		/* this.authorsRatings = []; */
 		this.averageRating = Math.floor(restaurant.rating);
 		this.place_id = restaurant.place_id;
-		/* this.averageRating = this.calculaverageRating(); */
+		/* this.authorsRatings = []; */
 		/* this.averageRating = this.getAverageRating(); */
 	}
 
@@ -28,15 +27,4 @@ export default class RestaurantItem {
 		);
 		/* rating(average) * user_ratings_total + new note  / user_ratings_total + 1 */
 	}
-
-	/* 	calculaverageRating() {
-		let ratingStars = 0;
-		if (this.rating.length >= 1) {
-			for (let rating of this.rating) {
-				ratingStars += rating.stars;
-			}
-			let averageRating = Math.floor(ratingStars / this.rating.length);
-			return averageRating;
-		}
-	} */
 }

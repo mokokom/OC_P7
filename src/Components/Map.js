@@ -120,10 +120,6 @@ export default class Map extends Component {
 		});
 	};
 
-	/* apiLoaded(map, maps) {
-		this.props.apiLoadedCallback(map, maps, this.state.location);
-	} */
-
 	createMapOptions() {
 		return {
 			styles: [
@@ -423,7 +419,6 @@ export default class Map extends Component {
 					yesIWantToUseGoogleMapApiInternals
 					onGoogleApiLoaded={({ map, maps }) => {
 						this.apiLoaded(map, maps, this.state.location);
-						/* this.apiLoaded(map, maps); */
 						this.handleSearchBox(map);
 					}}
 					options={this.createMapOptions}

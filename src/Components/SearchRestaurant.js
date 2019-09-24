@@ -33,12 +33,11 @@ export default class RestaurantSearch extends Component {
 						role="button"
 						aria-expanded="false"
 						aria-controls="collapseForm"
-						/* onClick={this.handleSearchBox} */
 					></i>
 				</p>
 
 				<div className="row mb-2 collapse" id="collapseSearch">
-					<div className="col" /* onClick={this.handleClick} */>
+					<div className="col">
 						<input
 							type="text"
 							className="form-control"

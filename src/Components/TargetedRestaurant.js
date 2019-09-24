@@ -6,7 +6,6 @@ export default class TargetedRestaurant extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			/* rating: 0, */
 			rating: this.props.restaurant.averageRating,
 			newRating: 0,
 			isClicked: false
@@ -64,7 +63,6 @@ export default class TargetedRestaurant extends Component {
 
 	render() {
 		const { rating } = this.state;
-		/* let restaurantPhotos = this.props.restaurant.photos; */
 		return (
 			<div className="card ">
 				<div className="img-container">
