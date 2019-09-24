@@ -74,6 +74,10 @@ export default class Map extends Component {
 		});
 		searchBox.addListener("places_changed", () => {
 			var places = searchBox.getPlaces();
+			if (places.length == 0) {
+				return;
+			}
+			console.log(places);
 			let restaurants = [];
 			for (let result of places) {
 				let restaurant = new RestaurantItem({
