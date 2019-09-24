@@ -159,7 +159,7 @@ class App extends Component {
 		});
 	};
 
-	searchBoxSetState = restaurants => {
+	apiLoadedCallback = restaurants => {
 		this.setState({ restaurants });
 	};
 
@@ -184,7 +184,7 @@ class App extends Component {
 						handleClick={this.handleClick}
 						getLatLng={this.getLatLng}
 						apiLoadedCallback={this.apiLoadedCallback}
-						searchBoxSetState={this.searchBoxSetState}
+						apiLoadedCallback={this.apiLoadedCallback}
 					/>
 				</div>
 			</div>

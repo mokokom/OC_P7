@@ -81,7 +81,7 @@ export default class Map extends Component {
 					});
 					restaurants.push(restaurant);
 				}
-				this.props.searchBoxSetState(results);
+				this.props.apiLoadedCallback(restaurants);
 			} else {
 				console.log("error");
 			}
@@ -95,7 +95,7 @@ export default class Map extends Component {
 		});
 		let results = await this.getNearbyRestaurants(maps, location);
 		/* this.setState({ restaurants: results }); */
-		this.props.searchBoxSetState(results);
+		this.props.apiLoadedCallback(results);
 		/* this.handleSearchBox(map); */
 	};
 
@@ -120,7 +120,7 @@ export default class Map extends Component {
 				});
 				restaurants.push(restaurant);
 			}
-			this.props.searchBoxSetState(restaurants);
+			this.props.apiLoadedCallback(restaurants);
 		});
 	}
 
