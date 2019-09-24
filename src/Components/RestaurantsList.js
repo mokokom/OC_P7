@@ -32,9 +32,9 @@ export default class RestaurantsList extends Component {
 					<div className="card text-white bg-primary mb-3">
 						<div className="card-header">
 							<div className="hero-container">
-								<h1 className="logo d-flex justify-content-center">
-									<i className="fas fa-utensils"></i>
-								</h1>
+								<h1 className="logo d-flex justify-content-center">iEat</h1>
+								{/* <i className="fas fa-utensils"></i> */}
+
 								<RestaurantForm
 									handleSubmitForm={this.props.handleSubmitForm}
 									newRestaurantPosition={this.props.newRestaurantPosition}

@@ -44,54 +44,23 @@ export default class Map extends Component {
 						});
 						restaurants.push(restaurant);
 					}
-					resolve(restaurants);
+					location == this.state.location
+						? resolve(restaurants)
+						: this.props.apiLoadedCallback(restaurants);
 				} else {
-					reject(status);
+					reject(`Error status ${status}`);
 				}
 			});
 		});
 	}
 
-	getNearbyRestaurantsOnDrag(maps, map) {
-		let getCenter = map.getCenter();
-		let lat = getCenter.lat();
-		let lng = getCenter.lng();
-		let location = { lat, lng };
-		const divElmt = document.createElement("div");
-		const service = new maps.places.PlacesService(divElmt);
-		const request = {
-			location: new maps.LatLng(location.lat, location.lng),
-			radius: "1500",
-			type: ["restaurant"]
-		};
-
-		service.nearbySearch(request, (results, status) => {
-			let restaurants = [];
-			if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-				for (let result of results) {
-					let restaurant = new RestaurantItem({
-						restaurantName: result.name,
-						description: result.types[0],
-						address: result.vicinity,
-						lat: result.geometry.location.lat(),
-						long: result.geometry.location.lng(),
-						rating: result.rating,
-						place_id: result.place_id
-					});
-					restaurants.push(restaurant);
-				}
-				this.props.apiLoadedCallback(restaurants);
-			} else {
-				console.error(
-					`The app looks for restaurant around 1500 radius from the center of your screen. Zoom on a city, a place where people live, to have a chance to catch some restaurants!! Error status: ${status}`
-				);
-			}
-		});
-	}
-
 	apiLoaded = async (map, maps, location) => {
 		map.addListener("dragend", () => {
-			this.getNearbyRestaurantsOnDrag(maps, map);
+			let getCenter = map.getCenter();
+			let lat = getCenter.lat();
+			let lng = getCenter.lng();
+			let location = { lat, lng };
+			this.getNearbyRestaurants(maps, location);
 		});
 		let results = await this.getNearbyRestaurants(maps, location);
 		this.props.apiLoadedCallback(results);
