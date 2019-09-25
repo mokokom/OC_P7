@@ -3,14 +3,22 @@ let latestId = 0;
 export default class RestaurantItem {
 	constructor(restaurant) {
 		this.id = `restaurant_${RestaurantItem.incrementId()}`;
+		this.place_id = restaurant.place_id;
 		this.name = restaurant.restaurantName;
 		this.description = restaurant.description;
 		this.address = restaurant.address;
 		this.lat = restaurant.lat;
 		this.long = restaurant.long;
-		this.rating = Math.floor(restaurant.rating);
-		this.averageRating = Math.floor(restaurant.rating);
-		this.place_id = restaurant.place_id;
+		this.averageRating = Math.floor(restaurant.averageRating);
+		this.user_ratings_total = restaurant.user_ratings_total;
+		this.reviews = [
+			{
+				author_name: null,
+				text: null,
+				rating: null
+			}
+		];
+		/* this.rating = Math.floor(restaurant.averageRating); */
 		/* this.authorsRatings = []; */
 		/* this.averageRating = this.getAverageRating(); */
 	}

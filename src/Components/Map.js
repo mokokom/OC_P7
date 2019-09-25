@@ -32,15 +32,27 @@ export default class Map extends Component {
 			service.nearbySearch(request, (results, status) => {
 				let restaurants = [];
 				if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+					console.log(results);
 					for (let result of results) {
 						let restaurant = new RestaurantItem({
+							place_id: result.place_id,
 							restaurantName: result.name,
 							description: result.types[0],
 							address: result.vicinity,
 							lat: result.geometry.location.lat(),
 							long: result.geometry.location.lng(),
-							rating: result.rating,
-							place_id: result.place_id
+							/* averageRatingFromRequest: result.rating,
+							averageRatingFromLocal: Number, */
+							averageRating: result.rating,
+							user_ratings_total: result.user_ratings_total
+							/* reviews: [
+								{
+									author_name: null,
+									text: null,
+									rating: null
+								}
+							] */
+							/* rating: result.rating */
 						});
 						restaurants.push(restaurant);
 					}

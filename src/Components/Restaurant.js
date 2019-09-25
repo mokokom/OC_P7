@@ -6,7 +6,7 @@ export default class Restaurant extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating: Number(this.props.restaurant.rating)
+			rating: Number(this.props.restaurant.averageRating)
 		};
 	}
 

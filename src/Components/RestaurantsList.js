@@ -96,8 +96,8 @@ export default class RestaurantsList extends Component {
 					{this.props.restaurants
 						.filter(
 							restaurant =>
-								restaurant.rating >= this.state.minRating &&
-								restaurant.rating <= this.state.maxRating
+								restaurant.averageRating >= this.state.minRating &&
+								restaurant.averageRating <= this.state.maxRating
 						)
 						.map(restaurant => (
 							<Restaurant

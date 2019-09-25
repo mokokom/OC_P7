@@ -5,18 +5,18 @@
 		"address": "44 Rue de Torcy, 75018 Paris",
 		"lat": 48.891382,
 		"long": 2.361409,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 3,
-				"comment": "Mon ancienne \"cantine\"...à l'époque où j'habitais le quartier. C'est bruyant, désordonné et le service laisse à désirer. Pas le genre d'endroit où on va pour un dîner romantique. Ceci étant dit les saveurs sont là et les prix très attractifs ! Et c'est bon!"
+				"rating": 3,
+				"text": "Mon ancienne \"cantine\"...à l'époque où j'habitais le quartier. C'est bruyant, désordonné et le service laisse à désirer. Pas le genre d'endroit où on va pour un dîner romantique. Ceci étant dit les saveurs sont là et les prix très attractifs ! Et c'est bon!"
 			},
 			{
-				"stars": 4,
-				"comment": "\"Cantine\" asiatique. On y mange très bien, la preuve ce restaurant est toujours plein à craquer. Grand choix de mets, quantités généreuses... Service moyen mais on n'y va pas pour ça..."
+				"rating": 4,
+				"text": "\"Cantine\" asiatique. On y mange très bien, la preuve ce restaurant est toujours plein à craquer. Grand choix de mets, quantités généreuses... Service moyen mais on n'y va pas pour ça..."
 			},
 			{
-				"stars": 3,
-				"comment": "Tres bon restaurant.  Mais l accueil c est pas trop ça. C est vraiment dommage."
+				"rating": 3,
+				"text": "Tres bon restaurant.  Mais l accueil c est pas trop ça. C est vraiment dommage."
 			}
 		]
 	},
@@ -26,14 +26,14 @@
 		"address": "Halle Pajol, 12 Esplanade Nathalie Sarraute, 75018 Paris",
 		"lat": 48.888486,
 		"long": 2.362963,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 4,
-				"comment": "Les bagels sont bons, frais et ils ne sont pas du tout radin sur la quantité!"
+				"rating": 4,
+				"text": "Les bagels sont bons, frais et ils ne sont pas du tout radin sur la quantité!"
 			},
 			{
-				"stars": 4,
-				"comment": "Envie de vous croire à NYC l'espace d'un petit-déjeuner ou d'un lunch ? Bob's Bake Shop est l'endroit qu'il te faut "
+				"rating": 4,
+				"text": "Envie de vous croire à NYC l'espace d'un petit-déjeuner ou d'un lunch ? Bob's Bake Shop est l'endroit qu'il te faut "
 			}
 		]
 	},
@@ -43,14 +43,14 @@
 		"address": "50 bis rue Marx Dormoy, 75018 Paris",
 		"lat": 48.886771,
 		"long": 2.359616,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 4,
-				"comment": "Les plats sont simple mais super copieux et très bien fait!"
+				"rating": 4,
+				"text": "Les plats sont simple mais super copieux et très bien fait!"
 			},
 			{
-				"stars": 3,
-				"comment": " Great local food that requires you to walk in with no bourgeoisie expectations. Get the fois gras and fries. "
+				"rating": 3,
+				"text": " Great local food that requires you to walk in with no bourgeoisie expectations. Get the fois gras and fries. "
 			}
 		]
 	},
@@ -60,14 +60,14 @@
 		"address": "24 rue Cail, 75010 Paris",
 		"lat": 48.882882,
 		"long": 2.359654,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 5,
-				"comment": "Authentic, inexpensive, though toned-down in spice. 100% vegetarian, if that matters for you. Best for a weekday lunch"
+				"rating": 5,
+				"text": "Authentic, inexpensive, though toned-down in spice. 100% vegetarian, if that matters for you. Best for a weekday lunch"
 			},
 			{
-				"stars": 5,
-				"comment": "Excellent!!"
+				"rating": 5,
+				"text": "Excellent!!"
 			}
 		]
 	},
@@ -77,18 +77,18 @@
 		"address": "18-24 Rue d'Aubervilliers, 75018 Paris",
 		"lat": 48.885413,
 		"long": 2.365578,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 1,
-				"comment": "Sans commentaire..."
+				"rating": 1,
+				"text": "Sans commentaire..."
 			},
 			{
-				"stars": 3,
-				"comment": "Il manque certaines formules"
+				"rating": 3,
+				"text": "Il manque certaines formules"
 			},
 			{
-				"stars": 2,
-				"comment": "Le service est trop lent, le poulet est extrêmement épicé, attention!"
+				"rating": 2,
+				"text": "Le service est trop lent, le poulet est extrêmement épicé, attention!"
 			}
 		]
 	},
@@ -98,18 +98,18 @@
 		"address": "2 Rue l'Olive, 75018 Paris",
 		"lat": 48.890145,
 		"long": 2.361379,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 4,
-				"comment": "Au top. Très bon rapport qualité prix pour les vins en vrac. Bon accueil et bons produits"
+				"rating": 4,
+				"text": "Au top. Très bon rapport qualité prix pour les vins en vrac. Bon accueil et bons produits"
 			},
 			{
-				"stars": 4,
-				"comment": "Espace sympa pour le quartier , bon petits plats et grignotage , bon vin et jus de fruits bio , personnel aimable"
+				"rating": 4,
+				"text": "Espace sympa pour le quartier , bon petits plats et grignotage , bon vin et jus de fruits bio , personnel aimable"
 			},
 			{
-				"stars": 5,
-				"comment": "C simple,  bon, et le we c fruits de mer en plus de la carte et des plats du jour. Vins top. Terrasse sur rue piétonne. Et service adorable. Bref, un incontournable du quartier."
+				"rating": 5,
+				"text": "C simple,  bon, et le we c fruits de mer en plus de la carte et des plats du jour. Vins top. Terrasse sur rue piétonne. Et service adorable. Bref, un incontournable du quartier."
 			}
 		]
 	},
@@ -119,18 +119,18 @@
 		"address": "6-14 Rue des Récollets, 75010 Paris",
 		"lat": 48.874329,
 		"long": 2.361934,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 5,
-				"comment": "Plats goûteux (tant la viande que le poisson), de même pour les desserts. Pas bruyant, ce qui est très rare à trouver à Paris. Service impeccable avec le sourire."
+				"rating": 5,
+				"text": "Plats goûteux (tant la viande que le poisson), de même pour les desserts. Pas bruyant, ce qui est très rare à trouver à Paris. Service impeccable avec le sourire."
 			},
 			{
-				"stars": 5,
-				"comment": "Mon endroit préféré du quartier ! Service en or et cuisine idéale ! Les plats du jour pourraient être de la carte tellement ils sont bons et bien servis ! Je recommande plus que chaudement."
+				"rating": 5,
+				"text": "Mon endroit préféré du quartier ! Service en or et cuisine idéale ! Les plats du jour pourraient être de la carte tellement ils sont bons et bien servis ! Je recommande plus que chaudement."
 			},
 			{
-				"stars": 5,
-				"comment": "Super accueil, personnel aimant ce qu'il fait et cela se ressent dès l'entrée. Lieu convivial et plats succulents. À très bientôt et continuez comme cela."
+				"rating": 5,
+				"text": "Super accueil, personnel aimant ce qu'il fait et cela se ressent dès l'entrée. Lieu convivial et plats succulents. À très bientôt et continuez comme cela."
 			}
 		]
 	},
@@ -140,18 +140,18 @@
 		"address": "35-25 Rue Bouchardon, 75010 Paris",
 		"lat": 48.871125,
 		"long": 2.357991,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 5,
-				"comment": "Cuisine raffinée et élégante. Très bonne ambiance dans un quartier branché et jeune. On y mange bien et pour un prix raisonnable. Je recommande, très bon début pour ce nouveau restaurant ! 🍴"
+				"rating": 5,
+				"text": "Cuisine raffinée et élégante. Très bonne ambiance dans un quartier branché et jeune. On y mange bien et pour un prix raisonnable. Je recommande, très bon début pour ce nouveau restaurant ! 🍴"
 			},
 			{
-				"stars": 5,
-				"comment": "Juste délicieux ! Des produits de qualité. Une cuisine raffinée pour un prix abordable. Du vin nature très bien conseillé. Un endroit chaleureux et agréable. Merci."
+				"rating": 5,
+				"text": "Juste délicieux ! Des produits de qualité. Une cuisine raffinée pour un prix abordable. Du vin nature très bien conseillé. Un endroit chaleureux et agréable. Merci."
 			},
 			{
-				"stars": 5,
-				"comment": "Tout simplement merveilleux !! Des bons petits plats, une très bonne qualité pour des prix plus que raisonnables ! Nous avons put y découvrir du vin nature délicieux. Une ambiance chaleureuse, des serveurs très agréables. Je reviendrai"
+				"rating": 5,
+				"text": "Tout simplement merveilleux !! Des bons petits plats, une très bonne qualité pour des prix plus que raisonnables ! Nous avons put y découvrir du vin nature délicieux. Une ambiance chaleureuse, des serveurs très agréables. Je reviendrai"
 			}
 		]
 	},
@@ -161,18 +161,18 @@
 		"address": "56-62 Rue des Dames, 75017 Paris",
 		"lat": 48.883518,
 		"long": 2.32059,
-		"ratings": [
+		"reviews": [
 			{
-				"stars": 4,
-				"comment": "C'est un bon restaurant italien avec de bons produits et un très beau cadre mais je trouve que l'attente pour y avoir une place n'est pas justifiée."
+				"rating": 4,
+				"text": "C'est un bon restaurant italien avec de bons produits et un très beau cadre mais je trouve que l'attente pour y avoir une place n'est pas justifiée."
 			},
 			{
-				"stars": 4,
-				"comment": "Toujours de très bon produits, simples, et les plats sont généreux. Le service vraiment attentionné."
+				"rating": 4,
+				"text": "Toujours de très bon produits, simples, et les plats sont généreux. Le service vraiment attentionné."
 			},
 			{
-				"stars": 4,
-				"comment": "Vraiment c'est bon. Un peu plus de sauce tomate dans les pizzas et on atteindrait le grall. Merci pour le service,  belle équipe."
+				"rating": 4,
+				"text": "Vraiment c'est bon. Un peu plus de sauce tomate dans les pizzas et on atteindrait le grall. Merci pour le service,  belle équipe."
 			}
 		]
 	}
