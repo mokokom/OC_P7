@@ -18,6 +18,7 @@ export default class RestaurantItem {
 				rating: null
 			}
 		];
+		this.newAverageRating = Number;
 		/* this.rating = Math.floor(restaurant.averageRating); */
 		/* this.authorsRatings = []; */
 		/* this.averageRating = this.getAverageRating(); */
@@ -28,11 +29,21 @@ export default class RestaurantItem {
 		return latestId;
 	}
 
-	getAverageRating() {
+	getAverageRating = () => {
+		let lastReview = this.reviews.length - 1;
+		let firstReview = this.reviews.length[0];
+		console.log(firstReview, lastReview);
+		let result =
+			(this.averageRating * this.user_ratings_total + lastReview.rating) /
+			(this.user_ratings_total + 1);
+		return result;
+	};
+
+	/* getAverageRating() {
 		return (
 			(this.rating * this.user_ratings_total + this.authorsRatings[0]) /
 			(this.user_ratings_total + 1)
 		);
-		/* rating(average) * user_ratings_total + new note  / user_ratings_total + 1 */
-	}
+		rating(average) * user_ratings_total + new note  / user_ratings_total + 1
+	} */
 }

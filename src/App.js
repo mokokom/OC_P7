@@ -44,6 +44,7 @@ class App extends Component {
 		});
 		restaurant.reviews = updatedComment;
 		restaurant.user_ratings_total++;
+		restaurant.newAverageRating = restaurant.getAverageRating();
 		this.setState({ restaurant });
 	};
 
