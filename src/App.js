@@ -80,6 +80,7 @@ class App extends Component {
 	};
 
 	render() {
+		console.log(window);
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">

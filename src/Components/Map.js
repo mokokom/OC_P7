@@ -19,14 +19,14 @@ export default class Map extends Component {
 	componentDidMount() {
 		this.getLocation();
 	}
-	getNearbyRestaurants(maps, location) {
+	getNearbyRestaurants(maps, location, searchBoxVal) {
 		return new Promise((resolve, reject) => {
 			const divElmt = document.createElement("div");
 			const service = new maps.places.PlacesService(divElmt);
 			const request = {
 				location: new maps.LatLng(location.lat, location.lng),
 				radius: "1500",
-				type: ["restaurant"]
+				type: searchBoxVal ? searchBoxVal : ["restaurant"]
 			};
 
 			service.nearbySearch(request, (results, status) => {
@@ -56,18 +56,14 @@ export default class Map extends Component {
 
 	apiLoaded = async (map, maps, location) => {
 		map.addListener("idle", () => {
-			let getCenter = map.getCenter();
-			let lat = getCenter.lat();
-			let lng = getCenter.lng();
-			let location = { lat, lng };
-			this.getNearbyRestaurants(maps, location);
+			let newLocation = this.getMapCenter(map);
+			this.getNearbyRestaurants(maps, newLocation);
 		});
 		let results = await this.getNearbyRestaurants(maps, location);
 		this.props.apiLoadedCallback(results);
 	};
 
-	handleSearchBox(map) {
-		console.log("in handlesearchbox");
+	handleSearchBox(map, maps) {
 		let input = document.getElementById("search");
 		let searchBox = new window.google.maps.places.SearchBox(input);
 		map.addListener("bounds_changed", () => {
@@ -75,7 +71,6 @@ export default class Map extends Component {
 		});
 		searchBox.addListener("places_changed", () => {
 			var places = searchBox.getPlaces();
-			console.log("in searchbox add listener");
 			if (places.length == 0) {
 				return;
 			}
@@ -93,6 +88,12 @@ export default class Map extends Component {
 				restaurants.push(restaurant);
 			}
 			this.props.apiLoadedCallback(restaurants);
+		});
+		let searchBtn = document.getElementById("search-btn");
+		searchBtn.addEventListener("click", () => {
+			let searchBoxVal = input.value;
+			let newLocation = this.getMapCenter(map);
+			this.getNearbyRestaurants(maps, newLocation, searchBoxVal);
 		});
 	}
 
@@ -124,6 +125,14 @@ export default class Map extends Component {
 			}
 		});
 	};
+
+	getMapCenter(map) {
+		let getCenter = map.getCenter();
+		let lat = getCenter.lat();
+		let lng = getCenter.lng();
+		let newLocation = { lat, lng };
+		return newLocation;
+	}
 
 	createMapOptions() {
 		return {
@@ -424,7 +433,7 @@ export default class Map extends Component {
 					yesIWantToUseGoogleMapApiInternals
 					onGoogleApiLoaded={({ map, maps }) => {
 						this.apiLoaded(map, maps, this.state.location);
-						this.handleSearchBox(map);
+						this.handleSearchBox(map, maps);
 					}}
 					options={this.createMapOptions}
 				>
