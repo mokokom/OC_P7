@@ -20,9 +20,9 @@ export default class RestaurantItem {
 		return latestId;
 	}
 
-	getAverageRating(newRating) {
+	getAverageRating() {
 		return (
-			(this.rating * this.user_ratings_total + newRating) /
+			(this.rating * this.user_ratings_total + this.authorsRatings[0]) /
 			(this.user_ratings_total + 1)
 		);
 		/* rating(average) * user_ratings_total + new note  / user_ratings_total + 1 */

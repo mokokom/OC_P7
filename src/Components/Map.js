@@ -55,7 +55,7 @@ export default class Map extends Component {
 	}
 
 	apiLoaded = async (map, maps, location) => {
-		map.addListener("dragend", () => {
+		map.addListener("idle", () => {
 			let getCenter = map.getCenter();
 			let lat = getCenter.lat();
 			let lng = getCenter.lng();
@@ -67,6 +67,7 @@ export default class Map extends Component {
 	};
 
 	handleSearchBox(map) {
+		console.log("in handlesearchbox");
 		let input = document.getElementById("search");
 		let searchBox = new window.google.maps.places.SearchBox(input);
 		map.addListener("bounds_changed", () => {
@@ -74,6 +75,7 @@ export default class Map extends Component {
 		});
 		searchBox.addListener("places_changed", () => {
 			var places = searchBox.getPlaces();
+			console.log("in searchbox add listener");
 			if (places.length == 0) {
 				return;
 			}

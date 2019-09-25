@@ -28,7 +28,7 @@ export default class RestaurantsList extends Component {
 		const { minRating, maxRating } = this.state;
 		return (
 			<div className="restaurants-list-container col-12 col-lg-4 p-2 order-2 order-lg-1">
-				{this.props.restaurantsListView && (
+				<div className={this.props.restaurantsListView ? "" : "hidden"}>
 					<div className="card text-white bg-primary mb-3">
 						<div className="card-header">
 							<div className="hero-container">
@@ -92,9 +92,8 @@ export default class RestaurantsList extends Component {
 							/>
 						</div>
 					</div>
-				)}
-				{this.props.restaurantsListView ? (
-					this.props.restaurants
+
+					{this.props.restaurants
 						.filter(
 							restaurant =>
 								restaurant.rating >= this.state.minRating &&
@@ -106,7 +105,10 @@ export default class RestaurantsList extends Component {
 								restaurant={restaurant}
 								handleClick={this.props.handleClick}
 							/>
-						))
+						))}
+				</div>
+				{this.props.restaurantListView ? (
+					""
 				) : (
 					<TargetedRestaurant
 						key={this.props.restaurant.name}
@@ -118,6 +120,7 @@ export default class RestaurantsList extends Component {
 						handleSubmitForm={this.props.handleSubmitForm}
 					/>
 				)}
+				}
 			</div>
 		);
 	}

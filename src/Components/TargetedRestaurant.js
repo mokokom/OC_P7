@@ -303,9 +303,9 @@ export default class TargetedRestaurant extends Component {
 									</small>
 									<hr />
 									{this.props.restaurant.reviews &&
-										this.props.restaurant.reviews.map(review => {
+										this.props.restaurant.reviews.map((review, index) => {
 											return (
-												<div className="group-review">
+												<div className="group-review" key={index}>
 													<p>
 														{review.profile_photo_url && (
 															<img
@@ -363,9 +363,11 @@ export default class TargetedRestaurant extends Component {
 										<div className="card-body">
 											{this.props.restaurant.weekday_text ? (
 												<ul>
-													{this.props.restaurant.weekday_text.map(day => (
-														<li>{day}</li>
-													))}
+													{this.props.restaurant.weekday_text.map(
+														(day, index) => (
+															<li key={index}>{day}</li>
+														)
+													)}
 												</ul>
 											) : (
 												<p>No opening hours information</p>
