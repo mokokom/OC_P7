@@ -107,9 +107,8 @@ export default class RestaurantsList extends Component {
 							/>
 						))}
 				</div>
-				{this.props.restaurantListView ? (
-					""
-				) : (
+
+				<div className={this.props.restaurantsListView ? "hidden" : ""}>
 					<TargetedRestaurant
 						key={this.props.restaurant.name}
 						restaurant={this.props.restaurant}
@@ -119,8 +118,7 @@ export default class RestaurantsList extends Component {
 						handleSubmitFormComment={this.props.handleSubmitFormComment}
 						handleSubmitForm={this.props.handleSubmitForm}
 					/>
-				)}
-				}
+				</div>
 			</div>
 		);
 	}
