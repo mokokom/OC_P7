@@ -30,13 +30,20 @@ export default class RestaurantItem {
 	}
 
 	getAverageRating = () => {
-		let lastReview = this.reviews.length - 1;
-		let firstReview = this.reviews.length[0];
+		let lastReview = this.reviews[this.reviews.length - 1];
+		let firstReview = this.reviews[0];
 		console.log(firstReview, lastReview);
-		let result =
+
+		let result = this.reviews.map(review => {
+			let total;
+			total += review.rating;
+			return total;
+		});
+		return result;
+		/* let result =
 			(this.averageRating * this.user_ratings_total + lastReview.rating) /
 			(this.user_ratings_total + 1);
-		return result;
+		return result; */
 	};
 
 	/* getAverageRating() {

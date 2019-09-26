@@ -92,9 +92,9 @@ export default class Restaurant extends Component {
 				className="card restaurant-card container-fluid mb-3 p-2 hvr-shrink "
 				onClick={() => this.handleClick(this.props.restaurant)}
 				onMouseOver={() => this.handleMouseOver(this.props.restaurant.id)}
-				onMouseLeave={() => {
+				/* onMouseLeave={() => {
 					this.handleMouseLeave();
-				}}
+				}} */
 			>
 				<div className="row">
 					<div className="col-lg-6 col-12 text-center text-lg-right">

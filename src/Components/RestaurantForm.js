@@ -27,7 +27,7 @@ export default class RestaurantForm extends Component {
 			{
 				author_name: e.target.elements.author.value,
 				text: e.target.elements.comments.value,
-				rating: e.target.elements.rating.value
+				rating: Number(e.target.elements.rating.value)
 			}
 		];
 		addNewRestaurant.user_ratings_total = addNewRestaurant.reviews.length;

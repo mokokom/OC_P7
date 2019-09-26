@@ -17,17 +17,8 @@ export default class TargetedRestaurant extends Component {
 		this.setState({ rating: averageRate });
 	} */
 
-	handleClick = restaurant => {
+	handleClick = () => {
 		this.props.closeRestaurantTargetView();
-		let targetedMarker = document.querySelector(".targeted-marker");
-		if (targetedMarker) {
-			targetedMarker.className = "marker hvr-grow";
-		}
-		let selectedRestaurant = document.getElementById(restaurant);
-		if (selectedRestaurant === null) {
-			return;
-		}
-		selectedRestaurant.classList.add("targeted-marker");
 	};
 
 	onStarClick = (nextValue, prevValue, name) => {
