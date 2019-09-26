@@ -20,7 +20,7 @@ export default class RestaurantForm extends Component {
 			address: `${e.target.elements.address.value}, ${e.target.elements.postalCode.value}`,
 			lat: Number(e.target.elements.latitude.value),
 			long: Number(e.target.elements.longitude.value),
-			rating: Number(e.target.elements.rating.value)
+			averageRating: Number(e.target.elements.rating.value)
 		};
 		let addNewRestaurant = new RestaurantItem(newRestaurant);
 		addNewRestaurant.reviews = [
