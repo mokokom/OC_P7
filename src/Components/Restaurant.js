@@ -3,13 +3,6 @@ import StarRatingComponent from "react-star-rating-component";
 import "./Restaurant.css";
 
 export default class Restaurant extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			rating: Number(this.props.restaurant.averageRating)
-		};
-	}
-
 	handleClick(restaurant) {
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
@@ -86,7 +79,6 @@ export default class Restaurant extends Component {
 	}
 
 	render() {
-		const { rating } = this.state;
 		return (
 			<div
 				className="card restaurant-card container-fluid mb-3 p-2 hvr-shrink "
@@ -100,7 +92,11 @@ export default class Restaurant extends Component {
 					<div className="col-lg-6 col-12 text-center text-lg-right">
 						<h3 className="restaurant-name">{this.props.restaurant.name}</h3>
 						<div className="no-pointer">
-							<StarRatingComponent name="rate1" starCount={5} value={rating} />
+							<StarRatingComponent
+								name="rate1"
+								starCount={5}
+								value={Number(this.props.restaurant.newAverageRating)}
+							/>
 						</div>
 						<p className="card-text">{this.props.restaurant.description}</p>
 						<p className="card-text">{this.props.restaurant.address}</p>

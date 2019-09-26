@@ -6,16 +6,14 @@ export default class TargetedRestaurant extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating: this.props.restaurant.averageRating,
+			rating:
+				this.props.restaurant.newAverageRating === 0
+					? this.props.restaurant.averageRating
+					: this.props.restaurant.newAverageRating,
 			newRating: 0,
 			isClicked: false
 		};
 	}
-
-	/* componentDidMount() {
-		let averageRate = this.props.restaurant.averageRating;
-		this.setState({ rating: averageRate });
-	} */
 
 	handleClick = () => {
 		this.props.closeRestaurantTargetView();
@@ -39,7 +37,7 @@ export default class TargetedRestaurant extends Component {
 			newComment,
 			newStars
 		);
-		this.setState({ rating: this.props.restaurant.averageRating });
+		this.setState({ rating: this.props.restaurant.newAverageRating });
 		let getForm = document.getElementsByName("add-comment-form");
 		getForm[0].reset();
 	};
@@ -53,6 +51,7 @@ export default class TargetedRestaurant extends Component {
 	}
 
 	render() {
+		console.log(this.props.restaurant);
 		const { rating } = this.state;
 		return (
 			<div className="card ">

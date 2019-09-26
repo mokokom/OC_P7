@@ -10,9 +10,6 @@ class App extends Component {
 			restaurants: [],
 			restaurant: {},
 			restaurantsListView: true,
-			Form: false,
-			rating: 0,
-			newRating: 0,
 			newRestaurantPosition: {
 				LatLngOnClick: null,
 				address: null,
@@ -62,12 +59,12 @@ class App extends Component {
 	};
 
 	closeRestaurantTargetView = () => {
-		this.setState({ restaurantsListView: true });
 		let targetedMarker = document.querySelector(".targeted-marker");
 		if (targetedMarker) {
 			targetedMarker.className = "marker";
 		}
 		this.setState({
+			restaurantsListView: true,
 			newRestaurantPosition: {
 				LatLngOnClick: null,
 				address: null,
@@ -81,8 +78,8 @@ class App extends Component {
 	};
 
 	render() {
-		console.log(this.state.restaurants);
-		console.log(this.state.restaurant);
+		/* 		console.log(this.state.restaurants);
+		console.log(this.state.restaurant); */
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">

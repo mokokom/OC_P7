@@ -18,7 +18,8 @@ export default class RestaurantItem {
 				rating: null
 			}
 		];
-		this.newAverageRating = Number;
+		this.newAverageRating = this.getAverageRating();
+		this.isOpen = null;
 		/* this.rating = Math.floor(restaurant.averageRating); */
 		/* this.authorsRatings = []; */
 		/* this.averageRating = this.getAverageRating(); */
@@ -32,14 +33,19 @@ export default class RestaurantItem {
 	getAverageRating = () => {
 		let lastReview = this.reviews[this.reviews.length - 1];
 		let firstReview = this.reviews[0];
-		console.log(firstReview, lastReview);
+		/* console.log(firstReview, lastReview); */
 
-		let result = this.reviews.map(review => {
-			let total;
-			total += review.rating;
-			return total;
-		});
-		return result;
+		if (this.reviews.length <= 1) {
+			return this.averageRating;
+		} else {
+			let total = 0;
+			this.reviews.map(review => {
+				total += review.rating;
+			});
+			let result = total / this.reviews.length;
+			return result;
+		}
+
 		/* let result =
 			(this.averageRating * this.user_ratings_total + lastReview.rating) /
 			(this.user_ratings_total + 1);
