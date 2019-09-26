@@ -46,7 +46,11 @@ export default class RestaurantSearch extends Component {
 							placeholder="Search a restaurant.."
 						/>
 						<div className="d-flex justify-content-center">
-							<button id="search-btn" className="btn-primary" type="submit">
+							<button
+								id="search-btn"
+								className="btn-primary rounded"
+								type="submit"
+							>
 								search
 							</button>
 						</div>
