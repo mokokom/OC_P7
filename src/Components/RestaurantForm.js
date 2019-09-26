@@ -30,7 +30,6 @@ export default class RestaurantForm extends Component {
 				rating: Number(e.target.elements.rating.value)
 			}
 		];
-		/* addNewRestaurant.isOpen = null; */
 		addNewRestaurant.user_ratings_total = addNewRestaurant.reviews.length;
 		this.props.handleSubmitForm(addNewRestaurant);
 		let getForm = document.getElementsByName("add-restaurant-form");
