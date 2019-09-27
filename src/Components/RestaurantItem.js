@@ -9,7 +9,7 @@ export default class RestaurantItem {
 		this.address = restaurant.address;
 		this.lat = restaurant.lat;
 		this.long = restaurant.long;
-		this.averageRating = Math.floor(restaurant.averageRating);
+		this.averageRating = restaurant.averageRating;
 		this.user_ratings_total = restaurant.user_ratings_total;
 		this.reviews = [
 			{
@@ -18,11 +18,9 @@ export default class RestaurantItem {
 				rating: null
 			}
 		];
+		this.newRatingsToAdd = [];
 		this.newAverageRating = this.getAverageRating();
 		this.isOpen = null;
-		/* this.rating = Math.floor(restaurant.averageRating); */
-		/* this.authorsRatings = []; */
-		/* this.averageRating = this.getAverageRating(); */
 	}
 
 	static incrementId() {
@@ -31,15 +29,7 @@ export default class RestaurantItem {
 	}
 
 	getAverageRating = () => {
-		/* console.log(placeId); */
-		console.log(this, this.place_id);
-		let lastReview = this.reviews[this.reviews.length - 1];
-		let firstReview = this.reviews[0];
-		/* console.log(firstReview, lastReview); */
-
 		if (this.place_id == undefined) {
-			console.log("code for my rest");
-
 			if (this.reviews.length <= 1) {
 				return this.averageRating;
 			} else {
@@ -51,23 +41,19 @@ export default class RestaurantItem {
 				return result;
 			}
 		} else {
-			console.log("code for Grestaurant");
-			this.newRatingsToAdd = [];
-			console.log(this);
-			return this.averageRating;
+			if (this.newRatingsToAdd.length === 0) {
+				return this.averageRating;
+			} else {
+				let total = 0;
+				this.newRatingsToAdd.map(rating => {
+					total += rating;
+				});
+				let result =
+					(this.averageRating * this.user_ratings_total + total) /
+					(this.user_ratings_total + this.newRatingsToAdd.length);
+				this.averageRating = Math.round(result);
+				return result;
+			}
 		}
-
-		/* let result =
-			(this.averageRating * this.user_ratings_total + lastReview.rating) /
-			(this.user_ratings_total + 1);
-		return result; */
 	};
-
-	/* getAverageRating() {
-		return (
-			(this.rating * this.user_ratings_total + this.authorsRatings[0]) /
-			(this.user_ratings_total + 1)
-		);
-		rating(average) * user_ratings_total + new note  / user_ratings_total + 1
-	} */
 }

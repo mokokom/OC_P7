@@ -32,6 +32,12 @@ export default class TargetedRestaurant extends Component {
 			stars: newStars,
 			comment: e.target.elements.newComment.value
 		};
+		if (this.props.restaurant.place_id !== undefined) {
+			console.log("form with place id", newStars);
+			console.log(this.props.restaurant.newRatingsToAdd);
+			this.props.restaurant.newRatingsToAdd.push(newStars);
+		}
+		console.log(this.props.restaurant);
 		this.props.handleSubmitFormComment(
 			this.props.restaurant,
 			newComment,
@@ -51,7 +57,6 @@ export default class TargetedRestaurant extends Component {
 	}
 
 	render() {
-		console.log(this.props.restaurant);
 		const { rating } = this.state;
 		return (
 			<div className="card ">
@@ -285,7 +290,7 @@ export default class TargetedRestaurant extends Component {
 									</div>
 									<h3>All reviews</h3>
 									<small>
-										{this.props.restaurant.averageRating +
+										{this.props.restaurant.newAverageRating +
 											"/5" +
 											" - " +
 											this.props.restaurant.user_ratings_total +

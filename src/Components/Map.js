@@ -40,19 +40,9 @@ export default class Map extends Component {
 							address: result.vicinity,
 							lat: result.geometry.location.lat(),
 							long: result.geometry.location.lng(),
-							/* averageRatingFromRequest: result.rating,
-							averageRatingFromLocal: Number, */
 							averageRating: result.rating,
 							newAverageRating: null,
 							user_ratings_total: result.user_ratings_total
-							/* reviews: [
-								{
-									author_name: null,
-									text: null,
-									rating: null
-								}
-							] */
-							/* rating: result.rating */
 						});
 						restaurants.push(restaurant);
 					}

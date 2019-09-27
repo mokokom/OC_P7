@@ -36,10 +36,6 @@ export default class RestaurantForm extends Component {
 		getForm[0].reset();
 	};
 
-	/* calcAverageRating(restaurant) {
-		return restaurant.averageRating;
-	} */
-
 	onStarClick = (nextValue, prevValue, name) => {
 		this.setState({ rating: nextValue });
 	};
