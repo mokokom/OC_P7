@@ -42,16 +42,15 @@ export default class Restaurant extends Component {
 				restaurant.phone = place.formatted_phone_number;
 				restaurant.website = place.website;
 				restaurant.user_ratings_total = place.user_ratings_total;
-				{
-					place.opening_hours
-						? (restaurant.isOpen = place.opening_hours.open_now)
-						: (restaurant.isOpen = null);
-				}
-				{
-					place.opening_hours
-						? (restaurant.weekday_text = place.opening_hours.weekday_text)
-						: (restaurant.weekday_text = null);
-				}
+
+				place.opening_hours
+					? (restaurant.isOpen = place.opening_hours.open_now)
+					: (restaurant.isOpen = null);
+
+				place.opening_hours
+					? (restaurant.weekday_text = place.opening_hours.weekday_text)
+					: (restaurant.weekday_text = null);
+
 				this.props.handleClick(this.props.restaurant);
 			} else {
 				console.log(`Error: ${status}`);

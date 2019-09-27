@@ -56,7 +56,7 @@ export default class Map extends Component {
 						});
 						restaurants.push(restaurant);
 					}
-					location == this.state.location
+					location === this.state.location
 						? resolve(restaurants)
 						: this.props.apiLoadedCallback(restaurants);
 				} else {
@@ -83,7 +83,7 @@ export default class Map extends Component {
 		});
 		searchBox.addListener("places_changed", () => {
 			var places = searchBox.getPlaces();
-			if (places.length == 0) {
+			if (places.length === 0) {
 				return;
 			}
 			let restaurants = [];

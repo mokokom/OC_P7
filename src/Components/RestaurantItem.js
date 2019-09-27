@@ -31,19 +31,30 @@ export default class RestaurantItem {
 	}
 
 	getAverageRating = () => {
+		/* console.log(placeId); */
+		console.log(this, this.place_id);
 		let lastReview = this.reviews[this.reviews.length - 1];
 		let firstReview = this.reviews[0];
 		/* console.log(firstReview, lastReview); */
 
-		if (this.reviews.length <= 1) {
-			return this.averageRating;
+		if (this.place_id == undefined) {
+			console.log("code for my rest");
+
+			if (this.reviews.length <= 1) {
+				return this.averageRating;
+			} else {
+				let total = 0;
+				this.reviews.map(review => {
+					total += review.rating;
+				});
+				let result = total / this.user_ratings_total;
+				return result;
+			}
 		} else {
-			let total = 0;
-			this.reviews.map(review => {
-				total += review.rating;
-			});
-			let result = total / this.reviews.length;
-			return result;
+			console.log("code for Grestaurant");
+			this.newRatingsToAdd = [];
+			console.log(this);
+			return this.averageRating;
 		}
 
 		/* let result =
