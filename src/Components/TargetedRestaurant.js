@@ -290,7 +290,7 @@ export default class TargetedRestaurant extends Component {
 									</div>
 									<h3>All reviews</h3>
 									<small>
-										{this.props.restaurant.newAverageRating +
+										{Math.floor(this.props.restaurant.newAverageRating) +
 											"/5" +
 											" - " +
 											this.props.restaurant.user_ratings_total +
