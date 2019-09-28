@@ -429,7 +429,7 @@ export default class Map extends Component {
 			>
 				<GoogleMapReact
 					bootstrapURLKeys={{
-						key: "AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo",
+						key: `${process.env.REACT_APP_API_KEY}`,
 						libraries: "places"
 					}}
 					center={this.state.location}
