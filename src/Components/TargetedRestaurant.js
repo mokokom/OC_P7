@@ -191,7 +191,7 @@ export default class TargetedRestaurant extends Component {
 									) : (
 										<img
 											className="card-img-top"
-											src={`https://maps.googleapis.com/maps/api/streetview?size=200x200&location=${this.props.restaurant.address}&fov=50&heading=235&pitch=0&key=AIzaSyCLYVIY0XkB_QofM2PhdfuojhlLESBGioo`}
+											src={`https://maps.googleapis.com/maps/api/streetview?size=200x200&location=${this.props.restaurant.address}&fov=50&heading=235&pitch=0&key=${process.env.REACT_APP_API_KEY}`}
 											alt="restaurant view"
 										/>
 									)}
