@@ -12,6 +12,8 @@ export default class Map extends Component {
 			location: {
 				lat: 48.886202,
 				lng: 2.361252
+				/* minRating: 1,
+				maxRating: 5 */
 			}
 		};
 	}
@@ -442,7 +444,22 @@ export default class Map extends Component {
 					}}
 					options={this.createMapOptions}
 				>
-					{this.props.restaurants.map(restaurant => (
+					{this.props.restaurants
+						.filter(
+							restaurant =>
+								restaurant.averageRating >= this.state.minRating &&
+								restaurant.averageRating <= this.state.maxRating
+						)
+						.map(restaurant => (
+							<Marker
+								key={restaurant.name}
+								lat={restaurant.lat}
+								lng={restaurant.long}
+								restaurant={restaurant}
+								handleClick={this.props.handleClick}
+							/>
+						))}
+					{/* {this.props.restaurants.map(restaurant => (
 						<Marker
 							key={restaurant.name}
 							lat={restaurant.lat}
@@ -450,7 +467,7 @@ export default class Map extends Component {
 							restaurant={restaurant}
 							handleClick={this.props.handleClick}
 						/>
-					))}
+					))} */}
 					<CurrentPlace
 						lat={this.state.location.lat}
 						lng={this.state.location.lng}
