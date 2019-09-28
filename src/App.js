@@ -80,18 +80,12 @@ class App extends Component {
 		this.setState({ restaurants });
 	};
 
-	test = (name, nextValue) => {
+	ratingsState = (name, nextValue) => {
 		console.log(name, nextValue);
 		this.setState({
 			[name]: nextValue
 		});
 	};
-	/* test = ratings => {
-		console.log(ratings);
-		this.setState({
-			ratings
-		});
-	}; */
 
 	render() {
 		console.log(this.state);
@@ -107,7 +101,7 @@ class App extends Component {
 						handleSubmitForm={this.handleSubmitForm}
 						handleSubmitFormComment={this.handleSubmitFormComment}
 						newRestaurantPosition={this.state.newRestaurantPosition}
-						test={this.test}
+						ratingsState={this.ratingsState}
 					/>
 					<Map
 						restaurants={this.state.restaurants}
