@@ -22,6 +22,8 @@ export default class RestaurantsList extends Component {
 		} else if (name === "maxRating") {
 			this.setState({ maxRating: nextValue });
 		}
+		this.props.test(name, nextValue);
+		/* this.props.test(this.state); */
 	}
 
 	render() {

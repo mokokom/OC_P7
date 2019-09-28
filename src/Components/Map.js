@@ -12,8 +12,6 @@ export default class Map extends Component {
 			location: {
 				lat: 48.886202,
 				lng: 2.361252
-				/* minRating: 1,
-				maxRating: 5 */
 			}
 		};
 	}
@@ -419,6 +417,9 @@ export default class Map extends Component {
 	}
 
 	render() {
+		console.log(this.props.ratings);
+		console.log(this.props.minRating);
+		console.log(this.props.maxRating);
 		return (
 			<div
 				className="map-container col-12 col-lg-8 p-0 order-1 order-lg-2"
@@ -447,8 +448,8 @@ export default class Map extends Component {
 					{this.props.restaurants
 						.filter(
 							restaurant =>
-								restaurant.averageRating >= this.state.minRating &&
-								restaurant.averageRating <= this.state.maxRating
+								restaurant.newAverageRating >= this.props.minRating &&
+								restaurant.newAverageRating <= this.props.maxRating
 						)
 						.map(restaurant => (
 							<Marker

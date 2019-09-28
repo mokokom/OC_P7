@@ -14,7 +14,10 @@ class App extends Component {
 				LatLngOnClick: null,
 				address: null,
 				postalCode: null
-			}
+			},
+
+			minRating: 0,
+			maxRating: 5
 		};
 	}
 
@@ -77,7 +80,21 @@ class App extends Component {
 		this.setState({ restaurants });
 	};
 
+	test = (name, nextValue) => {
+		console.log(name, nextValue);
+		this.setState({
+			[name]: nextValue
+		});
+	};
+	/* test = ratings => {
+		console.log(ratings);
+		this.setState({
+			ratings
+		});
+	}; */
+
 	render() {
+		console.log(this.state);
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">
@@ -90,12 +107,15 @@ class App extends Component {
 						handleSubmitForm={this.handleSubmitForm}
 						handleSubmitFormComment={this.handleSubmitFormComment}
 						newRestaurantPosition={this.state.newRestaurantPosition}
+						test={this.test}
 					/>
 					<Map
 						restaurants={this.state.restaurants}
 						handleClick={this.handleClick}
 						getLatLng={this.getLatLng}
 						apiLoadedCallback={this.apiLoadedCallback}
+						minRating={this.state.minRating}
+						maxRating={this.state.maxRating}
 					/>
 				</div>
 			</div>
