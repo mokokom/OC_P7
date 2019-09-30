@@ -29,7 +29,7 @@ export default class RestaurantItem {
 	}
 
 	getAverageRating = () => {
-		if (this.place_id == undefined) {
+		if (this.place_id === undefined) {
 			if (this.reviews.length <= 1) {
 				return this.averageRating;
 			} else {

@@ -46,9 +46,7 @@ export default class Map extends Component {
 						});
 						restaurants.push(restaurant);
 					}
-					location === this.state.location
-						? resolve(restaurants)
-						: this.props.apiLoadedCallback(restaurants);
+					resolve(restaurants);
 				} else {
 					reject(`Error status ${status}`);
 				}
@@ -57,9 +55,10 @@ export default class Map extends Component {
 	}
 
 	apiLoaded = async (map, maps, location) => {
-		map.addListener("idle", () => {
+		map.addListener("idle", async () => {
 			let newLocation = this.getMapCenter(map);
-			this.getNearbyRestaurants(maps, newLocation);
+			let results = await this.getNearbyRestaurants(maps, newLocation);
+			this.props.apiLoadedCallback(results);
 		});
 		let results = await this.getNearbyRestaurants(maps, location);
 		this.props.apiLoadedCallback(results);
@@ -90,7 +89,6 @@ export default class Map extends Component {
 					user_ratings_total: result.user_ratings_total
 				});
 				restaurants.push(restaurant);
-				console.log(restaurants);
 			}
 			this.props.apiLoadedCallback(restaurants);
 		});
@@ -417,9 +415,6 @@ export default class Map extends Component {
 	}
 
 	render() {
-		console.log(this.props.ratings);
-		console.log(this.props.minRating);
-		console.log(this.props.maxRating);
 		return (
 			<div
 				className="map-container col-12 col-lg-8 p-0 order-1 order-lg-2"

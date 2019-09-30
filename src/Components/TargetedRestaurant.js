@@ -33,11 +33,8 @@ export default class TargetedRestaurant extends Component {
 			comment: e.target.elements.newComment.value
 		};
 		if (this.props.restaurant.place_id !== undefined) {
-			console.log("form with place id", newStars);
-			console.log(this.props.restaurant.newRatingsToAdd);
 			this.props.restaurant.newRatingsToAdd.push(newStars);
 		}
-		console.log(this.props.restaurant);
 		this.props.handleSubmitFormComment(
 			this.props.restaurant,
 			newComment,
@@ -46,6 +43,8 @@ export default class TargetedRestaurant extends Component {
 		this.setState({ rating: this.props.restaurant.newAverageRating });
 		let getForm = document.getElementsByName("add-comment-form");
 		getForm[0].reset();
+		document.getElementById("collapseFormComment").classList.add("collapsing");
+		document.getElementById("collapseFormComment").classList.remove("show");
 	};
 
 	handleBtnIcon() {
@@ -274,8 +273,8 @@ export default class TargetedRestaurant extends Component {
 													<div className="col-12 mb-2 text-center">
 														<button
 															className="btn-primary rounded"
-															data-toggle="collapse"
-															href="#collapseFormComment"
+															/* data-toggle="collapse"
+															href="#collapseFormComment" */
 															role="button"
 															aria-expanded="false"
 															aria-controls="collapseFormComment"

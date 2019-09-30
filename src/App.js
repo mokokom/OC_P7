@@ -81,14 +81,12 @@ class App extends Component {
 	};
 
 	ratingsState = (name, nextValue) => {
-		console.log(name, nextValue);
 		this.setState({
 			[name]: nextValue
 		});
 	};
 
 	render() {
-		console.log(this.state);
 		return (
 			<div className="main-content-container container-fluid d-flex flex-column">
 				<div className="row">
