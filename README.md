@@ -8,10 +8,12 @@ https://ieat.mokokom.com/
 ## Assignment
 Create a simple and useful service that allows the user to have reviews of restaurants around you. Use external APIs such as Google Maps and Google Places and orchestrate all this information consistently in your app!
 
-### Note
+---
+**NOTE**
+
 For the purpose of this exercice I used the React library
 
-**_NOTE:_** For the purpose of this exercice I used the React library
+---
 
 ## Skills
 * Develop a complete JavaScript application according to specifications
