@@ -56,6 +56,41 @@ export default class Map extends Component {
 		});
 	}
 
+	getTextSearchRestaurants(maps, location, searchBoxVal) {
+		return new Promise((resolve, reject) => {
+			const divElmt = document.createElement("div");
+			const service = new maps.places.PlacesService(divElmt);
+			const request = {
+				location: new maps.LatLng(location.lat, location.lng),
+				radius: "1500",
+				query: searchBoxVal ? searchBoxVal : ["restaurant"]
+			};
+			service.textSearch(request, (results, status) => {
+				let restaurants = [];
+				if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+					console.log(results);
+					for (let result of results) {
+						let restaurant = new RestaurantItem({
+							place_id: result.place_id,
+							restaurantName: result.name,
+							description: result.types[0],
+							address: result.vicinity,
+							lat: result.geometry.location.lat(),
+							long: result.geometry.location.lng(),
+							averageRating: result.rating,
+							newAverageRating: null,
+							user_ratings_total: result.user_ratings_total
+						});
+						restaurants.push(restaurant);
+					}
+					resolve(restaurants);
+				} else {
+					reject(`Error status ${status}`);
+				}
+			});
+		});
+	}
+
 	apiLoaded = async (map, maps, location) => {
 		map.addListener("idle", async () => {
 			let newLocation = this.getMapCenter(map);
@@ -100,8 +135,7 @@ export default class Map extends Component {
 			let searchBoxVal = input.value;
 			console.log(searchBoxVal);
 			let newLocation = this.getMapCenter(map);
-			// this.getNearbyRestaurants(maps, newLocation, searchBoxVal);
-			let results = await this.getNearbyRestaurants(
+			let results = await this.getTextSearchRestaurants(
 				maps,
 				newLocation,
 				searchBoxVal
