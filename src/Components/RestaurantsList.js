@@ -103,7 +103,7 @@ export default class RestaurantsList extends Component {
 						)
 						.map(restaurant => (
 							<Restaurant
-								key={restaurant.name}
+								key={restaurant.id}
 								restaurant={restaurant}
 								handleClick={this.props.handleClick}
 							/>

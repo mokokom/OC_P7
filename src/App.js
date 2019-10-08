@@ -77,6 +77,8 @@ class App extends Component {
 	};
 
 	apiLoadedCallback = restaurants => {
+		console.log(restaurants);
+		console.log(this.state.restaurants);
 		this.setState({ restaurants });
 	};
 
