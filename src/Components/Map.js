@@ -23,17 +23,14 @@ export default class Map extends Component {
 		return new Promise((resolve, reject) => {
 			const divElmt = document.createElement("div");
 			const service = new maps.places.PlacesService(divElmt);
-			console.log(searchBoxVal);
 			const request = {
 				location: new maps.LatLng(location.lat, location.lng),
 				radius: "1500",
 				type: searchBoxVal ? searchBoxVal : ["restaurant"]
 			};
-			console.log(request);
 			service.nearbySearch(request, (results, status) => {
 				let restaurants = [];
 				if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-					console.log(results);
 					for (let result of results) {
 						let restaurant = new RestaurantItem({
 							place_id: result.place_id,
@@ -68,13 +65,12 @@ export default class Map extends Component {
 			service.textSearch(request, (results, status) => {
 				let restaurants = [];
 				if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-					console.log(results);
 					for (let result of results) {
 						let restaurant = new RestaurantItem({
 							place_id: result.place_id,
 							restaurantName: result.name,
 							description: result.types[0],
-							address: result.vicinity,
+							address: result.formatted_address,
 							lat: result.geometry.location.lat(),
 							long: result.geometry.location.lng(),
 							averageRating: result.rating,
@@ -109,7 +105,6 @@ export default class Map extends Component {
 		});
 		searchBox.addListener("places_changed", () => {
 			var places = searchBox.getPlaces();
-			console.log(places);
 			if (places.length === 0) {
 				return;
 			}
@@ -133,7 +128,6 @@ export default class Map extends Component {
 		let searchBtn = document.getElementById("search-btn");
 		searchBtn.addEventListener("click", async () => {
 			let searchBoxVal = input.value;
-			console.log(searchBoxVal);
 			let newLocation = this.getMapCenter(map);
 			let results = await this.getTextSearchRestaurants(
 				maps,
@@ -183,6 +177,7 @@ export default class Map extends Component {
 
 	createMapOptions() {
 		return {
+			/* gestureHandling: 'greedy', */
 			styles: [
 				{
 					featureType: "all",
